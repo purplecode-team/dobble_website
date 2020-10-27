@@ -1,10 +1,10 @@
 import React from 'react';
 
 const App = () => {
-  return(
-      <div>
-        <p>App</p>
-      </div>
+  return (
+    <div>
+      <p>App</p>
+    </div>
   );
 };
 
