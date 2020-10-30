@@ -1,11 +1,8 @@
 import React from 'react';
+import RootRouter from './components/RootRouter';
 
 const App = () => {
-  return (
-    <div>
-      <p>App</p>
-    </div>
-  );
+  return <RootRouter isLoggedIn />;
 };
 
 export default App;
