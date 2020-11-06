@@ -7,6 +7,7 @@ import Brand from '../pages/brand';
 import Magazine from '../pages/magazine';
 import Product from '../pages/product';
 import AppLayout from './AppLayout';
+import MyPage from '../pages/myPage';
 
 const LoginRoutes = () => (
   <Switch>
@@ -15,6 +16,7 @@ const LoginRoutes = () => (
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
     <Route path="/basket" component={Basket} />
+    <Route path="/myPage" component={MyPage} />
     <Redirect from="*" to="/" />
   </Switch>
 );
