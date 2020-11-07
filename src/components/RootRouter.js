@@ -16,7 +16,6 @@ const LoginRoutes = () => (
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
     <Route path="/basket" component={Basket} />
-    <Route path="/myPage" component={MyPage} />
     <Redirect from="*" to="/" />
   </Switch>
 );
