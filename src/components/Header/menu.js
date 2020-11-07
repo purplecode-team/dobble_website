@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Hamburger from '../img/hamburger.png';
 import Heart from '../img/heart.png';
 import MyPage from '../img/mypage.png';
 import Search from '../img/search.png';
+import HamburgerMenu from './hamburgerMenu';
 
 const Menu = () => {
+  const [open, setOpen] = useState(true);
+  const toggleHamburger = () => {
+    setOpen(!open);
+  };
+
   return (
     <MenuSection>
       <IconDiv>
@@ -23,8 +29,9 @@ const Menu = () => {
         <Img src={Search} alt="search_icon" />
       </IconDiv>
       <IconDiv>
-        <Img src={Hamburger} alt="hamburger_icon" />
+        <Img src={Hamburger} alt="hamburger_icon" onClick={() => toggleHamburger()} />
       </IconDiv>
+      <HamburgerMenu open={open} toggleHamburger={toggleHamburger} />
     </MenuSection>
   );
 };
@@ -46,6 +53,7 @@ const IconDiv = styled.div`
 const Img = styled.img`
   width: 30px;
   height: 30px;
+  cursor: pointer;
 `;
 
 export default Menu;
