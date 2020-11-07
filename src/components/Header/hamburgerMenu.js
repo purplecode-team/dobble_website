@@ -33,6 +33,7 @@ const MenuDiv = styled.div`
 `;
 
 const XButton = styled.button`
+  float: right;
   margin: 10px;
   border: none;
   background: white;

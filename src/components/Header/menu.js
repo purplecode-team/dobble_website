@@ -14,7 +14,7 @@ const Menu = () => {
   };
 
   return (
-    <MenuSection>
+    <div>
       <IconDiv>
         <Link to="/myPage">
           <Img src={MyPage} alt="myPage_icon" />
@@ -32,27 +32,21 @@ const Menu = () => {
         <Img src={Hamburger} alt="hamburger_icon" onClick={() => toggleHamburger()} />
       </IconDiv>
       <HamburgerMenu open={open} toggleHamburger={toggleHamburger} />
-    </MenuSection>
+    </div>
   );
 };
 
-const MenuSection = styled.div`
-  padding-top: 10px;
-  min-width: 400px;
-  margin-right: 15px;
-`;
-
 const IconDiv = styled.div`
-  height: 30px;
-  margin-left: 60px;
+  height: 20px;
+  margin-left: 35px;
   display: flex;
   align-items: center;
   float: left;
 `;
 
 const Img = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 `;
 

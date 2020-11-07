@@ -5,19 +5,34 @@ import Logo from './logo';
 
 const Header = () => {
   return (
-    <HeaderBox>
-      <Logo />
-      <Menu />
-    </HeaderBox>
+    <HeaderSection>
+      <HeaderBox>
+        <Logo />
+        <Menu />
+      </HeaderBox>
+    </HeaderSection>
   );
 };
 
-const HeaderBox = styled.div`
+const HeaderSection = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100px;
+  height: 52px;
+  display: flex;
+  z-index: 10;
+  padding: 0 1rem;
+`;
+
+const HeaderBox = styled.div`
+  padding-top: 20px;
   display: flex;
   align-items: center;
+  width: 95vw;
+  height: 100%;
+  margin-right: auto;
+  margin-left: 20px;
 `;
 
 export default Header;
