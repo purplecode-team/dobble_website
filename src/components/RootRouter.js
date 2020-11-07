@@ -7,7 +7,6 @@ import Brand from '../pages/brand';
 import Magazine from '../pages/magazine';
 import Product from '../pages/product';
 import AppLayout from './AppLayout';
-import MyPage from '../pages/myPage';
 
 const LoginRoutes = () => (
   <Switch>

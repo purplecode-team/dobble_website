@@ -14,14 +14,7 @@
     "es6": true
   },
   "plugins": ["react", "prettier"],
-  "extends": [
-    "prettier",
-    "airbnb",
-    "airbnb/hooks",
-    "prettier/react",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["airbnb", "airbnb/hooks", "plugin:react/recommended", "plugin:prettier/recommended"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -30,6 +23,12 @@
     }
   },
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "no-console": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/no-unescaped-entities": "off",
