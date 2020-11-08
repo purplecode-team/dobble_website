@@ -16,22 +16,20 @@ const Header = () => {
 
 const HeaderSection = styled.div`
   position: fixed;
-  top: 0;
   left: 0;
+  top: 0;
   width: 100%;
-  height: 52px;
   display: flex;
   z-index: 10;
-  padding: 0 1rem;
 `;
 
 const HeaderBox = styled.div`
   padding-top: 20px;
   display: flex;
   align-items: center;
-  width: 95vw;
+  width: 100vw;
   height: 100%;
-  margin-right: auto;
+  margin-right: 20px;
   margin-left: 20px;
 `;
 

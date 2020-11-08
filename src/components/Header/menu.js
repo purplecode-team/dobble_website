@@ -14,40 +14,55 @@ const Menu = () => {
   };
 
   return (
-    <div>
-      <IconDiv>
+    <IconSection>
+      <IconDiv mobile>
         <Link to="/myPage">
           <Img src={MyPage} alt="myPage_icon" />
         </Link>
       </IconDiv>
-      <IconDiv>
+      <IconDiv mobile>
         <Link to="/basket">
           <Img src={Heart} alt="basket_icon" />
         </Link>
       </IconDiv>
-      <IconDiv>
+      <IconDiv mobile>
         <Img src={Search} alt="search_icon" />
       </IconDiv>
       <IconDiv>
         <Img src={Hamburger} alt="hamburger_icon" onClick={() => toggleHamburger()} />
       </IconDiv>
       <HamburgerMenu open={open} toggleHamburger={toggleHamburger} />
-    </div>
+    </IconSection>
   );
 };
 
+const IconSection = styled.div`
+  height: 40px;
+`;
+
 const IconDiv = styled.div`
-  height: 20px;
   margin-left: 35px;
   display: flex;
   align-items: center;
   float: left;
+
+  @media (max-width: 768px) {
+    ${(props) =>
+      props.mobile &&
+      `
+    display: none;
+  `}
+  }
 `;
 
 const Img = styled.img`
   width: 20px;
   height: 20px;
   cursor: pointer;
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export default Menu;

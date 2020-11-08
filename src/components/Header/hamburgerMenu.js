@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import CloseIcon from '../img/closeIcon.png';
+import MenuItem from './menuItem';
 
 const HamburgerMenu = ({ open, toggleHamburger }) => {
   return (
     <MenuDiv open={open}>
-      <XButton
-        type="button"
-        onClick={() => {
-          toggleHamburger();
-        }}
-      >
-        X
-      </XButton>
-
-      <div>menu item</div>
+      <TopSection>
+        <XButton onClick={() => toggleHamburger()}>
+          <CloseBtn src={CloseIcon} alt="closeBtn" />
+        </XButton>
+      </TopSection>
+      <MidSection>
+        <MenuItem />
+      </MidSection>
     </MenuDiv>
   );
 };
@@ -27,17 +27,28 @@ const MenuDiv = styled.div`
   margin: 0;
   left: 0;
   top: 0;
-  background: white;
+  background: rgb(246, 246, 246);
   z-index: 1;
   display: ${({ open }) => (open ? 'none' : 'block')};
 `;
 
-const XButton = styled.button`
+const TopSection = styled.div`
+  width: 100vw;
+`;
+
+const MidSection = styled.div`
+  width: 100vw;
+  margin-top: 60px;
+`;
+
+const CloseBtn = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+const XButton = styled.div`
+  margin: 20px;
   float: right;
-  margin: 10px;
-  border: none;
-  background: white;
-  font-size: 3rem;
   cursor: pointer;
 `;
 
