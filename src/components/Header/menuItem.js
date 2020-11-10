@@ -1,37 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import DropIcon from '../img/dropIcon.png';
+import { ProductsData, BrandsData, MagazineData } from './menuItemData';
 
 const MenuItem = () => {
+  const [open, setOpen] = useState(true);
+  const toggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <CategorySection>
       <CategoryDiv>
         <CategoryBox>
           <Top>
             <Title>Products</Title>
-            <DropImg src={DropIcon} alt="drop" />
+            <DropImg src={DropIcon} alt="drop" onClick={() => toggle()} />
           </Top>
-          <Content>
-            <div>의류</div>
-            <div>가방</div>
-            <div>악세서리</div>
-            <div>잡화</div>
+          <Content open={open}>
+            {ProductsData.map(({ key, content, link }) => (
+              <Text key={key} href={link}>
+                {content}
+              </Text>
+            ))}
           </Content>
         </CategoryBox>
-        <CategoryBox>
+        <CategoryBox mid>
           <Top>
             <Title>Brands</Title>
             <DropImg src={DropIcon} alt="drop" />
           </Top>
           <Content>
-            <div>마리몬드</div>
-            <div>마르코로호</div>
-            <div>애니휴먼</div>
-            <div>위드아이스</div>
-            <div>BOCE</div>
-            <div>메리디아니</div>
-            <div>뉴킷</div>
-            <div>파이어마커스</div>
+            {BrandsData.map(({ key, content, link }) => (
+              <Text key={key} href={link}>
+                {content}
+              </Text>
+            ))}
           </Content>
         </CategoryBox>
         <CategoryBox>
@@ -40,8 +44,11 @@ const MenuItem = () => {
             <DropImg src={DropIcon} alt="drop" />
           </Top>
           <Content>
-            <div>브랜드 소개</div>
-            <div>기부 소식</div>
+            {MagazineData.map(({ key, content, link }) => (
+              <Text key={key} href={link}>
+                {content}
+              </Text>
+            ))}
           </Content>
         </CategoryBox>
       </CategoryDiv>
@@ -57,9 +64,9 @@ const CategorySection = styled.div`
 
 const CategoryDiv = styled.div`
   display: flex;
-  width: 70vw;
+  width: 65vw;
   justify-content: space-between;
-  margin: 80px auto;
+  margin: 7vh auto;
   @media (max-width: 768px) {
     display: block;
     margin: 0;
@@ -69,26 +76,43 @@ const CategoryDiv = styled.div`
 const CategoryBox = styled.div`
   width: 210px;
   align-items: center;
+  ${(props) =>
+    props.mid &&
+    `
+    margin-left: 20px;
+  `}
+  @media (max-width: 768px) {
+    ${(props) =>
+      props.mid &&
+      `
+    margin-left: 0px;
+  `}
+  }
 `;
 
 const Top = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 `;
 
 const Content = styled.div`
   font-size: 1.5rem;
   @media (max-width: 768px) {
-    display: none;
+    display: ${({ open }) => (open ? 'block' : 'none')};
   }
 `;
 
 const Title = styled.div`
+  font-family: Stilu-SemiBold;
   margin: 0;
   font-size: 3rem;
+  margin-bottom: 10px;
 `;
 
+const Text = styled.div`
+  margin-bottom: 10px;
+`;
 const DropImg = styled.img`
   visibility: hidden;
   width: 10px;
