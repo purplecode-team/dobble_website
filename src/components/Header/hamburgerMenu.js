@@ -1,12 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import CloseIcon from '../img/closeIcon.png';
-import MenuItem from './menuItem';
+import MenuItem from './MenuItem';
+import MyPage from '../img/mypage.png';
+import Heart from '../img/heart.png';
 
 const HamburgerMenu = ({ open, toggleHamburger }) => {
   return (
     <MenuDiv open={open}>
       <TopSection>
+        <LeftDiv>
+          <Link to="/myPage">
+            <IconDiv>
+              <Icon src={MyPage} alt="mypage" />
+              <div>로그인</div>
+            </IconDiv>
+          </Link>
+          <Link to="/basket">
+            <IconDiv>
+              <Icon src={Heart} alt="heart" />
+              <div>찜</div>
+            </IconDiv>
+          </Link>
+        </LeftDiv>
         <XButton onClick={() => toggleHamburger()}>
           <CloseBtn src={CloseIcon} alt="closeBtn" />
         </XButton>
@@ -33,7 +50,13 @@ const MenuDiv = styled.div`
 `;
 
 const TopSection = styled.div`
-  width: 100vw;
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px auto;
+    margin-bottom: 0;
+    width: 70vw;
+  }
 `;
 
 const MidSection = styled.div`
@@ -41,13 +64,37 @@ const MidSection = styled.div`
   margin-top: 60px;
 `;
 
+const LeftDiv = styled.div`
+  display: none;
+  align-items: center;
+  width: 50vw;
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+const Icon = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+`;
+
+const IconDiv = styled.div`
+  margin-right: 20px;
+  align-items: center;
+  display: flex;
+`;
+
 const CloseBtn = styled.img`
   width: 20px;
   height: 20px;
+  margin: 20px;
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 `;
 
 const XButton = styled.div`
-  margin: 20px;
   float: right;
   cursor: pointer;
 `;
