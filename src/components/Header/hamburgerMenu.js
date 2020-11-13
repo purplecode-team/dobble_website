@@ -11,18 +11,18 @@ const HamburgerMenu = ({ open, toggleHamburger }) => {
     <MenuDiv open={open}>
       <TopSection>
         <LeftDiv>
-          <Link to="/myPage">
+          <StyledLink to="/myPage">
             <IconDiv>
               <Icon src={MyPage} alt="mypage" />
               <div>로그인</div>
             </IconDiv>
-          </Link>
-          <Link to="/basket">
+          </StyledLink>
+          <StyledLink to="/basket">
             <IconDiv>
               <Icon src={Heart} alt="heart" />
               <div>찜</div>
             </IconDiv>
-          </Link>
+          </StyledLink>
         </LeftDiv>
         <XButton onClick={() => toggleHamburger()}>
           <CloseBtn src={CloseIcon} alt="closeBtn" />
@@ -92,6 +92,11 @@ const CloseBtn = styled.img`
   @media (max-width: 768px) {
     margin: 0;
   }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 
 const XButton = styled.div`

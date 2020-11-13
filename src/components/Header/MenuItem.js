@@ -1,57 +1,29 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import DropIcon from '../img/dropIcon.png';
-import { ProductsData, BrandsData, MagazineData } from './MenuItemData';
+import CategoryItem from './CategoryItem';
+import { BrandsData, MagazineData, ProductsData } from './MenuItemData';
 
 const MenuItem = () => {
-  const [open, setOpen] = useState(true);
-  const toggle = () => {
-    setOpen(!open);
+  const [openP, setOpenP] = useState(false);
+  const [openB, setOpenB] = useState(false);
+  const [openM, setOpenM] = useState(false);
+  const toggleP = () => {
+    setOpenP(!openP);
+  };
+  const toggleB = () => {
+    setOpenB(!openB);
+  };
+  const toggleM = () => {
+    setOpenM(!openM);
   };
 
   return (
     <CategorySection>
       <CategoryDiv>
+        <CategoryItem title="Products" data={ProductsData} open={openP} toggle={toggleP} />
+        <CategoryItem title="Brands" data={BrandsData} open={openB} toggle={toggleB} />
+        <CategoryItem title="Magazine" data={MagazineData} open={openM} toggle={toggleM} />
         <CategoryBox>
-          <Top onClick={() => toggle()}>
-            <Title>Products</Title>
-            <DropImg src={DropIcon} alt="drop" />
-          </Top>
-          <Content open={open}>
-            {ProductsData.map(({ key, content, link }) => (
-              <Text key={key} href={link}>
-                {content}
-              </Text>
-            ))}
-          </Content>
-        </CategoryBox>
-        <CategoryBox mid>
-          <Top>
-            <Title>Brands</Title>
-            <DropImg src={DropIcon} alt="drop" />
-          </Top>
-          <Content>
-            {BrandsData.map(({ key, content, link }) => (
-              <Text key={key} href={link}>
-                {content}
-              </Text>
-            ))}
-          </Content>
-        </CategoryBox>
-        <CategoryBox>
-          <Top>
-            <Title>Magazine</Title>
-            <DropImg src={DropIcon} alt="drop" />
-          </Top>
-          <Content>
-            {MagazineData.map(({ key, content, link }) => (
-              <Text key={key} href={link}>
-                {content}
-              </Text>
-            ))}
-          </Content>
-        </CategoryBox>
-        <CategoryBox mobile>
           <Top>
             <Title>Our Story</Title>
           </Top>
@@ -76,19 +48,19 @@ const CategoryDiv = styled.div`
     display: block;
     margin: 7vh auto;
     width: 100vw;
+    height: 78vh;
+    overflow: auto;
   }
 `;
 
 const CategoryBox = styled.div`
   width: 210px;
   align-items: center;
-  ${(props) => props.mid && `margin-left: 20px;`}
-  ${(props) => props.mobile && `display: none;`}
-
+  display: none;
   @media (max-width: 768px) {
     width: 70vw;
     margin: auto;
-    ${(props) => props.mobile && `display: block;`}
+    display: block;
   }
 `;
 
@@ -96,13 +68,6 @@ const Top = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-`;
-
-const Content = styled.div`
-  font-size: 1.5rem;
-  @media (max-width: 768px) {
-    display: ${({ open }) => (open ? 'block' : 'none')};
-  }
 `;
 
 const Title = styled.div`
@@ -113,20 +78,6 @@ const Title = styled.div`
   @media (max-width: 768px) {
     cursor: pointer;
     font-size: 2.5rem;
-  }
-`;
-
-const Text = styled.div`
-  margin-bottom: 10px;
-`;
-
-const DropImg = styled.img`
-  visibility: hidden;
-  width: 15px;
-  height: 15px;
-  margin-left: auto;
-  @media (max-width: 768px) {
-    visibility: visible;
   }
 `;
 
