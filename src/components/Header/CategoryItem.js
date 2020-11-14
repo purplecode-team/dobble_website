@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import DropIcon from '../img/dropIcon.png';
 
-const CategoryItem = ({ title, data, open, toggle }) => {
+const CategoryItem = ({ title, data }) => {
+  const [open, setOpen] = useState(false);
+  const toggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <div>
       <CategoryBox>
@@ -53,10 +58,11 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   z-index: 10;
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? 'block' : 'none')};
+    margin-bottom: 40px;
   }
 `;
 
