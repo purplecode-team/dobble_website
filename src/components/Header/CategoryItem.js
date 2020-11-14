@@ -36,6 +36,10 @@ const Top = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  font-weight: bold;
+  @media (max-width: 768px) {
+    cursor: pointer;
+  }
 `;
 
 const Title = styled.div`
@@ -44,7 +48,6 @@ const Title = styled.div`
   font-size: 3rem;
   margin-bottom: 10px;
   @media (max-width: 768px) {
-    cursor: pointer;
     font-size: 2.5rem;
   }
 `;
@@ -68,7 +71,6 @@ const Text = styled.div`
 
 const DropImg = styled.img`
   visibility: hidden;
-  cursor: pointer;
   width: 15px;
   height: 15px;
   margin-left: auto;
