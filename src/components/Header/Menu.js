@@ -5,7 +5,7 @@ import Hamburger from '../img/hamburger.png';
 import Heart from '../img/heart.png';
 import MyPage from '../img/mypage.png';
 import Search from '../img/search.png';
-import HamburgerMenu from './HamburgerMenu';
+import HamburgerMenu from './hamburgerMenu';
 
 const Menu = () => {
   const [open, setOpen] = useState(true);

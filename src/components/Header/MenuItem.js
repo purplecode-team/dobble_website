@@ -1,33 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import CategoryItem from './CategoryItem';
 import { BrandsData, MagazineData, ProductsData } from './MenuItemData';
 
 const MenuItem = () => {
-  const [openP, setOpenP] = useState(false);
-  const [openB, setOpenB] = useState(false);
-  const [openM, setOpenM] = useState(false);
-  const toggleP = () => {
-    setOpenP(!openP);
-  };
-  const toggleB = () => {
-    setOpenB(!openB);
-  };
-  const toggleM = () => {
-    setOpenM(!openM);
-  };
-
   return (
     <CategorySection>
       <CategoryDiv>
-        <CategoryItem title="Products" data={ProductsData} open={openP} toggle={toggleP} />
-        <CategoryItem title="Brands" data={BrandsData} open={openB} toggle={toggleB} />
-        <CategoryItem title="Magazine" data={MagazineData} open={openM} toggle={toggleM} />
-        <CategoryBox>
-          <Top>
-            <Title>Our Story</Title>
-          </Top>
-        </CategoryBox>
+        <CategoryItem title="Products" data={ProductsData} />
+        <CategoryItem title="Brands" data={BrandsData} />
+        <CategoryItem title="Magazine" data={MagazineData} />
       </CategoryDiv>
     </CategorySection>
   );
@@ -50,34 +32,6 @@ const CategoryDiv = styled.div`
     width: 100vw;
     height: 78vh;
     overflow: auto;
-  }
-`;
-
-const CategoryBox = styled.div`
-  width: 210px;
-  align-items: center;
-  display: none;
-  @media (max-width: 768px) {
-    width: 70vw;
-    margin: auto;
-    display: block;
-  }
-`;
-
-const Top = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-`;
-
-const Title = styled.div`
-  font-family: Stilu-SemiBold;
-  margin: 0;
-  font-size: 3rem;
-  margin-bottom: 10px;
-  @media (max-width: 768px) {
-    cursor: pointer;
-    font-size: 2.5rem;
   }
 `;
 
