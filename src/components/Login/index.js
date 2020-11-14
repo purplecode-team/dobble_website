@@ -2,10 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import LoginInput from './LoginInput';
 import SocialLogin from './SocialLogin';
+import DobleLogo from '../img/doble_icon.png';
 
 const Login = () => {
   return (
     <div>
+      <LogoSection>
+        <Logo src={DobleLogo} alt="logo" />
+      </LogoSection>
       <Title>로그인</Title>
       <LoginInput />
       <SocialLogin />
@@ -15,8 +19,21 @@ const Login = () => {
 
 const Title = styled.div`
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 80px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
+
+const LogoSection = styled.div`
+  margin-top: 20px;
+  weight: 100vw;
+  text-align: center;
+  margin-bottom: 10px;
+`;
+
+const Logo = styled.img`
+  width: 50px;
+  height: 50px;
 `;
 
 export default Login;

@@ -59,10 +59,6 @@ const Img = styled.img`
   width: 20px;
   height: 20px;
   cursor: pointer;
-  @media (max-width: 768px) {
-    width: 30px;
-    height: 30px;
-  }
 `;
 
 export default Menu;

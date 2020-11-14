@@ -19,7 +19,7 @@ const LogoSection = styled.div`
 `;
 
 const LogoImg = styled.img`
-  width: 88.5px;
-  height: 30px;
+  width: 73.75px;
+  height: 25px;
 `;
 export default Logo;

@@ -37,32 +37,40 @@ const InputBox = styled.div`
 
 const Label = styled.div`
   width: 100px;
+  font-weight: bold;
 `;
 
 const TextBox = styled.div`
   display: flex;
-  padding: 20px;
+  padding: 10px 20px;
   justify-content: space-between;
 `;
 
 const Text = styled.div`
   display: flex;
-  color: grey;
-  font-size: 0.9rem;
+  color: rgb(150, 150, 150);
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
 `;
 
 const Input = styled.input`
   border: none;
   border-bottom: black 1px solid;
   width: 90%;
+  :: placeholder {
+    color: rgb(210, 210, 210);
+  }
 `;
 
 const LoginButton = styled.button`
+  cursor: pointer;
   border: none;
-  background-color: rgb(230, 230, 230);
-  padding: 10px;
+  background-color: rgb(238, 238, 238);
+  padding: 11px 10px;
   width: 100%;
   border-radius: 30px;
+  font-weight: bold;
 `;
 
 const Form = styled.form`
