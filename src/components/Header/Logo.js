@@ -14,13 +14,12 @@ const Logo = () => {
 };
 
 const LogoSection = styled.div`
-  margin-left: 40px;
-  width: 100%;
   height: 40px;
+  margin-right: auto;
 `;
 
 const LogoImg = styled.img`
-  width: 118px;
-  height: 40px;
+  width: 73.75px;
+  height: 25px;
 `;
 export default Logo;

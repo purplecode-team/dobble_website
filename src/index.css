@@ -1,12 +1,33 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Stilu;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+h1,
+h2,
+h3 {
+  font-family: Stilu-Bold;
+}
+
+@font-face {
+  font-family: 'Stilu';
+  src: local('Stilu-Bold'), url('./components/fonts/Stilu-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Stilu';
+  src: local('Stilu-SemiBold'), url('./components/fonts/Stilu-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Stilu';
+  src: local('Stilu-Light'), url('./components/fonts/Stilu-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Stilu';
+  src: local('Stilu'), url('./components/fonts/Stilu-Regular.otf') format('opentype');
 }
