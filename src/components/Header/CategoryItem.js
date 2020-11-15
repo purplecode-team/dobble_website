@@ -58,7 +58,7 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   z-index: 10;
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? 'block' : 'none')};

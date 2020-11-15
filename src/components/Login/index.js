@@ -25,7 +25,7 @@ const Title = styled.div`
 `;
 
 const LogoSection = styled.div`
-  margin-top: 20px;
+  margin-top: 120px;
   weight: 100vw;
   text-align: center;
   margin-bottom: 10px;

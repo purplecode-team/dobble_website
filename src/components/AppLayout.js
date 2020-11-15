@@ -13,6 +13,6 @@ const AppLayout = ({ children }) => {
 };
 
 const ChildLayout = styled.div`
-  padding-top: 100px;
+  padding-top: 0px;
 `;
 export default AppLayout;
