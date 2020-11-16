@@ -6,6 +6,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*스크롤 바 숨기기*/
+/*body {*/
+/*  scroll-behavior: smooth;*/
+/*  -ms-overflow-style: none;*/
+/*}*/
+/*body::-webkit-scrollbar {*/
+/*  display: none;*/
+/*}*/
+
 h1,
 h2,
 h3 {
