@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import OurStoryLogo from '../img/our_story_logo.png';
+import OurStoryLogo from '../img/outStory_logo.png';
 import YCircle from '../img/circle_yellow.png';
 
 const OurStory = () => {
@@ -43,12 +43,12 @@ const Title = styled.h1`
 
 const LogoDiv = styled.div`
   text-align: center;
-  margin: 0;
+  margin: 10px;
 `;
 
 const Logo = styled.img`
-  width: 154px;
-  height: 137px;
+  width: 100px;
+  height: 59px;
 `;
 
 const SubTitle = styled.div`
