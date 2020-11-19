@@ -1,30 +1,38 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import CloseIcon from '../img/closeIcon.png';
 import MenuItem from './MenuItem';
 import MyPage from '../img/mypage.png';
 import Heart from '../img/heart.png';
+import { toggleMenu } from '../../reducer/menuState';
 
-const HamburgerMenu = ({ open, toggleHamburger }) => {
+const HamburgerMenu = () => {
+  const { menuOpen } = useSelector(({ menuState }) => ({
+    menuOpen: menuState.open,
+  }));
+
+  const dispatch = useDispatch();
+  const onToggleMenu = useCallback(() => dispatch(toggleMenu()), [dispatch]);
   return (
-    <MenuDiv open={open}>
+    <MenuDiv open={menuOpen}>
       <TopSection>
         <LeftDiv>
-          <StyledLink to="/myPage">
+          <StyledLink to="/myPage" onClick={onToggleMenu}>
             <IconDiv>
               <Icon src={MyPage} alt="mypage" />
               <div>로그인</div>
             </IconDiv>
           </StyledLink>
-          <StyledLink to="/basket">
+          <StyledLink to="/basket" onClick={onToggleMenu}>
             <IconDiv>
               <Icon src={Heart} alt="heart" />
               <div>찜</div>
             </IconDiv>
           </StyledLink>
         </LeftDiv>
-        <XButton onClick={() => toggleHamburger()}>
+        <XButton onClick={onToggleMenu}>
           <CloseBtn src={CloseIcon} alt="closeBtn" />
         </XButton>
       </TopSection>

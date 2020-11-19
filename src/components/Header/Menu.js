@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Hamburger from '../img/hamburger.png';
 import Heart from '../img/heart.png';
 import MyPage from '../img/mypage.png';
 import Search from '../img/search.png';
 import HamburgerMenu from './hamburgerMenu';
+import { toggleMenu } from '../../reducer/menuState';
 
 const Menu = () => {
-  const [open, setOpen] = useState(true);
-  const toggleHamburger = () => {
-    setOpen(!open);
-  };
+  const { menuOpen } = useSelector(({ menuState }) => ({
+    menuOpen: menuState.open,
+  }));
+
+  const dispatch = useDispatch();
+  const onToggleMenu = useCallback(() => dispatch(toggleMenu()), [dispatch]);
 
   return (
     <IconSection>
@@ -29,9 +33,9 @@ const Menu = () => {
         <Img src={Search} alt="search_icon" />
       </IconDiv>
       <IconDiv>
-        <Img src={Hamburger} alt="hamburger_icon" onClick={() => toggleHamburger()} />
+        <Img src={Hamburger} alt="hamburger_icon" onClick={onToggleMenu} />
       </IconDiv>
-      <HamburgerMenu open={open} toggleHamburger={toggleHamburger} />
+      <HamburgerMenu open={menuOpen} />
     </IconSection>
   );
 };
