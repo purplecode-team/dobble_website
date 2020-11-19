@@ -1,24 +1,48 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
+import useInput from '../../hooks/useInput';
 
 const LoginInput = () => {
+  const [email, onChangeEmail] = useInput('');
+  const [password, onChangePassword] = useInput('');
+
+  const loginRequest = useCallback(() => {
+    console.log(email, password);
+  }, [email, password]);
+
   return (
     <InputSection>
       <Form>
         <InputBox>
-          <Label>아이디</Label>
-          <Input placeholder="아이디를 입력하세요" />
+          <Label>이메일</Label>
+          <Input
+            name="email"
+            type="email"
+            value={email}
+            onChange={onChangeEmail}
+            placeholder="이메일을 입력하세요"
+            required
+          />
         </InputBox>
         <InputBox>
           <Label>비밀번호</Label>
-          <Input placeholder="비밀번호를 입력하세요" />
+          <Input
+            name="password"
+            type="password"
+            value={password}
+            onChange={onChangePassword}
+            placeholder="비밀번호를 입력하세요"
+            required
+          />
         </InputBox>
         <TextBox>
           <Text>아이디/비밀번호 찾기</Text>
           <Text>회원가입</Text>
         </TextBox>
         <InputBox>
-          <LoginButton>로그인</LoginButton>
+          <LoginButton type="button" onClick={loginRequest}>
+            로그인
+          </LoginButton>
         </InputBox>
       </Form>
     </InputSection>
