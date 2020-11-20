@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import CategoryItem from './CategoryItem';
 import { BrandsData, MagazineData, ProductsData } from './MenuItemData';
 
-const MenuItem = ({ toggleHamburger }) => {
+const MenuItem = () => {
   return (
     <CategorySection>
       <CategoryDiv>
-        <CategoryItem title="Products" data={ProductsData} toggleHamburger={toggleHamburger} />
-        <CategoryItem title="Brands" data={BrandsData} toggleHamburger={toggleHamburger} />
-        <CategoryItem title="Magazine" data={MagazineData} toggleHamburger={toggleHamburger} />
+        <CategoryItem title="Products" data={ProductsData} />
+        <CategoryItem title="Brands" data={BrandsData} />
+        <CategoryItem title="Magazine" data={MagazineData} />
       </CategoryDiv>
     </CategorySection>
   );

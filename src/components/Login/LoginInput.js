@@ -40,7 +40,7 @@ const LoginInput = () => {
           <Text>회원가입</Text>
         </TextBox>
         <InputBox>
-          <LoginButton type="button" onClick={loginRequest}>
+          <LoginButton type="button" onClick={loginRequest} disabled={!email || !password}>
             로그인
           </LoginButton>
         </InputBox>
@@ -90,11 +90,16 @@ const Input = styled.input`
 const LoginButton = styled.button`
   cursor: pointer;
   border: none;
-  background-color: rgb(238, 238, 238);
+  background-color: red;
+  color: white;
   padding: 11px 10px;
   width: 100%;
   border-radius: 30px;
   font-weight: bold;
+  &: disabled {
+    background-color: rgb(238, 238, 238);
+    color: rgb(210, 210, 210);
+  }
 `;
 
 const Form = styled.form`
