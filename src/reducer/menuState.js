@@ -1,14 +1,15 @@
 import produce from 'immer';
 
-const OPEN = 'menuState/OPEN';
+export const OPEN = 'menuState/OPEN';
 
 export const toggleMenu = () => ({
   type: OPEN,
 });
 
 const initialState = {
-  open: false,
+  open: true,
 };
+
 function menuState(state = initialState, action) {
   return produce(state, (draft) => {
     switch (action.type) {
