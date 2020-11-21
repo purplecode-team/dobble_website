@@ -24,6 +24,7 @@ export const TitleDiv = styled.div`
   font-size: 1.25vw;
   height: 3.518vh;
   margin-bottom: 2.77vh;
+  font-weight: bold;
 `;
 
 export const InfoInput = styled.input`
@@ -58,7 +59,6 @@ export const ButtonInput = styled.input`
   }
   width: 7.18vw;
   height: 4.07vh;
-  float: right;
   border-radius: 12px;
   border: none;
   background-color: #efefef;

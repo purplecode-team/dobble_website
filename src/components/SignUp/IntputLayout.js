@@ -15,21 +15,45 @@ import {
   TitleDiv,
 } from './InputLayoutStyle';
 
-const InputLayout = ({ title, verb, input, onChange, onClick, emailToggle }) => {
+const InputLayout = ({
+  title,
+  placeholder,
+  input,
+  onClick,
+  onChange,
+  onDuplicateButton,
+  emailToggle,
+  checkIcon,
+  nextToggle,
+}) => {
   return (
     <SignUpDiv>
       <IconDiv>
-        <CircleSvg
-          xmlns="http://www.w3.org/2000/svg"
-          width="1.979vw"
-          height="3.518vh"
-          viewBox="0 0 38 38"
-        >
-          <g id="타원_6" data-name="타원 6" fill="none" stroke="red" strokeWidth="5">
-            <circle cx="19" cy="19" r="19" stroke="none" />
-            <circle cx="19" cy="19" r="16.5" fill="none" />
-          </g>
-        </CircleSvg>
+        {nextToggle ? (
+          <CircleSvg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.979vw"
+            height="3.518vh"
+            viewBox="0 0 38 38"
+          >
+            <g id="타원_6" data-name="타원 6" fill="red" stroke="red" strokeWidth="5">
+              <circle cx="19" cy="19" r="19" stroke="none" />
+              <circle cx="19" cy="19" r="16.5" fill="none" />
+            </g>
+          </CircleSvg>
+        ) : (
+          <CircleSvg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.979vw"
+            height="3.518vh"
+            viewBox="0 0 38 38"
+          >
+            <g id="타원_6" data-name="타원 6" fill="none" stroke="red" strokeWidth="5">
+              <circle cx="19" cy="19" r="19" stroke="none" />
+              <circle cx="19" cy="19" r="16.5" fill="none" />
+            </g>
+          </CircleSvg>
+        )}
         <svg xmlns="http://www.w3.org/2000/svg" width="1" height="15.833vh" viewBox="0 0 1 171">
           <line
             id="선_1"
@@ -48,16 +72,61 @@ const InputLayout = ({ title, verb, input, onChange, onClick, emailToggle }) => 
           <InputDiv>
             <InfoInput
               type="text"
-              placeholder={`${title}${verb} 입력하세요`}
+              placeholder={placeholder}
               name={title}
               value={input}
-              onChange={() => onChange}
+              onChange={onChange}
             />
-            {emailToggle ? (
-              <ButtonInput type="button" value="중복확인" onClick={() => onClick} />
-            ) : (
-              ''
-            )}
+            {(function () {
+              if (emailToggle) {
+                if (checkIcon) {
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="2.291vw"
+                      height="4.07vh"
+                      viewBox="0 0 44 44"
+                    >
+                      <defs>
+                        <clipPath id="clip-path">
+                          <rect width="16" height="16" fill="none" />
+                        </clipPath>
+                      </defs>
+                      <g id="그룹_104" data-name="그룹 104" transform="translate(-1466 -652)">
+                        <circle
+                          id="타원_9"
+                          data-name="타원 9"
+                          cx="22"
+                          cy="22"
+                          r="22"
+                          transform="translate(1466 652)"
+                          fill="#efefef"
+                        />
+                        <g id="Yes" transform="translate(1480 666)" clipPath="url(#clip-path)">
+                          <path
+                            id="Checkbox"
+                            d="M6.9,12,1,6.1,2.4,4.7,6.9,9.1,15,1l1.4,1.4Z"
+                            transform="translate(-1 1)"
+                          />
+                          <rect
+                            id="사각형_556"
+                            data-name="사각형 556"
+                            width="16"
+                            height="16"
+                            fill="none"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                  );
+                }
+
+                return (
+                  <ButtonInput type="button" value="중복확인" onClick={() => onDuplicateButton()} />
+                );
+              }
+              return <span />;
+            })()}
           </InputDiv>
           <svg xmlns="http://www.w3.org/2000/svg" width="52.6204vw" height="2" viewBox="0 0 1010 3">
             <rect id="사각형_36" data-name="사각형 36" width="1010" height="2" fill="#303030" />
@@ -77,7 +146,7 @@ const InputLayout = ({ title, verb, input, onChange, onClick, emailToggle }) => 
             width="2.031vw"
             height="1.813vh"
             viewBox="0 0 39 19.583"
-            onClick={() => onClick}
+            onClick={() => onClick()}
           >
             <path
               id="합치기_3"
