@@ -1,4 +1,37 @@
-export const ProductsData = [
+import MyPage from '../img/mypage.png';
+import Heart from '../img/heart.png';
+import Search from '../img/search.png';
+import Hamburger from '../img/hamburger.png';
+
+export const headerIconData = [
+  {
+    link: '/myPage',
+    mobile: true,
+    img: MyPage,
+    alt: 'myPage_icon',
+  },
+  {
+    link: '/basket',
+    mobile: true,
+    img: Heart,
+    alt: 'basket_icon',
+  },
+  {
+    link: '/basket',
+    mobile: true,
+    img: Search,
+    alt: 'search_icon',
+  },
+  {
+    link: false,
+    mobile: false,
+    img: Hamburger,
+    alt: 'hamburger_icon',
+    onToggle: true,
+  },
+];
+
+export const productsData = [
   {
     key: 1,
     content: '의류',
@@ -21,7 +54,7 @@ export const ProductsData = [
   },
 ];
 
-export const BrandsData = [
+export const brandsData = [
   {
     key: 1,
     content: '마리몬드',
@@ -64,7 +97,7 @@ export const BrandsData = [
   },
 ];
 
-export const MagazineData = [
+export const magazineData = [
   {
     key: 1,
     content: '브랜드 소개',

@@ -48,6 +48,10 @@
         "jsx": "never"
       }
     ],
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "no-unused-vars": "off",
+    "react/jsx-props-no-spreading": "off",
+    "spaced-comment": "off"
   }
 }

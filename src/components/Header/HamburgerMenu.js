@@ -1,47 +1,37 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import CloseIcon from '../img/closeIcon.png';
 import MenuItem from './MenuItem';
 import MyPage from '../img/mypage.png';
 import Heart from '../img/heart.png';
-import { toggleMenu } from '../../reducer/menuState';
 
-const HamburgerMenu = () => {
-  const { menuOpen } = useSelector(({ menuState }) => ({
-    menuOpen: menuState.open,
-  }));
-
-  const dispatch = useDispatch();
-  const onToggleMenu = useCallback(() => dispatch(toggleMenu()), [dispatch]);
-  return (
-    <MenuDiv open={menuOpen}>
-      <TopSection>
-        <LeftDiv>
-          <StyledLink to="/myPage" onClick={onToggleMenu}>
-            <IconDiv>
-              <Icon src={MyPage} alt="mypage" />
-              <div>로그인</div>
-            </IconDiv>
-          </StyledLink>
-          <StyledLink to="/basket" onClick={onToggleMenu}>
-            <IconDiv>
-              <Icon src={Heart} alt="heart" />
-              <div>찜</div>
-            </IconDiv>
-          </StyledLink>
-        </LeftDiv>
-        <XButton onClick={onToggleMenu}>
-          <CloseBtn src={CloseIcon} alt="closeBtn" />
-        </XButton>
-      </TopSection>
-      <MidSection>
-        <MenuItem />
-      </MidSection>
-    </MenuDiv>
-  );
-};
+const HamburgerMenu = ({ menuOpen, closeMenu }) => (
+  <MenuDiv open={menuOpen}>
+    <TopSection>
+      <LeftDiv>
+        <StyledLink to="/myPage">
+          <IconDiv>
+            <Icon src={MyPage} alt="mypage" />
+            <div>로그인</div>
+          </IconDiv>
+        </StyledLink>
+        <StyledLink to="/basket">
+          <IconDiv>
+            <Icon src={Heart} alt="heart" />
+            <div>찜</div>
+          </IconDiv>
+        </StyledLink>
+      </LeftDiv>
+      <XButton onClick={closeMenu}>
+        <CloseBtn src={CloseIcon} alt="closeBtn" />
+      </XButton>
+    </TopSection>
+    <MidSection>
+      <MenuItem />
+    </MidSection>
+  </MenuDiv>
+);
 
 const MenuDiv = styled.div`
   position: fixed;
@@ -54,7 +44,7 @@ const MenuDiv = styled.div`
   top: 0;
   background: rgb(246, 246, 246);
   z-index: 1;
-  display: ${({ open }) => (open ? 'none' : 'block')};
+  display: ${({ open }) => (open ? 'block' : 'none')};
 `;
 
 const TopSection = styled.div`

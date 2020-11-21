@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import CategoryItem from './CategoryItem';
-import { BrandsData, MagazineData, ProductsData } from './MenuItemData';
+import { brandsData, magazineData, productsData } from './interface';
 
 const MenuItem = () => {
   return (
     <CategorySection>
       <CategoryDiv>
-        <CategoryItem title="Products" data={ProductsData} />
-        <CategoryItem title="Brands" data={BrandsData} />
-        <CategoryItem title="Magazine" data={MagazineData} />
+        <CategoryItem title="Products" data={productsData} />
+        <CategoryItem title="Brands" data={brandsData} />
+        <CategoryItem title="Magazine" data={magazineData} />
       </CategoryDiv>
     </CategorySection>
   );

@@ -1,18 +1,13 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import DropIcon from '../img/dropIcon.png';
-import { toggleMenu } from '../../reducer/menuState';
 
 const CategoryItem = ({ title, data }) => {
   const [open, setOpen] = useState(false);
   const toggle = () => {
     setOpen(!open);
   };
-
-  const dispatch = useDispatch();
-  const onToggleMenu = useCallback(() => dispatch(toggleMenu()), [dispatch]);
 
   return (
     <div>
@@ -24,9 +19,7 @@ const CategoryItem = ({ title, data }) => {
         <Content open={open}>
           {data.map(({ key, content, link }) => (
             <Text key={key} href={link}>
-              <StyledLink to={link} onClick={onToggleMenu}>
-                {content}
-              </StyledLink>
+              <StyledLink to={link}>{content}</StyledLink>
             </Text>
           ))}
         </Content>
