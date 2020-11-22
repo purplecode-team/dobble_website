@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import RootRouter from './components/RootRouter';
 
 const App = () => {
-  const a = false;
   return (
     <BaseLayout>
-      <RootRouter isLoggedIn={a} />
+      <RootRouter isLoggedIn={false} />
     </BaseLayout>
   );
 };
