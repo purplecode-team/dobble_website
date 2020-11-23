@@ -3,28 +3,58 @@ import styled from 'styled-components';
 import emailIcon from '../img/email.png';
 
 const InputEmail = () => {
-  const [value, setValue] = useState('');
+  const [email, setEmail] = useState('');
+
   const onChange = (e) => {
-    setValue(e.target.value);
+    const blank = /\s/;
+    if (blank.test(e.target.value) === true) {
+      alert('공백은 사용할 수 없습니다.');
+      setEmail('');
+      return;
+    }
+    setEmail(e.target.value);
   };
+
+  const emailValidationChk = (_email) => {
+    let vChk = false;
+    /* 이메일 validation */
+    const isEmailRegex = (__email) => {
+      const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      return emailRegex.test(__email);
+    };
+    if (_email === '') {
+      vChk = false;
+    } else if (isEmailRegex(_email)) {
+      vChk = true;
+    } else if (!isEmailRegex(_email)) {
+      vChk = false;
+    }
+    return vChk;
+  };
+
   const onClick = () => {
-    alert(`${value} 신청되었습니다`);
-    setValue('');
+    if (emailValidationChk(email)) {
+      alert(`${email} 신청되었습니다`);
+      setEmail('');
+    } else {
+      alert('이메일을 다시 입력해주세요');
+      setEmail('');
+    }
   };
   return (
-    <MyDiv>
-      <EmailDiv>
-        <MyImg src={emailIcon} alt="email" />
+    <Container>
+      <EmailContainer>
+        <MailIcon src={emailIcon} alt="email" />
         <EmailInput
-          type="email"
+          type="text"
           id="mail"
           placeholder="여기에 이메일을 입력하세요"
-          value={value}
+          email={email}
           onChange={onChange}
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1.3vw"
+          width="1.9vw"
           height="1.165vh"
           viewBox="0 0 25 12.583"
           onClick={onClick}
@@ -37,47 +67,66 @@ const InputEmail = () => {
             fill="#303030"
           />
         </svg>
-      </EmailDiv>
-      <MyHr />
-    </MyDiv>
+      </EmailContainer>
+      <Line xmlns="http://www.w3.org/2000/svg" width="27.4vw" height="2" viewBox="0 0 530 2">
+        <rect id="사각형_4" data-name="사각형 4" width="530" height="2" fill="#313030" />
+      </Line>
+    </Container>
   );
 };
 
-const MyDiv = styled.div`
-  text-align: center;
-  height: 6.2vh;
-  width: 27.6vw;
-  margin: 0vh auto 13vh;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 12.87vh;
+  @media (min-width: 375px) {
+    margin: 0 auto 10vh;
+  }
 `;
 
-const EmailDiv = styled.div`
-  margin: 0 auto;
+const EmailContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 25vw;
+  margin-bottom: 1vh;
+  @media (max-width: 768px) {
+    width: 45vw;
+  }
 `;
 
-const MyImg = styled.img`
+const MailIcon = styled.img`
   width: 7.54%;
-  height: 43%;
+  height: 45%;
   vertical-align: middle;
 `;
 const EmailInput = styled.input`
   :focus {
     outline: none;
   }
+  text-align: center;
   border: none;
-  margin: 0vh 2vw;
   width: 17vw;
   height: 4vh;
   vertical-align: middle;
-  ::placeholder{
-  text-align:center;
-  font-size: 1.3vw;
-  font-family: Arial;
-  color:#ACACAC;
+  ::placeholder {
+    font-size: 1.3vw;
+    font-family: Arial;
+    color: #acacac;
+  }
+  @media (max-width: 768px) {
+    width: 35vw;
+    ::placeholder {
+      font-size: 2vw;
+    }
+  }
 `;
 
-const MyHr = styled.hr`
-  width: 27.4vw;
-  border: 1px solid black;
+const Line = styled.svg`
+  @media (max-width: 768px) {
+    width: 55vw;
+  }
 `;
 
 export default InputEmail;
