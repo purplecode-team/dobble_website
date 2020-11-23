@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Sns = () => {
   return (
-    <MyDiv>
+    <div>
       <MyUl className="sns">
         <MyLi>
           <MyA href="https://www.instagram.com/purple._.code/">INSTAGRAM</MyA>
@@ -15,17 +15,14 @@ const Sns = () => {
           <MyA href="https://www.facebook.com/purplecode2020">FACEBOOK</MyA>
         </MyLi>
       </MyUl>
-    </MyDiv>
+    </div>
   );
 };
 
-const MyDiv = styled.div`
-  margin-bottom: 25.83vh;
-`;
 const MyA = styled.a`
   text-decoration: none;
   color: black;
-  font-size: 1.3vw;
+  font-size: 25px;
   font-family: Stilu;
 `;
 const MyUl = styled.ul`
@@ -36,7 +33,6 @@ const MyUl = styled.ul`
   justify-content: center;
 `;
 const MyLi = styled.li`
-  padding-left: 6vw;
-  padding-right: 6vw;
+  padding: 30px 100px;
 `;
 export default Sns;

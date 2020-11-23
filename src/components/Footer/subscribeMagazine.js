@@ -10,12 +10,12 @@ const SubscribeMagazine = () => {
 };
 
 const MyDiv = styled.div`
-  margin-top: 19.9vh;
-  margin-bottom: 4.62vh;
+  margin-top: 215px;
+  margin-bottom: 70px;
 `;
 const MyP = styled.p`
   font-family: Arial;
-  font-size: 4vw;
+  font-size: 70px;
   font-weight: bold;
   text-align: center;
   padding: 0px;

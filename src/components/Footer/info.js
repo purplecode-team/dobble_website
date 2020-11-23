@@ -15,17 +15,15 @@ const Info = () => {
 };
 
 const InfoDiv = styled.div`
-  margin-bottom: 5.55vh;
+  margin-bottom: 60px;
 `;
 const MyHr = styled.hr`
-  width: 80vw;
+  width: 1406px;
   border: solid 1px;
 `;
 
 const InfoP = styled.p`
-  width: 73vw;
-  margin: 0 auto;
   text-align: center;
-  font-size: 1vw;
+  font-size: 15px;
 `;
 export default Info;
