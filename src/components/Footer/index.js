@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import SubscribeMagazine from './subscribeMagazine';
 import InputEmail from './inputEmail';
 import Sns from './sns';
