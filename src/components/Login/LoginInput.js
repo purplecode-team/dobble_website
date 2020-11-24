@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 
 import { loginRequest } from '../../reducer/user';
@@ -51,7 +52,9 @@ const LoginInput = () => {
         </InputBox>
         <TextBox>
           <Text>아이디/비밀번호 찾기</Text>
-          <Text>회원가입</Text>
+          <LinkStyle to="/signup">
+            <Text>회원가입</Text>
+          </LinkStyle>
         </TextBox>
         <InputBox>
           <LoginButton type="submit" disabled={!email || !password}>
@@ -122,6 +125,10 @@ const Form = styled.form`
   @media (max-width: 768px) {
     width: 70vw;
   }
+`;
+
+const LinkStyle = styled(Link)`
+  text-decoration: none;
 `;
 
 export default LoginInput;

@@ -1,37 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import CloseIcon from '../img/closeIcon.png';
 import MenuItem from './MenuItem';
 import MyPage from '../img/mypage.png';
 import Heart from '../img/heart.png';
 
-const HamburgerMenu = ({ menuOpen, closeMenu }) => (
-  <MenuDiv open={menuOpen}>
-    <TopSection>
-      <LeftDiv>
-        <StyledLink to="/myPage">
-          <IconDiv>
-            <Icon src={MyPage} alt="mypage" />
-            <div>로그인</div>
-          </IconDiv>
-        </StyledLink>
-        <StyledLink to="/basket">
-          <IconDiv>
-            <Icon src={Heart} alt="heart" />
-            <div>찜</div>
-          </IconDiv>
-        </StyledLink>
-      </LeftDiv>
-      <XButton onClick={closeMenu}>
-        <CloseBtn src={CloseIcon} alt="closeBtn" />
-      </XButton>
-    </TopSection>
-    <MidSection>
-      <MenuItem />
-    </MidSection>
-  </MenuDiv>
-);
+const HamburgerMenu = ({ menuOpen, closeMenu }) => {
+  const { me } = useSelector((state) => state.user);
+
+  return (
+    <MenuDiv open={menuOpen}>
+      <TopSection>
+        <LeftDiv>
+          <StyledLink to="/myPage">
+            <IconDiv>
+              <Icon src={MyPage} alt="mypage" />
+              <div>{me ? '마이페이지' : '로그인'}</div>
+            </IconDiv>
+          </StyledLink>
+          <StyledLink to="/basket">
+            <IconDiv>
+              <Icon src={Heart} alt="heart" />
+              <div>찜</div>
+            </IconDiv>
+          </StyledLink>
+        </LeftDiv>
+        <XButton onClick={closeMenu}>
+          <CloseBtn src={CloseIcon} alt="closeBtn" />
+        </XButton>
+      </TopSection>
+      <MidSection>
+        <MenuItem />
+      </MidSection>
+    </MenuDiv>
+  );
+};
 
 const MenuDiv = styled.div`
   position: fixed;
