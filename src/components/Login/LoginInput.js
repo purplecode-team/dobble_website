@@ -1,18 +1,32 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 import useInput from '../../hooks/useInput';
+
+import { loginRequest } from '../../reducer/user';
 
 const LoginInput = () => {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
 
-  const loginRequest = useCallback(() => {
-    console.log(email, password);
-  }, [email, password]);
+  const dispatch = useDispatch();
+  // const loginRequest = () => {
+  //   console.log(email, password);
+  //   dispatch(loginRequest({ email, password }));
+  // };
+
+  const onSubmitForm = useCallback(
+    (e) => {
+      e.preventDefault();
+      console.log(email, password);
+      dispatch(loginRequest({ email, password }));
+    },
+    [email, password],
+  );
 
   return (
     <InputSection>
-      <Form>
+      <Form onSubmit={onSubmitForm}>
         <InputBox>
           <Label>이메일</Label>
           <Input
@@ -40,7 +54,7 @@ const LoginInput = () => {
           <Text>회원가입</Text>
         </TextBox>
         <InputBox>
-          <LoginButton type="button" onClick={loginRequest} disabled={!email || !password}>
+          <LoginButton type="submit" disabled={!email || !password}>
             로그인
           </LoginButton>
         </InputBox>

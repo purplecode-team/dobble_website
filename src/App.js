@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+
 import RootRouter from './components/RootRouter';
 
 const App = () => {
+  const { me } = useSelector((state) => state.user);
   return (
     <BaseLayout>
-      <RootRouter isLoggedIn={false} />
+      <RootRouter isLoggedIn={me} />
     </BaseLayout>
   );
 };
