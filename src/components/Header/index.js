@@ -15,6 +15,7 @@ const Header = () => {
 };
 
 const HeaderSection = styled.div`
+  background-color: white;
   position: fixed;
   left: 0;
   top: 0;
