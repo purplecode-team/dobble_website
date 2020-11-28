@@ -96,6 +96,7 @@ const Text = styled.div`
 `;
 
 const Input = styled.input`
+  background: rgb(246, 246, 246);
   border: none;
   border-bottom: black 1px solid;
   width: 90%;

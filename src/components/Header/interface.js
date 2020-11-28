@@ -77,22 +77,12 @@ export const brandsData = [
   },
   {
     key: 5,
-    content: 'BOCE',
-    link: '/',
-  },
-  {
-    key: 6,
     content: '메리디아니',
     link: '/',
   },
   {
-    key: 7,
+    key: 6,
     content: '뉴킷',
-    link: '/',
-  },
-  {
-    key: 8,
-    content: '파이어마커스',
     link: '/',
   },
 ];
