@@ -8,6 +8,7 @@ import Magazine from '../pages/magazine';
 import Product from '../pages/product';
 import AppLayout from './AppLayout';
 import SignUp from './SignUp';
+import MyPage from '../pages/MyPage';
 
 const LoginRoutes = () => (
   <Switch>
@@ -28,6 +29,7 @@ const HomeRoutes = () => (
     <Route path="/magazine" component={Magazine} />
     <Route path="/login" component={Login} />
     <Route path="/signup" component={SignUp} />
+    <Route path="/mypage" component={MyPage} />
     <Redirect from="*" to="/login" />
   </Switch>
 );
