@@ -8,7 +8,7 @@ const OurStory = () => {
     <Section>
       <Title>Our Story</Title>
       <LogoDiv>
-        <Logo src={OurStoryLogo} alt="our_story_logo" />{' '}
+        <Logo src={OurStoryLogo} alt="our_story_logo" />
       </LogoDiv>
       <SubTitle>
         <Inline>" 좋은 소비가</Inline>
@@ -39,6 +39,9 @@ const Title = styled.h1`
   font-weight: bold;
   font-size: 3.7rem;
   margin-bottom: 0;
+  @media (max-width: 768px) {
+    font-size: 2.6rem;
+  }
 `;
 
 const LogoDiv = styled.div`
@@ -55,7 +58,7 @@ const SubTitle = styled.div`
   text-align: center;
   font-size: 2.6rem;
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -66,7 +69,7 @@ const Content = styled.div`
   font-weight: bold;
   font-size: 1.1rem;
   @media (max-width: 768px) {
-    padding: 0 30px;
+    padding: 0 20px;
   }
 `;
 
