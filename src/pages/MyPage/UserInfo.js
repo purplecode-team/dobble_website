@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useForm } from 'react-hook-form';
 
-const UserInfoWithRhf = () => {
+const UserInfo = () => {
   /* 수정하기를 눌렀을 때 readOnly 풀어주기 */
   const [modify, setModify] = useState(false);
 
@@ -12,7 +12,7 @@ const UserInfoWithRhf = () => {
     defaultValues: {
       name: '서유나',
       id: 'purplecode@naver.com',
-      isModify: true,
+      tel: '010-2740-1981',
     },
   });
   /* 임의의 현재 비밀번호 */
@@ -84,6 +84,24 @@ const UserInfoWithRhf = () => {
           )}
           {errors.id && errors.id.type === 'pattern' && (
             <ErrorMessage>이메일이 형식에 맞지 않습니다.</ErrorMessage>
+          )}
+          <InfoItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label>전화번호</label>
+            <InfoContent
+              name="tel"
+              type="tel"
+              placeholder="000-0000-0000"
+              ref={register({ required: true, pattern: /^\d{3}-\d{3,4}-\d{4}$/ })}
+              readOnly={!modify}
+              modify={modify}
+            />
+          </InfoItem>
+          {errors.tel && errors.tel.type === 'required' && (
+            <ErrorMessage>전화번호는 반드시 입력해야합니다.</ErrorMessage>
+          )}
+          {errors.tel && errors.tel.type === 'pattern' && (
+            <ErrorMessage>전화번호 형식에 맞지 않습니다.</ErrorMessage>
           )}
           {modify && (
             <>
@@ -322,4 +340,4 @@ const Secession = styled.div`
 const Btn = styled.svg`
   cursor: pointer;
 `;
-export default UserInfoWithRhf;
+export default UserInfo;

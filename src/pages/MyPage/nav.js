@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink, Route } from 'react-router-dom';
-import UserInfoWithRhf from './UserInfoWithRHF';
+import UserInfo from './UserInfo';
 import WishList from './wishList';
 
 const Nav = () => {
@@ -19,7 +19,7 @@ const Nav = () => {
         <Line />
       </NavContainer>
 
-      <Route path="/mypage" exact component={UserInfoWithRhf} />
+      <Route path="/mypage" exact component={UserInfo} />
       <Route path="/mypage/wishlist" component={WishList} />
     </div>
   );
