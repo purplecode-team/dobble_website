@@ -33,6 +33,7 @@ const SignUp = () => {
       title: '비밀번호',
       placeholder: '비밀번호를 입력하세요.',
       step: [step1, step2],
+      name: 'password',
     },
     {
       title: '이름',
@@ -52,24 +53,57 @@ const SignUp = () => {
       title: '관심있는 기부브랜드',
       placeholder: '',
       step: [step4, step5],
+      name: 'brand',
     },
   ];
 
   const validationCheck = (data) => {
     if (data.title === '메일') {
-      return <SignUpLayout {...data} onChangeStep={onChangeStep} steps={steps} />;
+      return (
+        <SignUpLayout
+          {...data}
+          onChangeStep={onChangeStep}
+          steps={steps}
+          key={data.name}
+          id={data.name}
+        />
+      );
     }
     if (data.title === '비밀번호' && data.step[0]) {
-      return <Password {...data} onChangeStep={onChangeStep} steps={steps} />;
+      return (
+        <Password
+          {...data}
+          onChangeStep={onChangeStep}
+          steps={steps}
+          key={data.name}
+          id={data.name}
+        />
+      );
     }
     if (data.title === '관심있는 기부브랜드' && data.step[0]) {
-      return <InterestedBrand {...data} onChangeStep={onChangeStep} steps={steps} />;
+      return (
+        <InterestedBrand
+          {...data}
+          onChangeStep={onChangeStep}
+          steps={steps}
+          key={data.name}
+          id={data.name}
+        />
+      );
     }
     if (data.step[0]) {
-      return <SignUpLayout {...data} onChangeStep={onChangeStep} steps={steps} />;
+      return (
+        <SignUpLayout
+          {...data}
+          onChangeStep={onChangeStep}
+          steps={steps}
+          key={data.name}
+          id={data.name}
+        />
+      );
     }
 
-    return <CloseLayout title={data.title} />;
+    return <CloseLayout title={data.title} key={data.name} id={data.name} />;
   };
 
   return (

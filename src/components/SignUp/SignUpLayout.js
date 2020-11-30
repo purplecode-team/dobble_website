@@ -14,7 +14,7 @@ import {
   ErrorMessage,
 } from './SignUpStyle';
 
-const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, steps }) => {
+const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, steps, key }) => {
   const { register, watch, errors, handleSubmit } = useForm({
     mode: 'onChange',
   });
@@ -30,6 +30,7 @@ const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, step
     if (email.current !== undefined && !errors.email) {
       onChangeStep({ ...steps, step1: true });
     }
+    console.log(steps);
   }, [email.current]);
 
   useEffect(() => {
@@ -42,8 +43,6 @@ const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, step
     if (tel.current !== undefined && !errors.tel) {
       onChangeStep({ ...steps, step4: true });
     }
-    console.log(`tel`);
-    console.log(steps);
   }, [tel.current]);
 
   // eslint-disable-next-line consistent-return
@@ -56,7 +55,6 @@ const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, step
     return '';
   };
   const objectValue = { name };
-  console.log(`현재는 ${objectValue.name}`);
   return (
     <Container>
       <Icon>
@@ -106,6 +104,8 @@ const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, step
             type={type}
             placeholder={placeholder}
             ref={register({ required: true, pattern: regexes(objectValue.name) })}
+            key={key}
+            id={key}
           />
         </InputDiv>
         <Line />

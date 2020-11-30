@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Container, Circle, Icon, Title, ErrorMessage, InfoBox } from './SignUpStyle';
 
-const Password = ({ onChangeStep, steps, title, placeholder, step }) => {
+const Password = ({ onChangeStep, steps, title, placeholder, step, key, name }) => {
   const { register, watch, errors, handleSubmit } = useForm({
     mode: 'onChange',
   });
@@ -24,8 +24,6 @@ const Password = ({ onChangeStep, steps, title, placeholder, step }) => {
     ) {
       onChangeStep({ ...steps, step2: true });
     }
-    console.log(`pwd`);
-    console.log(steps);
   }, [password.current, confirmPassword.current]);
 
   return (
@@ -77,6 +75,8 @@ const Password = ({ onChangeStep, steps, title, placeholder, step }) => {
               type="password"
               placeholder={placeholder}
               ref={register({ required: true, pattern: /^[A-Za-z0-9]{6,12}$/ })}
+              key={key}
+              id={key}
             />
             <Line />
             {errors.password && errors.password.type === 'required' && (
