@@ -1,29 +1,28 @@
 import styled from 'styled-components';
 
-export const SignUpDiv = styled.div`
+export const Container = styled.div`
   display: flex;
   width: 57.187vw;
   margin: 0vh auto 2.685vh auto;
 `;
-export const IconDiv = styled.div`
+export const Icon = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 1.979vw;
 `;
-export const CircleSvg = styled.svg`
+export const Circle = styled.svg`
   margin-bottom: 1.759vh;
 `;
-export const InfoDiv = styled.div`
+export const InfoBox = styled.form`
   display: flex;
   flex-direction: column;
   width: 52.6204vw;
   margin-left: 2.604vw;
 `;
-export const TitleDiv = styled.div`
+export const Title = styled.label`
   font-size: 1.25vw;
   height: 3.518vh;
-  margin-bottom: 2.77vh;
   font-weight: bold;
 `;
 
@@ -52,6 +51,12 @@ export const SubmitSvg = styled.svg`
 export const InputDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 2.77vh;
+`;
+
+export const Line = styled.div`
+  border-bottom: 1px solid black;
+  width: 52.6204vw;
 `;
 export const ButtonInput = styled.input`
   :focus {
@@ -81,4 +86,13 @@ export const BottomDiv = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 3.61vh;
+`;
+
+export const ErrorMessage = styled.div`
+  font-family: 'Arial';
+  font-size: 1.04vw;
+  color: #ff0000;
+  ::before {
+    content: '⚠ ';
+  }
 `;

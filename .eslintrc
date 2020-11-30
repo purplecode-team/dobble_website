@@ -29,6 +29,7 @@
         "endOfLine": "auto"
       }
     ],
+    "react-hooks/exhaustive-deps": "off",
     "no-console": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/no-unescaped-entities": "off",

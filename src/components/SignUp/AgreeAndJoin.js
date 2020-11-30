@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const AgreeAndJoin = () => {
@@ -18,7 +18,7 @@ const AgreeAndJoin = () => {
           <div>매거진 구독을 위한 개인정보의 수집 및 이용에 대한 동의</div>
         </SecondAgree>
       </AgreeUl>
-      <SubmitButton type="button" value="가입하기" />
+      <SubmitButton type="submit" value="가입하기" />
     </AgreeDiv>
   );
 };
