@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
+import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider, useFormContext } from 'react-hook-form';
+import firebase from '../../firebase/firebase';
 
 import {
   Container,
@@ -14,11 +16,19 @@ import {
   ErrorMessage,
 } from './SignUpStyle';
 
-const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, steps, key }) => {
-  const { register, watch, errors, handleSubmit } = useForm({
-    mode: 'onChange',
-  });
-
+const SignUpLayout = ({
+  title,
+  placeholder,
+  step,
+  name,
+  type,
+  onChangeStep,
+  steps,
+  id,
+  register,
+  errors,
+  watch,
+}) => {
   const email = useRef();
   const nameValue = useRef();
   const tel = useRef();
@@ -55,6 +65,7 @@ const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, step
     return '';
   };
   const objectValue = { name };
+
   return (
     <Container>
       <Icon>
@@ -104,8 +115,7 @@ const SignUpLayout = ({ title, placeholder, step, name, type, onChangeStep, step
             type={type}
             placeholder={placeholder}
             ref={register({ required: true, pattern: regexes(objectValue.name) })}
-            key={key}
-            id={key}
+            id={id}
           />
         </InputDiv>
         <Line />

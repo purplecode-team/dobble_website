@@ -14,7 +14,7 @@ export const Icon = styled.div`
 export const Circle = styled.svg`
   margin-bottom: 1.759vh;
 `;
-export const InfoBox = styled.form`
+export const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 52.6204vw;

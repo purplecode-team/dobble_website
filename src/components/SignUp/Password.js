@@ -1,15 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useForm } from 'react-hook-form';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-
 import { Container, Circle, Icon, Title, ErrorMessage, InfoBox } from './SignUpStyle';
 
-const Password = ({ onChangeStep, steps, title, placeholder, step, key, name }) => {
-  const { register, watch, errors, handleSubmit } = useForm({
-    mode: 'onChange',
-  });
-
+const Password = ({
+  onChangeStep,
+  steps,
+  title,
+  placeholder,
+  step,
+  id,
+  register,
+  errors,
+  watch,
+}) => {
   const password = useRef();
   const confirmPassword = useRef();
   password.current = watch('password');
@@ -17,13 +20,13 @@ const Password = ({ onChangeStep, steps, title, placeholder, step, key, name }) 
 
   useEffect(() => {
     if (
-      confirmPassword.current !== undefined &&
-      !errors.confirmPassword &&
       password.current !== undefined &&
-      !errors.password
+      confirmPassword.current !== undefined &&
+      !errors.confirmPassword
     ) {
       onChangeStep({ ...steps, step2: true });
     }
+    console.log(steps);
   }, [password.current, confirmPassword.current]);
 
   return (
@@ -75,8 +78,7 @@ const Password = ({ onChangeStep, steps, title, placeholder, step, key, name }) 
               type="password"
               placeholder={placeholder}
               ref={register({ required: true, pattern: /^[A-Za-z0-9]{6,12}$/ })}
-              key={key}
-              id={key}
+              id={id}
             />
             <Line />
             {errors.password && errors.password.type === 'required' && (
@@ -169,6 +171,13 @@ const ConfirmDiv = styled.div`
   flex-direction: column;
   margin-right: 4.63vw;
 `;
+
+const PwdDiv = styled.div`
+  width: 24vw;
+  display: flex;
+  flex-direction: column;
+  margin-right: 4.63vw;
+`;
 const SubmitSvg = styled.svg`
   width: 2.031vw;
   height: 1.813vh;
@@ -179,12 +188,7 @@ const BottomDiv = styled.div`
   justify-content: space-between;
   margin-top: 3.61vh;
 `;
-const PwdDiv = styled.div`
-  width: 24vw;
-  display: flex;
-  flex-direction: column;
-  margin-right: 4.63vw;
-`;
+
 const Incorrect = styled.div`
   font-size: 1.04vw;
   color: #ff0000;
