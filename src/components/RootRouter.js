@@ -17,6 +17,7 @@ const LoginRoutes = () => (
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
     <Route path="/basket" component={Basket} />
+    <Route path="/mypage" component={MyPage} />
     <Redirect from="*" to="/" />
   </Switch>
 );
@@ -29,7 +30,6 @@ const HomeRoutes = () => (
     <Route path="/magazine" component={Magazine} />
     <Route path="/login" component={Login} />
     <Route path="/signup" component={SignUp} />
-    <Route path="/mypage" component={MyPage} />
     <Redirect from="*" to="/login" />
   </Switch>
 );
