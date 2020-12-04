@@ -1,50 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import MainImg from '../img/illust unit_ae_3.png';
 
 const MainPage = () => {
-  const [windowHeight, setWindowHeight] = useState(0);
-  const resizeWindow = () => {
-    setWindowHeight(window.innerHeight);
-  };
-
-  useEffect(() => {
-    resizeWindow();
-    window.addEventListener('resize', resizeWindow);
-    return () => window.removeEventListener('resize', resizeWindow);
-  }, []);
+  // const [windowHeight, setWindowHeight] = useState(0);
+  // const resizeWindow = () => {
+  //   setWindowHeight(window.innerHeight);
+  // };
+  //
+  // useEffect(() => {
+  //   resizeWindow();
+  //   window.addEventListener('resize', resizeWindow);
+  //   return () => window.removeEventListener('resize', resizeWindow);
+  // }, []);
   return (
-    <div>
-      <MainLayout style={{ height: `${windowHeight}px` }}>
-        <span>x {windowHeight}</span>
-        <TitleBox>
-          <Title>doble</Title>
-          <Title>Make It Double</Title>
-          <SubTitle>기부 스토어 브랜드 통합 사이트</SubTitle>
-        </TitleBox>
-        <ImgBox>
-          <MainImgStyle src={MainImg} alt="main" />
-        </ImgBox>
-        <MenuBox>
-          <Text>Products</Text>
-          <Text>Brands</Text>
-          <Text>Magazine</Text>
-          <Text>Our Story</Text>
-        </MenuBox>
-      </MainLayout>
-    </div>
+    <MainLayout>
+      <TitleBox>
+        <Title>doble</Title>
+        <Title>Make It Double</Title>
+        <SubTitle>기부 스토어 브랜드 통합 사이트</SubTitle>
+      </TitleBox>
+      <ImgBox>
+        <MainImgStyle src={MainImg} alt="main" />
+      </ImgBox>
+      <MenuBox>
+        <Text>Products</Text>
+        <Text>Brands</Text>
+        <Text>Magazine</Text>
+        <Text>Our Story</Text>
+      </MenuBox>
+    </MainLayout>
   );
 };
 
 const MainLayout = styled.div`
-  background: rgb(246, 246, 246);
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/feature/magazine/src/components/img/illust%20unit_ae_3.png?raw=true');
+  background-repeat: no-repeat;
+  background-position: 80% center;
+  background-size: 500px 500px;
+  height: 100vh;
+  @media (max-width: 768px) {
+    background: rgb(246, 246, 246);
+    overflow: hidden;
+  }
 `;
 
 const TitleBox = styled.div`
-  margin-top: 113px;
+  padding-top: 15vh;
   margin-left: 80px;
   @media (max-width: 768px) {
+    padding-top: 120px;
     margin-left: 10%;
   }
 `;
@@ -64,6 +70,7 @@ const SubTitle = styled.h3`
   margin: 0;
   padding: 0;
   color: rgb(120, 120, 120);
+  font-family: Arial;
   font-size: 2rem;
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -89,11 +96,12 @@ const Text = styled.div`
 `;
 
 const ImgBox = styled.div`
-  position: absolute;
+  display: none;
   width: 38vw;
   top: 15%;
   left: 55vw;
   @media (max-width: 768px) {
+    display: block;
     margin-top: 40px;
     position: static;
     width: 100%;
