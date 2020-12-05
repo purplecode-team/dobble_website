@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Arrow from '../img/arrow.png';
 import ProductLogo from '../img/productLogo.png';
 
@@ -9,7 +10,9 @@ const ProductPage = () => {
       <TitleBox>
         <Title>Products</Title>
         <span>
-          <ArrowImg src={Arrow} alt="arrow" />
+          <Link to="/product">
+            <ArrowImg src={Arrow} alt="arrow" />
+          </Link>
         </span>
         <SubTitle>좋은 영향력을 공유할 수 있는 다양한 아이템을 만나보세요.</SubTitle>
       </TitleBox>

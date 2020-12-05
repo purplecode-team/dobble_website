@@ -29,7 +29,7 @@ const CategoryItem = ({ title, data }) => {
 };
 
 const CategoryBox = styled.div`
-  width: 210px;
+  width: 250px;
   align-items: center;
   @media (max-width: 768px) {
     width: 70vw;
@@ -40,10 +40,11 @@ const CategoryBox = styled.div`
 const Top = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 60px;
   font-weight: bold;
   @media (max-width: 768px) {
     cursor: pointer;
+    margin-bottom: 15px;
   }
 `;
 
@@ -58,11 +59,12 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   z-index: 10;
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? 'block' : 'none')};
     margin-bottom: 40px;
+    font-size: 1.3rem;
   }
 `;
 
@@ -72,7 +74,10 @@ const StyledLink = styled(Link)`
 `;
 
 const Text = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const DropImg = styled.img`
