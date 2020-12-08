@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { useForm, FormProvider, useFormContext } from 'react-hook-form';
-import AgreeAndJoin from './AgreeAndJoin';
+import { useForm, FormProvider } from 'react-hook-form';
 import firebase from '../../firebase/firebase';
 import InputContainer from './InputContainer';
 
-const SignUp = () => {
+const SignUp = ({ history }) => {
   const methods = useForm({ mode: 'onChange' });
   const [errorFromSubmit, setErrorFromSubmit] = useState('');
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
+      console.log(data);
       setLoading(true);
       // 이메일과 비밀번호로 유저 생성
       const createUser = await firebase
@@ -22,7 +21,6 @@ const SignUp = () => {
 
       await createUser.user.updateProfile({
         displayName: data.name,
-        phoneNumber: data.tel,
       });
 
       //Firebase 데이터베이스에 저장해주기
@@ -30,10 +28,15 @@ const SignUp = () => {
         email: data.email,
         name: createUser.user.displayName,
         password: data.password,
-        tel: createUser.user.phoneNumber,
+        tel: data.tel,
+        //메거진 구독 신청여부
+        magazineSubs: data.magazineSubs,
+        //광고성 정보 수신 동의여부
+        advertising: data.check2,
       });
 
       setLoading(false);
+      history.push('/login');
     } catch (error) {
       setErrorFromSubmit(error.message);
       setLoading(false);
@@ -54,8 +57,8 @@ const SignUp = () => {
           <InputContainer />
         </form>
       </FormProvider>
-      <AgreeAndJoin />
-      {errorFromSubmit && <p>{errorFromSubmit}</p>}
+
+      {errorFromSubmit && <ErrorMessage>{errorFromSubmit}</ErrorMessage>}
       <SubmitButton form="signupForm" type="submit" value="가입하기" disabled={loading} />
     </div>
   );
@@ -65,17 +68,24 @@ const TitleP = styled.p`
   text-align: center;
   font-size: 2.0833vw;
   font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 4vw;
+  }
 `;
 const DescP = styled.p`
   text-align: center;
   font-size: 1.25vw;
   color: #888888;
+  @media (max-width: 768px) {
+    font-size: 2.5vw;
+  }
 `;
 const SignUpDiv = styled.div`
+  margin-top: 14vh;
   margin-bottom: 5.185vh;
 `;
 const SubmitButton = styled.input`
-cursor: pointer;
+  cursor: pointer;
   padding: 0px;
   display: block;
   margin: 0 auto;
@@ -89,7 +99,21 @@ cursor: pointer;
   background-color: #efefef;
   font-size: 1.14vw;
   color: #303030;
-  :hover{
-   background-color: red;
+  :hover {
+    background-color: gray;
+  }
+  @media (max-width: 768px) {
+    height: 5vh;
+  }
 `;
+const ErrorMessage = styled.div`
+  margin: 0 auto;
+  font-family: 'Arial';
+  font-size: 1.04vw;
+  color: #ff0000;
+  ::before {
+    content: '⚠ ';
+  }
+`;
+
 export default SignUp;

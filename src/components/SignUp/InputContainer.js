@@ -4,6 +4,7 @@ import SignUpLayout from './SignUpLayout';
 import InterestedBrand from './InterestedBrand';
 import CloseLayout from './CloseLayout';
 import Password from './Password';
+import AgreeForJoin from './AgreeForJoin';
 
 const InputContainer = ({ children }) => {
   const methods = useFormContext();
@@ -17,43 +18,26 @@ const InputContainer = ({ children }) => {
   });
   const { step1, step2, step3, step4, step5 } = steps;
 
-  const onChangeStep = (_step) => {
-    setStep(_step);
-  };
-
   const signUpData = [
     {
       title: '메일',
-      placeholder: '메일을 입력하세요.',
       step: [step1, step1],
-      name: 'email',
-      type: 'email',
     },
     {
       title: '비밀번호',
-      placeholder: '비밀번호를 입력하세요.',
       step: [step1, step2],
-      name: 'password',
     },
     {
       title: '이름',
-      placeholder: '이름을 입력하세요.',
       step: [step2, step3],
-      name: 'name',
-      type: 'text',
     },
     {
       title: '전화번호',
-      placeholder: '000-0000-0000',
       step: [step3, step4],
-      name: 'tel',
-      type: 'tel',
     },
     {
       title: '관심있는 기부브랜드',
-      placeholder: '',
       step: [step4, step5],
-      name: 'brand',
     },
   ];
 
@@ -61,12 +45,12 @@ const InputContainer = ({ children }) => {
     if (data.title === '메일') {
       return (
         <SignUpLayout
-          key={data.name}
-          id={data.name}
+          key={data.title}
+          id={data.title}
           {...data}
-          onChangeStep={onChangeStep}
           steps={steps}
           {...methods}
+          setStep={setStep}
         />
       );
     }
@@ -74,11 +58,11 @@ const InputContainer = ({ children }) => {
       return (
         <Password
           {...data}
-          onChangeStep={onChangeStep}
           steps={steps}
-          key={data.name}
-          id={data.name}
+          key={data.title}
+          id={data.title}
           {...methods}
+          setStep={setStep}
         />
       );
     }
@@ -86,11 +70,11 @@ const InputContainer = ({ children }) => {
       return (
         <InterestedBrand
           {...data}
-          onChangeStep={onChangeStep}
           steps={steps}
-          key={data.name}
-          id={data.name}
+          key={data.title}
+          id={data.title}
           {...methods}
+          setStep={setStep}
         />
       );
     }
@@ -98,19 +82,24 @@ const InputContainer = ({ children }) => {
       return (
         <SignUpLayout
           {...data}
-          onChangeStep={onChangeStep}
           steps={steps}
-          key={data.name}
-          id={data.name}
+          key={data.title}
+          id={data.title}
           {...methods}
+          setStep={setStep}
         />
       );
     }
 
-    return <CloseLayout title={data.title} key={data.name} id={data.name} />;
+    return <CloseLayout title={data.title} key={data.title} id={data.title} />;
   };
 
-  return <div>{signUpData.map(validationCheck)}</div>;
+  return (
+    <div>
+      {signUpData.map(validationCheck)}
+      <AgreeForJoin {...methods} />
+    </div>
+  );
 };
 
 export default InputContainer;
