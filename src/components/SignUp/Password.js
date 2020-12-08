@@ -14,8 +14,6 @@ const Password = ({ steps, title, step, id, register, errors, watch, setStep }) 
   useEffect(() => {
     if (password.current !== undefined && password.current !== '' && !errors.password) {
       setStep({ ...steps, step2: true });
-    } else {
-      setStep({ ...steps, step2: false });
     }
     console.log(steps);
   }, [password.current, confirmPassword.current]);

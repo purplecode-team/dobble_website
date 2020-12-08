@@ -107,13 +107,14 @@ const SubmitButton = styled.input`
   }
 `;
 const ErrorMessage = styled.div`
-  margin: 0 auto;
+  text-align: center;
   font-family: 'Arial';
   font-size: 1.04vw;
   color: #ff0000;
   ::before {
     content: '⚠ ';
   }
+  margin-bottom: 3vh;
 `;
 
 export default SignUp;

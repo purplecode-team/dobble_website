@@ -36,26 +36,20 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
   useEffect(() => {
     if (email.current !== undefined && email.current !== '' && !errors.email) {
       setStep({ ...steps, step1: true });
-    } else {
-      setStep({ ...steps, step1: false });
     }
     console.log(steps);
     console.log(email.current);
-  }, [email, email.current]);
+  }, [email.current]);
 
   useEffect(() => {
     if (nameValue.current !== undefined && nameValue.current !== '' && !errors.name) {
       setStep({ ...steps, step3: true });
-    } else {
-      setStep({ ...steps, step3: false });
     }
   }, [nameValue.current]);
 
   useEffect(() => {
     if (tel.current !== undefined && tel.current !== '' && !errors.tel) {
       setStep({ ...steps, step4: true });
-    } else {
-      setStep({ ...steps, step4: false });
     }
   }, [tel.current]);
 
