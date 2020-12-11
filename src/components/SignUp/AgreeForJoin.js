@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { ErrorMessage } from './SignUpStyle';
 
 const AgreeForJoin = ({ register, errors, watch, setValue }) => {
   const checkAll = useRef();
@@ -87,5 +86,13 @@ const AgreeText = styled.div`
 const AgreeChk = styled.input`
   margin: 0px 2.604vw 0px 0px;
 `;
-
+const ErrorMessage = styled.div`
+  font-family: 'Arial';
+  font-size: 1.04vw;
+  color: #ff0000;
+  ::before {
+    content: '⚠ ';
+  }
+  margin-left: 3.5vw;
+`;
 export default AgreeForJoin;

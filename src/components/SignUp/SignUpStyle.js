@@ -43,7 +43,8 @@ export const Title = styled.label`
 
 export const InfoInput = styled.input`
   padding: 0px;
-  width: 25vw;
+  width: 28vw;
+  background: rgb(246, 246, 246);
   height: 4.81vh;
   :focus {
     outline: none;

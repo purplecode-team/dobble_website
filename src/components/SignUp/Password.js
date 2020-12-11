@@ -35,7 +35,7 @@ const Password = ({ steps, title, step, id, register, errors, watch, setStep }) 
             name="password"
             type="password"
             placeholder="비밀번호를 입력하세요."
-            ref={register({ required: true, pattern: /^[A-Za-z0-9]{6,12}$/ })}
+            ref={register({ required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/ })}
             id={id}
           />
           <Line />
@@ -43,7 +43,7 @@ const Password = ({ steps, title, step, id, register, errors, watch, setStep }) 
             <ErrorMessage>비밀번호는 반드시 입력해야합니다.</ErrorMessage>
           )}
           {errors.password && errors.password.type === 'pattern' && (
-            <ErrorMessage>비밀번호는 6~12자 숫자와 문자 형식이여야 합니다.</ErrorMessage>
+            <ErrorMessage>8~20자 영문, 숫자를 사용하세요.</ErrorMessage>
           )}
         </PwdDiv>
         <ConfirmDiv>
@@ -62,7 +62,7 @@ const Password = ({ steps, title, step, id, register, errors, watch, setStep }) 
             <ErrorMessage>비밀번호 확인은 반드시 입력해야합니다.</ErrorMessage>
           )}
           {errors.confirmPassword && errors.confirmPassword.type === 'validate' && (
-            <ErrorMessage>비밀번호와 비밀번호 확인이 일치하지 않습니다.</ErrorMessage>
+            <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>
           )}
         </ConfirmDiv>
       </InputDiv>
@@ -79,6 +79,7 @@ const InputDiv = styled.div`
 const InputPwd = styled.input`
   padding: 0px;
   width: 25vw;
+  background: rgb(246, 246, 246);
   height: 4.81vh;
   :focus {
     outline: none;
@@ -97,6 +98,7 @@ const ConfirmPwd = styled.input`
   padding: 0px;
   width: 25vw;
   height: 4.81vh;
+  background: rgb(246, 246, 246);
   :focus {
     outline: none;
   }

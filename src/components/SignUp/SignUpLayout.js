@@ -93,7 +93,7 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
                 <ErrorMessage>이메일은 반드시 입력해야합니다.</ErrorMessage>
               )}
               {errors.email && errors.email.type === 'pattern' && (
-                <ErrorMessage>이메일이 형식에 맞지 않습니다.</ErrorMessage>
+                <ErrorMessage>이메일 형식에 맞지않습니다.</ErrorMessage>
               )}
               <ChkDiv>
                 <ChkBox type="checkbox" name="magazineSubs" ref={register} />
@@ -114,7 +114,7 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
                   placeholder="이름을 입력하세요."
                   ref={register({
                     required: true,
-                    pattern: /^[가-힣]{2,5}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/,
+                    pattern: /^[가-힣]{2,6}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/,
                   })}
                 />
               </InputDiv>
@@ -124,7 +124,7 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
               )}
               {errors.name && errors.name.type === 'pattern' && (
                 <ErrorMessage>
-                  이름은 한글 2~4자, 영문은 firstname Lastname 형식으로 입력해주세요.
+                  한글은 2~6자, 영문은 2~10자 firstname Lastname 형식으로 입력해주세요.
                 </ErrorMessage>
               )}
             </InfoBox>
@@ -138,16 +138,16 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
               <InfoInput
                 name="tel"
                 type="tel"
-                placeholder="000-0000-0000"
-                ref={register({ required: true, pattern: /^\d{3}-\d{3,4}-\d{4}$/ })}
+                placeholder="숫자만 입력해주세요."
+                ref={register({ required: true, pattern: /(^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/ })}
               />
             </InputDiv>
             <Line />
             {errors.tel && errors.tel.type === 'required' && (
-              <ErrorMessage>전화번호는 반드시 입력해야합니다.</ErrorMessage>
+              <ErrorMessage>전화번호는 반드시 입력해야합니다</ErrorMessage>
             )}
             {errors.tel && errors.tel.type === 'pattern' && (
-              <ErrorMessage>전화번호는 000-0000-0000 형식으로 입력해주세요.</ErrorMessage>
+              <ErrorMessage>전화번호 형식에 맞지않습니다.</ErrorMessage>
             )}
           </InfoBox>
         );

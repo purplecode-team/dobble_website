@@ -105,6 +105,7 @@ const InputEtc = styled.input`
   padding: 0px;
   margin-left: 0.8vw;
   width: 10vw;
+  background: rgb(246, 246, 246);
   :focus {
     outline: none;
   }
