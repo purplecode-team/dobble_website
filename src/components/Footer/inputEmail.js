@@ -1,76 +1,87 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
 import emailIcon from '../img/email.png';
+import firebase from '../../firebase/firebase';
 
 const InputEmail = () => {
-  const [email, setEmail] = useState('');
+  const { register, errors, handleSubmit } = useForm({});
+  const [errorFromSubmit, setErrorFromSubmit] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const onChange = (e) => {
-    const blank = /\s/;
-    if (blank.test(e.target.value) === true) {
-      alert('공백은 사용할 수 없습니다.');
-      setEmail('');
-      return;
-    }
-    setEmail(e.target.value);
+  const onSubmit = () => {
+    alert('신청');
+    /*  try {
+       setLoading(true);
+         if (emailValidationChk(_email)) {
+            //Firebase 데이터베이스에 저장해주기
+            await firebase.database().ref('magazineSubsList').child(_email).set({
+              email: _email,
+            });
+
+
+            setEmail('');
+          } else {
+            alert('이메일을 다시 입력해주세요');
+            setEmail('');
+          }
+      setLoading(false);
+    } catch (error) {
+       setErrorFromSubmit(error.message);
+         setLoading(false);
+         setTimeout(() => {
+           setErrorFromSubmit('');
+         }, 5000);
+    }*/
   };
 
-  const emailValidationChk = (_email) => {
-    let vChk = false;
-    /* 이메일 validation */
-    const isEmailRegex = (__email) => {
-      const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-      return emailRegex.test(__email);
-    };
-    if (_email === '') {
-      vChk = false;
-    } else if (isEmailRegex(_email)) {
-      vChk = true;
-    } else if (!isEmailRegex(_email)) {
-      vChk = false;
-    }
-    return vChk;
-  };
-
-  const onClick = () => {
-    if (emailValidationChk(email)) {
-      alert(`${email} 신청되었습니다`);
-      setEmail('');
-    } else {
-      alert('이메일을 다시 입력해주세요');
-      setEmail('');
-    }
-  };
   return (
     <Container>
-      <EmailContainer>
+      <EmailContainer onSubmit={handleSubmit(onSubmit)}>
         <MailIcon src={emailIcon} alt="email" />
         <EmailInput
-          type="text"
-          id="mail"
-          placeholder="여기에 이메일을 입력하세요"
-          email={email}
-          onChange={onChange}
+          name="email"
+          type="email"
+          placeholder="여기에 메일을 입력하세요."
+          ref={register({
+            required: true,
+            pattern: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
+          })}
         />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="1.9vw"
-          height="1.165vh"
-          viewBox="0 0 25 12.583"
-          onClick={onClick}
+        <button
+          type="submit"
+          style={{
+            cursor: 'pointer',
+            border: 'none',
+            background: 'rgb(246, 246, 246)',
+            outline: 'none',
+          }}
         >
-          <path
-            id="합치기_3"
-            data-name="합치기 3"
-            d="M27.172-1262.066A1.172,1.172,0,0,1,26-1263.238a1.172,1.172,0,0,1,1.172-1.172H47.033l-8.844-8.375a1.052,1.052,0,0,1,0-1.544,1.2,1.2,0,0,1,1.63,0l10.435,9.881a1.105,1.105,0,0,1,.166.2,1.171,1.171,0,0,1,.581,1.012,1.172,1.172,0,0,1-1.172,1.172Z"
-            transform="translate(-26 1274.65)"
-            fill="#303030"
-          />
-        </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.9vw"
+            height="1.165vh"
+            viewBox="0 0 25 12.583"
+          >
+            <path
+              id="합치기_3"
+              data-name="합치기 3"
+              d="M27.172-1262.066A1.172,1.172,0,0,1,26-1263.238a1.172,1.172,0,0,1,1.172-1.172H47.033l-8.844-8.375a1.052,1.052,0,0,1,0-1.544,1.2,1.2,0,0,1,1.63,0l10.435,9.881a1.105,1.105,0,0,1,.166.2,1.171,1.171,0,0,1,.581,1.012,1.172,1.172,0,0,1-1.172,1.172Z"
+              transform="translate(-26 1274.65)"
+              fill="#303030"
+            />
+          </svg>
+        </button>
       </EmailContainer>
       <Line xmlns="http://www.w3.org/2000/svg" width="27.4vw" height="2" viewBox="0 0 530 2">
         <rect id="사각형_4" data-name="사각형 4" width="530" height="2" fill="#313030" />
       </Line>
+      {errors.email && errors.email.type === 'required' && (
+        <ErrorMessage>이메일은 반드시 입력해야합니다.</ErrorMessage>
+      )}
+      {errors.email && errors.email.type === 'pattern' && (
+        <ErrorMessage>이메일이 형식에 맞지 않습니다.</ErrorMessage>
+      )}
     </Container>
   );
 };
@@ -85,7 +96,7 @@ const Container = styled.div`
   }
 `;
 
-const EmailContainer = styled.div`
+const EmailContainer = styled.form`
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -105,6 +116,7 @@ const EmailInput = styled.input`
   :focus {
     outline: none;
   }
+  background: rgb(246, 246, 246);
   text-align: center;
   border: none;
   width: 17vw;
@@ -128,5 +140,13 @@ const Line = styled.svg`
     width: 55vw;
   }
 `;
-
+const ErrorMessage = styled.div`
+  ::before {
+    content: '⚠ ';
+  }
+  padding: 0;
+  color: #ff4444;
+  font-family: Arial;
+  font-size: 0.8vw;
+`;
 export default InputEmail;
