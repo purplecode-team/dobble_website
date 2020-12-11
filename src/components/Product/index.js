@@ -13,7 +13,9 @@ const Product = () => {
           <Title>2020 F/W</Title>
         </Desc>
       </Banner>
-      <PLayout>page</PLayout>
+      <PLayout>
+        <div>page</div>
+      </PLayout>
     </div>
   );
 };
