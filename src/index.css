@@ -33,7 +33,7 @@ h3 {
 }
 
 @font-face {
-  font-family: 'Stilu';
+  font-family: 'Stilu-Light';
   src: local('Stilu-Light'), url('./components/fonts/Stilu-Light.otf') format('opentype');
 }
 
