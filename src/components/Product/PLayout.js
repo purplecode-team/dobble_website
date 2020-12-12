@@ -20,7 +20,7 @@ const PLayout = ({ children }) => {
         </SideMenu>
         <Item>
           <Title>Best</Title>
-          {children}
+          <Content>{children}</Content>
         </Item>
       </Layout>
     </Section>
@@ -42,6 +42,9 @@ const SideMenu = styled.div`
   width: 20%;
   display: inline-block;
   float: left;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -52,6 +55,9 @@ const Title = styled.div`
 const Content = styled.div`
   margin-top: 67px;
   width: 100%;
+  @media (max-width: 768px) {
+    margin-top: 40px;
+  }
 `;
 
 const Item = styled.div`
@@ -69,6 +75,8 @@ const Text = styled.div`
   margin-bottom: 20px;
   @media (max-width: 768px) {
     margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 20px;
   }
 `;
 
