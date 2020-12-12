@@ -1,7 +1,12 @@
 import React from 'react';
+import BrandPage from '../components/Brand';
 
 const Brand = () => {
-  return <div>brand page</div>;
+  return (
+    <div>
+      <BrandPage />
+    </div>
+  );
 };
 
 export default Brand;
