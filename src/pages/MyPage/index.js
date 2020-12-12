@@ -13,7 +13,7 @@ const MyPage = () => {
 };
 
 const Container = styled.div`
-  margin-top: 12vh;
+  margin-top: 11vh;
   display: flex;
   flex-direction: column;
   align-items: center;
