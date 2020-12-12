@@ -7,7 +7,7 @@ import ChangeUserInfo from './ChangeUserInfo';
 
 const Nav = () => {
   return (
-    <div>
+    <MyPageContainer>
       <NavContainer>
         <List to="/mypage" exact activeClassName="active">
           <ListItem>회원정보</ListItem>
@@ -19,14 +19,23 @@ const Nav = () => {
       <Route path="/mypage" exact component={UserInfo} />
       <Route path="/mypage/changeuserinfo" component={ChangeUserInfo} />
       <Route path="/mypage/wishlist" component={WishList} />
-    </div>
+    </MyPageContainer>
   );
 };
-
+const MyPageContainer = styled.div`
+  width: 660px;
+  @media (max-width: 768px) {
+    width: 450px;
+  }
+  @media (max-width: 480px) {
+    width: 330px;
+  }
+`;
 const NavContainer = styled.ul`
   padding: 0px;
   margin: 0px;
   display: flex;
+  justify-content: center;
   list-style: none;
   margin-top: 7.4vh;
   font-family: Arial;
@@ -41,18 +50,21 @@ const List = styled(NavLink)`
   cursor: pointer;
   text-decoration: none;
   color: black;
-  width: 28.3vw;
+  width: 330px;
   text-align: center;
   border-bottom: 2px solid #cbcbcb;
   &.active {
     border-bottom: 2px solid #ff4444;
   }
+  @media (max-width: 768px) {
+    width: 225px;
+  }
   @media (max-width: 480px) {
-    width: 44.8vw;
+    width: 165px;
   }
 `;
 
-const ListItem = styled.div`
+const ListItem = styled.li`
   margin-bottom: 2.77vh;
 `;
 

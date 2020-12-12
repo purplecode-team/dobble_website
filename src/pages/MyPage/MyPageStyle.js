@@ -53,7 +53,7 @@ export const TelTitle = styled.div`
 `;
 export const InfoContent = styled.div``;
 export const Button = styled.div`
-  width: 28%;
+  width: 30%;
   margin-top: 11vh;
   display: flex;
   justify-content: space-between;

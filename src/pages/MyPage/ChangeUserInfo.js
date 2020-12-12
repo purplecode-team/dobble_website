@@ -247,10 +247,13 @@ const ErrorMessage = styled.div`
     content: '⚠ ';
   }
   padding: 0;
-  margin-left: 11vw;
+  margin-left: 12vw;
   color: #ff4444;
   font-family: Arial;
   font-size: 0.8vw;
+  @media (max-width: 768px) {
+    margin-left: 16vw;
+  }
   @media (max-width: 480px) {
     margin-left: 0vw;
   }
