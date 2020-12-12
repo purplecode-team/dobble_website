@@ -116,8 +116,4 @@ const InputEtc = styled.input`
     color: #acacac;
   }
 `;
-const LineDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 export default InterestedBrand;
