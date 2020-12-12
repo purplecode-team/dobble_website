@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PLayout from './PLayout';
 import { dummyData } from '../dummyData';
+import { productsData } from '../Header/interface';
+import ItemLayout from '../ItemLayout';
 
 const Product = () => {
   return (
@@ -14,7 +15,7 @@ const Product = () => {
           <Title>2020 F/W</Title>
         </Desc>
       </Banner>
-      <PLayout>
+      <ItemLayout data={productsData}>
         {dummyData.map(({ alt, title, link, img, price, brand, banner }) => (
           <ProductDiv key={alt} href={link}>
             <ProductImgDiv>
@@ -28,7 +29,7 @@ const Product = () => {
             <Price>{price}</Price>
           </ProductDiv>
         ))}
-      </PLayout>
+      </ItemLayout>
     </div>
   );
 };

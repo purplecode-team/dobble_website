@@ -2,16 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { productsData } from '../Header/interface';
-
-const PLayout = ({ children }) => {
+const ItemLayout = ({ data, children }) => {
   return (
     <Section>
       <Layout>
         <SideMenu>
           <Title>Category</Title>
           <Content>
-            {productsData.map(({ key, content, link }) => (
+            {data.map(({ key, content, link }) => (
               <Text key={key} href={link}>
                 <StyledLink to={link}>{content}</StyledLink>
               </Text>
@@ -80,4 +78,4 @@ const Text = styled.div`
   }
 `;
 
-export default PLayout;
+export default ItemLayout;
