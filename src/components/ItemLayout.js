@@ -17,7 +17,6 @@ const ItemLayout = ({ data, children }) => {
           </Content>
         </SideMenu>
         <Item>
-          <Title>Best</Title>
           <Content>{children}</Content>
         </Item>
       </Layout>
@@ -51,11 +50,7 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  margin-top: 67px;
   width: 100%;
-  @media (max-width: 768px) {
-    margin-top: 40px;
-  }
 `;
 
 const Item = styled.div`
@@ -70,9 +65,9 @@ const StyledLink = styled(Link)`
 `;
 
 const Text = styled.div`
-  margin-bottom: 20px;
+  margin-top: 20px;
   @media (max-width: 768px) {
-    margin-bottom: 10px;
+    margin-top: 10px;
     display: inline-block;
     margin-right: 20px;
   }

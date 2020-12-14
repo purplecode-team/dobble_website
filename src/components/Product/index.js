@@ -16,6 +16,7 @@ const Product = () => {
         </Desc>
       </Banner>
       <ItemLayout data={productsData}>
+        <Top>Best</Top>
         {dummyData.map(({ alt, title, link, img, price, brand, banner }) => (
           <ProductDiv key={alt} href={link}>
             <ProductImgDiv>
@@ -34,11 +35,16 @@ const Product = () => {
   );
 };
 
+const Top = styled.div`
+  font-size: 1.4rem;
+  width: 100%;
+  padding-bottom: 20px;
+`;
+
 const ProductDiv = styled.div`
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 40px;
   margin-bottom: 30px;
-  padding: 10px;
   padding-top: 0;
   @media (max-width: 768px) {
     margin-right: 0;
