@@ -35,22 +35,22 @@ export const productsData = [
   {
     key: 1,
     content: '의류',
-    link: '/',
+    link: '/product/Cloth',
   },
   {
     key: 2,
     content: '가방',
-    link: '/',
+    link: '/product/Bag',
   },
   {
     key: 3,
     content: '악세서리',
-    link: '/',
+    link: '/product/Accessories',
   },
   {
     key: 4,
     content: '잡화',
-    link: '/',
+    link: '/product/Stuff',
   },
 ];
 
@@ -58,32 +58,32 @@ export const brandsData = [
   {
     key: 1,
     content: '마리몬드',
-    link: '/',
+    link: '/brand/Marimond',
   },
   {
     key: 2,
     content: '마르코로호',
-    link: '/',
+    link: '/brand/Marcoro',
   },
   {
     key: 3,
     content: '애니휴먼',
-    link: '/',
+    link: '/brand/Any-human',
   },
   {
     key: 4,
     content: '위드아이스',
-    link: '/',
+    link: '/brand/With-eyes',
   },
   {
     key: 5,
     content: '메리디아니',
-    link: '/',
+    link: '/brand/Meridiani',
   },
   {
     key: 6,
     content: '뉴킷',
-    link: '/',
+    link: '/brand/New-kit',
   },
 ];
 
