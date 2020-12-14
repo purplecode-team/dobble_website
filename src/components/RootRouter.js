@@ -9,11 +9,14 @@ import Product from '../pages/product';
 import AppLayout from './AppLayout';
 import SignUp from './SignUp';
 import MyPage from '../pages/mypage';
+import Detail from './Detail';
 
 const LoginRoutes = () => (
   <Switch>
     <Route exact path="/" component={Main} />
+    <Route path="/product/:category" component={Detail} />
     <Route path="/product" component={Product} />
+    <Route path="/brand/:category" component={Detail} />
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
     <Route path="/basket" component={Basket} />
@@ -25,7 +28,9 @@ const LoginRoutes = () => (
 const HomeRoutes = () => (
   <Switch>
     <Route exact path="/" component={Main} />
+    <Route path="/product/:category" component={Detail} />
     <Route path="/product" component={Product} />
+    <Route path="/brand/:category" component={Detail} />
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
     <Route path="/login" component={Login} />
