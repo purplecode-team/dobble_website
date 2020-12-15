@@ -4,7 +4,10 @@ import ItemLayout from './ItemLayout';
 import { MagazineCategory, Season } from './categoryData';
 import { dummyData } from './MagazineData';
 
-const Detail = ({ match }) => {
+const Detail = ({ match, history }) => {
+  const onOpen = () => {
+    history.push('/magazinepage');
+  };
   return (
     <div>
       <ItemLayout MagazineCategory={MagazineCategory} Season={Season}>
@@ -15,7 +18,9 @@ const Detail = ({ match }) => {
               <ProductImg src={content.img} alt={content.alt} />
             </ProductImgDiv>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Title>{title}</Title>
+              <Title onClick={onOpen} style={{ cursor: 'pointer' }}>
+                {title}
+              </Title>
               <HashTag>{hashtage}</HashTag>
             </div>
             <Text>{description}</Text>
@@ -60,19 +65,21 @@ const Title = styled.div`
   font-size: 1rem;
   margin: 6px 0;
   font-weight: bold;
+  font-family: 'Stilu';
 `;
 const HashTag = styled.div`
   font-size: 0.8rem;
-  width: 4vw;
+  width: 60px;
   text-align: center;
   color: white;
   overflow: hidden;
   border-radius: 18px 18px;
   background: gray;
+  font-family: 'Stilu';
 `;
 const Text = styled.div`
   font-size: 0.8rem;
   margin: 10px 0;
+  font-family: 'Arial';
 `;
-
 export default Detail;

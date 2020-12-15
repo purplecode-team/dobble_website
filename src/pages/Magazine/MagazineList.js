@@ -69,7 +69,7 @@ const Title = styled.div`
 `;
 const HashTag = styled.div`
   font-size: 0.8rem;
-  width: 4vw;
+  width: 60px;
   text-align: center;
   color: white;
   overflow: hidden;
