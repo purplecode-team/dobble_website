@@ -1,31 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { MagazineCategory, Season } from './categoryData';
-import { dummyData } from './MagazineData';
 import ItemLayout from './ItemLayout';
+import firebase from '../../firebase/firebase';
 
 const MagazineList = ({ history }) => {
-  const onOpen = () => {
+  //firebase database에서 메거진 데이터를 가져와서 magazineData에 저장시켜주기 위한 변수
+  const [magazineData, setMagazineData] = useState();
+
+  useEffect(() => {
+    const magazineRef = firebase.database().ref('/magazines');
+
+    magazineRef.once('value').then(function (snapshot) {
+      const FirebaseData = snapshot.val();
+      console.log('MagazineData', FirebaseData);
+      setMagazineData(FirebaseData);
+    });
+  }, []);
+
+  const onOpen = (_data) => {
+    console.log(_data, 'title');
     history.push('/magazinepage');
   };
   return (
     <div>
       <ItemLayout MagazineCategory={MagazineCategory} Season={Season}>
         <Top>All</Top>
-        {dummyData.map(({ title, description, content, hashtage, id }) => (
-          <ProductDiv key={id}>
-            <ProductImgDiv>
-              <ProductImg src={content.img} alt={content.alt} />
-            </ProductImgDiv>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Title onClick={onOpen} style={{ cursor: 'pointer' }}>
-                {title}
-              </Title>
-              <HashTag>{hashtage}</HashTag>
-            </div>
-            <Text>{description}</Text>
-          </ProductDiv>
-        ))}
+        {console.log(magazineData)}
+        {magazineData &&
+          magazineData.map((data) => (
+            <ProductDiv key={data.title}>
+              <ProductImgDiv>
+                <ProductImg src={data.content.img} alt={data.content.alt} />
+              </ProductImgDiv>
+              <div
+                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+              >
+                <Title onClick={() => onOpen(data)} style={{ cursor: 'pointer' }}>
+                  {data.title}
+                </Title>
+                <HashTag>{data.hashtag}</HashTag>
+              </div>
+              <Text>{data.description}</Text>
+            </ProductDiv>
+          ))}
       </ItemLayout>
     </div>
   );
@@ -34,6 +52,10 @@ const Top = styled.div`
   font-size: 1.4rem;
   width: 100%;
   padding-bottom: 20px;
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    font-size: 1rem;
+  }
 `;
 
 const ProductDiv = styled.div`
