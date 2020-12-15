@@ -6,7 +6,7 @@ import MagazineList from './MagazineList';
 
 const Magazine = () => {
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Banner>
         <Desc>
           <SubDesc>기부 스토어 브랜드와 기부처에 따른 메거진을 확인해 보세요</SubDesc>

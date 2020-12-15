@@ -7,22 +7,26 @@ const ItemLayout = ({ MagazineCategory, Season, children }) => {
     <Section>
       <Layout>
         <SideMenu>
-          <Title>Category</Title>
-          <Content>
-            {MagazineCategory.map(({ key, content, link }) => (
-              <Text key={key} href={link}>
-                <StyledLink to={link}>{content}</StyledLink>
-              </Text>
-            ))}
-          </Content>
-          <SeasonTitle>Season</SeasonTitle>
-          <Content>
-            {Season.map(({ key, content, link }) => (
-              <Text key={key} href={link}>
-                <StyledLink to={link}>{content}</StyledLink>
-              </Text>
-            ))}
-          </Content>
+          <div>
+            <Title>Category</Title>
+            <Content>
+              {MagazineCategory.map(({ key, content, link }) => (
+                <Text key={key} href={link}>
+                  <StyledLink to={link}>{content}</StyledLink>
+                </Text>
+              ))}
+            </Content>
+          </div>
+          <SeasonDiv>
+            <SeasonTitle>Season</SeasonTitle>
+            <Content>
+              {Season.map(({ key, content, link }) => (
+                <Text key={key} href={link}>
+                  <StyledLink to={link}>{content}</StyledLink>
+                </Text>
+              ))}
+            </Content>
+          </SeasonDiv>
         </SideMenu>
         <Item>
           <Content>{children}</Content>
@@ -45,25 +49,41 @@ const Layout = styled.div`
 
 const SideMenu = styled.div`
   width: 25%;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   float: left;
   @media (max-width: 768px) {
     width: 100%;
+    flex-direction: row;
   }
 `;
 
 const Title = styled.div`
   font-size: 1.4rem;
   width: 100%;
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
 const Content = styled.div`
   width: 100%;
 `;
+const SeasonDiv = styled.div`
+  @media (max-width: 768px) {
+    margin-left: 30px;
+  }
+`;
 const SeasonTitle = styled.div`
   margin-top: 60px;
   font-size: 1.4rem;
   width: 100%;
+  @media (max-width: 768px) {
+    margin-top: 0px;
+  }
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 const Item = styled.div`
   width: 75%;
@@ -81,6 +101,10 @@ const Text = styled.div`
     margin-top: 10px;
     display: inline-block;
     margin-right: 20px;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    margin-right: 5px;
   }
 `;
 
