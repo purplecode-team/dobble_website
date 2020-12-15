@@ -6,6 +6,15 @@ import { productsData } from '../Header/interface';
 import ItemLayout from '../ItemLayout';
 
 const Product = () => {
+  const assignName = (name) => {
+    if (name === 'New-kit') return '뉴킷 (멸종 위기 동물)';
+    if (name === 'Meridiani') return '메리디아니';
+    if (name === 'With-eyes') return '위드아이스';
+    if (name === 'Any-human') return '애니휴먼';
+    if (name === 'Marcoro') return '마르코로호';
+    if (name === 'Marimond') return '마리몬드';
+  };
+
   return (
     <div>
       <Banner>
@@ -22,7 +31,7 @@ const Product = () => {
             <ProductImgDiv>
               <ProductImg src={img} alt={alt} />
             </ProductImgDiv>
-            <Text>{brand}</Text>
+            <Text>{assignName(brand)}</Text>
             <Text>
               <BannerText>{banner}</BannerText>
               {title}

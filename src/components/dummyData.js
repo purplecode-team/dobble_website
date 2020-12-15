@@ -1,7 +1,7 @@
 export const dummyData = [
   {
     category: 'cloth',
-    brand: '뉴킷 (멸종위기 동물)',
+    brand: 'New-kit',
     banner: '리뉴얼',
     title: '스퀘어 퀼팅 베스트 [Black]',
     img: 'http://new-kit.com/web/product/medium/202009/f123b8394d0082a700f067c47e8abbb5.jpg',
@@ -11,7 +11,7 @@ export const dummyData = [
   },
   {
     category: 'cloth',
-    brand: '뉴킷 (멸종위기 동물)',
+    brand: 'New-kit',
     banner: '',
     title: '베이직 믹스 스프라이트 셔츠 [Brown]',
     img: 'http://new-kit.com/web/product/medium/20200313/1ed1481e8a8cc317a92cdde075e420a0.jpg',
@@ -21,7 +21,7 @@ export const dummyData = [
   },
   {
     category: 'cloth',
-    brand: '뉴킷 (멸종위기 동물)',
+    brand: 'New-kit',
     banner: '리뉴얼',
     title: '스퀘어 퀼팅 베스트 [Black]',
     img: 'http://new-kit.com/web/product/medium/202009/f123b8394d0082a700f067c47e8abbb5.jpg',
@@ -31,7 +31,7 @@ export const dummyData = [
   },
   {
     category: 'cloth',
-    brand: '뉴킷 (멸종위기 동물)',
+    brand: 'New-kit',
     banner: '',
     title: '베이직 믹스 스프라이트 셔츠 [Brown]',
     img: 'http://new-kit.com/web/product/medium/20200313/1ed1481e8a8cc317a92cdde075e420a0.jpg',
@@ -41,7 +41,7 @@ export const dummyData = [
   },
   {
     category: 'cloth',
-    brand: '뉴킷 (멸종위기 동물)',
+    brand: 'New-kit',
     banner: '',
     title: '베이직 믹스 스프라이트 셔츠 [Brown]',
     img: 'http://new-kit.com/web/product/medium/20200313/1ed1481e8a8cc317a92cdde075e420a0.jpg',
