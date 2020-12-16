@@ -11,10 +11,10 @@ export const headerIconData = [
     alt: 'myPage_icon',
   },
   {
-    link: '/basket',
+    link: '/myPage',
     mobile: true,
     img: Heart,
-    alt: 'basket_icon',
+    alt: 'myPage_icon',
   },
   {
     link: '/basket',
@@ -91,11 +91,11 @@ export const magazineData = [
   {
     key: 1,
     content: '브랜드 소개',
-    link: '/',
+    link: '/magazine/Brand',
   },
   {
     key: 2,
     content: '기부 소식',
-    link: '/',
+    link: '/magazine/Donation',
   },
 ];
