@@ -9,7 +9,7 @@ import Magazine from '../pages/Magazine';
 import AppLayout from './AppLayout';
 import SignUp from './SignUp';
 import MagazinePage from '../pages/Magazine/MagazinePage';
-import MyPage from '../pages/mypage';
+import MyPage from '../pages/MyPage';
 import Detail from './Detail';
 
 const LoginRoutes = () => (

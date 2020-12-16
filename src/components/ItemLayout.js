@@ -55,7 +55,6 @@ const Content = styled.div`
 
 const Item = styled.div`
   width: 80%;
-  float: left;
   display: inline-block;
 `;
 
