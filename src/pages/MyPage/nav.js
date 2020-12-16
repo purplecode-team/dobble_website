@@ -1,37 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink, Route } from 'react-router-dom';
-import UserInfo from './UserInfo';
-import WishList from './wishList';
-import ChangeUserInfo from './ChangeUserInfo';
+import { NavLink } from 'react-router-dom';
 
 const Nav = () => {
   return (
-    <MyPageContainer>
-      <NavContainer>
-        <List to="/mypage" exact activeClassName="active">
-          <ListItem>회원정보</ListItem>
-        </List>
-        <List to="/mypage/wishlist" activeClassName="active">
-          <ListItem>찜목록</ListItem>
-        </List>
-      </NavContainer>
-      <Route path="/mypage" exact component={UserInfo} />
-      <Route path="/mypage/changeuserinfo" component={ChangeUserInfo} />
-      <Route path="/mypage/wishlist" component={WishList} />
-    </MyPageContainer>
+    <NavContainer>
+      <List to="/mypage" exact activeClassName="active">
+        <ListItem>회원정보</ListItem>
+      </List>
+      <List to="/mypage/wishlist" activeClassName="active">
+        <ListItem>찜목록</ListItem>
+      </List>
+    </NavContainer>
   );
 };
-const MyPageContainer = styled.div`
-  width: 660px;
-  @media (max-width: 768px) {
-    width: 450px;
-  }
-  @media (max-width: 480px) {
-    width: 330px;
-  }
-`;
 const NavContainer = styled.ul`
+  width: 100%;
   padding: 0px;
   margin: 0px;
   display: flex;
