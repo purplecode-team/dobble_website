@@ -1,10 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Stilu, Arial, sans-serif;
+  font-family: Stilu;
+  background: rgb(246, 246, 246);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(246, 246, 246);
 }
 
 /*스크롤 바 숨기기*/
@@ -19,21 +19,21 @@ body {
 h1,
 h2,
 h3 {
-  font-family: Stilu-Bold, Arial, serif;
+  font-family: Stilu-Bold;
 }
 
 @font-face {
-  font-family: 'Stilu-Bold';
+  font-family: 'Stilu';
   src: local('Stilu-Bold'), url('./components/fonts/Stilu-Bold.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'Stilu-SemiBold';
+  font-family: 'Stilu';
   src: local('Stilu-SemiBold'), url('./components/fonts/Stilu-SemiBold.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'Stilu-Light';
+  font-family: 'Stilu';
   src: local('Stilu-Light'), url('./components/fonts/Stilu-Light.otf') format('opentype');
 }
 
