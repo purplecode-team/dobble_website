@@ -1,17 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import circleGray from '../img/circle_gray.png';
 
 const CloseLayout = ({ title }) => {
   return (
     <CloseDiv>
-      <CircleSvg
-        xmlns="http://www.w3.org/2000/svg"
-        width="1.979vw"
-        height="3.518vh"
-        viewBox="0 0 38 38"
-      >
-        <circle id="타원_7" data-name="타원 7" cx="19" cy="19" r="19" fill="#efefef" />
-      </CircleSvg>
+      <Circle src={circleGray} alt="circleGray" />
       <TitleDiv>{title}</TitleDiv>
     </CloseDiv>
   );
@@ -19,15 +13,22 @@ const CloseLayout = ({ title }) => {
 
 const CloseDiv = styled.div`
   display: flex;
-  items-align: center;
-  padding: 0px;
-  width: 57.187vw;
-  margin: 0vh auto;
+  margin: 0 auto;
+  width: 58vw;
   font-size: 1.041vw;
+  @media (max-width: 768px) {
+    width: 76vw;
+  }
 `;
-const CircleSvg = styled.svg`
+const Circle = styled.img`
   margin-right: 2.604vw;
   margin-bottom: 5.3vh;
+  width: 20px;
+  height: 20px;
+  @media (max-width: 768px) {
+    width: 15px;
+    height: 15px;
+  }
 `;
 const TitleDiv = styled.div`
   font-size: 1.25vw;

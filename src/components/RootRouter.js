@@ -4,10 +4,11 @@ import Login from '../pages/login';
 import Main from '../pages/main';
 import Basket from '../pages/basket';
 import Brand from '../pages/brand';
-import Magazine from '../pages/magazine';
 import Product from '../pages/product';
+import Magazine from '../pages/Magazine';
 import AppLayout from './AppLayout';
 import SignUp from './SignUp';
+import MagazinePage from '../pages/Magazine/MagazinePage';
 import MyPage from '../pages/mypage';
 import Detail from './Detail';
 
@@ -33,8 +34,10 @@ const HomeRoutes = () => (
     <Route path="/brand/:category" component={Detail} />
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
+    <Route path="/magazinepage" component={MagazinePage} />
     <Route path="/login" component={Login} />
     <Route path="/signup" component={SignUp} />
+    <Route path="/mypage" component={MyPage} />
     <Redirect from="*" to="/login" />
   </Switch>
 );
