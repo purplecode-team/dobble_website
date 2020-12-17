@@ -5,6 +5,7 @@ import MainPage from '../components/Main/MainPage';
 import ProductPage from '../components/Main/ProductPage';
 import BrandPage from '../components/Main/BrandPage';
 import MagazinePage from '../components/Main/MagazinePage';
+import Subscribe from '../components/Main/Subscribe';
 
 const Main = () => {
   return (
@@ -14,6 +15,7 @@ const Main = () => {
       <BrandPage />
       <MagazinePage />
       <OurStory />
+      <Subscribe />
     </div>
   );
 };
