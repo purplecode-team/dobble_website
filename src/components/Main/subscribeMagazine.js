@@ -10,7 +10,7 @@ const SubscribeMagazine = () => {
 };
 
 const MyDiv = styled.div`
-  margin-top: 19.9vh;
+  margin-top: 35vh;
   margin-bottom: 5vh;
   display: flex;
   justify-content: center;

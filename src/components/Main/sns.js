@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Sns = () => {
   return (
-    <MyDiv>
+    <div>
       <MyUl className="sns">
         <MyLi>
           <MyA href="https://www.instagram.com/purple._.code/">INSTAGRAM</MyA>
@@ -15,13 +15,10 @@ const Sns = () => {
           <MyA href="https://www.facebook.com/purplecode2020">FACEBOOK</MyA>
         </MyLi>
       </MyUl>
-    </MyDiv>
+    </div>
   );
 };
 
-const MyDiv = styled.div`
-  margin-bottom: 25.83vh;
-`;
 const MyA = styled.a`
   text-decoration: none;
   color: black;
