@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MagazineCategory, Season } from './categoryData';
 import ItemLayout from './ItemLayout';
-import firebase from '../../firebase/firebase';
+import useList from '../../hooks/useList';
 
-const MagazineList = ({ history }) => {
-  //firebase database에서 메거진 데이터를 가져와서 magazineData에 저장시켜주기 위한 변수
-  const [magazineData, setMagazineData] = useState();
-
-  useEffect(() => {
-    const magazineRef = firebase.database().ref('/magazines');
-
-    magazineRef.once('value').then(function (snapshot) {
-      const FirebaseData = snapshot.val();
-      console.log('MagazineData', FirebaseData);
-      setMagazineData(FirebaseData);
-    });
-  }, []);
+const MagazineList = ({ history, match }) => {
+  //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
+  const [magazineData, error, loading] = useList(match);
 
   const onOpen = (_data) => {
     console.log(_data, 'title');
@@ -26,12 +16,13 @@ const MagazineList = ({ history }) => {
     <div>
       <ItemLayout MagazineCategory={MagazineCategory} Season={Season}>
         <Top>All</Top>
-        {console.log(magazineData)}
+        {error && <div>Error : {error}</div>}
+        {loading && <div>Loading...</div>}
         {magazineData &&
           magazineData.map((data) => (
             <ProductDiv key={data.title}>
               <ProductImgDiv>
-                <ProductImg src={data.content.img} alt={data.content.alt} />
+                <ProductImg src={data.contents.img} alt={data.contents.alt} />
               </ProductImgDiv>
               <div
                 style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}

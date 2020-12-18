@@ -1,31 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ItemLayout from './ItemLayout';
 import { MagazineCategory, Season } from './categoryData';
-import { dummyData } from './MagazineData';
-import firebase from '../../firebase/firebase';
+import useList from '../../hooks/useList';
 
 const Detail = ({ match, history }) => {
-  //firebase database에서 메거진 데이터를 가져와서 magazineData에 저장시켜주기 위한 변수
-  const [magazineData, setMagazineData] = useState();
-
-  /* 현재 클릭한 카테고리에 따라서 데이터베이스에 저장된 메거진 중 카테고리에 해당하는 것만 나타낸다 */
-  useEffect(() => {
-    const magazineArray = [];
-    const currentCategory = match.params.category;
-
-    const query = firebase.database().ref('/magazines').orderByKey();
-
-    query.once('value').then(function (snapshot) {
-      snapshot.forEach(function (childSnapshot) {
-        const childData = childSnapshot.val();
-        if (childData.category === currentCategory) {
-          magazineArray.push(childData);
-          setMagazineData(magazineArray);
-        }
-      });
-    });
-  }, [match.params.category]);
+  //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
+  const [magazineData, error, loading] = useList(match);
 
   const onOpen = () => {
     history.push('/magazinepage');
@@ -34,21 +15,23 @@ const Detail = ({ match, history }) => {
     <div>
       <ItemLayout MagazineCategory={MagazineCategory} Season={Season}>
         <Top>{match.params.category}</Top>
+        {error && <div>Error : {error}</div>}
+        {loading && <div>Loading...</div>}
         {magazineData &&
-          magazineData.map(({ title, description, content, hashtag, id }) => (
-            <ProductDiv key={title}>
+          magazineData.map((data) => (
+            <ProductDiv key={data.title}>
               <ProductImgDiv>
-                <ProductImg src={content.img} alt={content.alt} />
+                <ProductImg src={data.contents.img} alt={data.contents.alt} />
               </ProductImgDiv>
               <div
                 style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
               >
-                <Title onClick={onOpen} style={{ cursor: 'pointer' }}>
-                  {title}
+                <Title onClick={() => onOpen(data)} style={{ cursor: 'pointer' }}>
+                  {data.title}
                 </Title>
-                <HashTag>{hashtag}</HashTag>
+                <HashTag>{data.hashtag}</HashTag>
               </div>
-              <Text>{description}</Text>
+              <Text>{data.description}</Text>
             </ProductDiv>
           ))}
       </ItemLayout>
