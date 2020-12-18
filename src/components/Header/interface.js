@@ -11,10 +11,10 @@ export const headerIconData = [
     alt: 'myPage_icon',
   },
   {
-    link: '/myPage',
+    link: '/myPage/wishlist',
     mobile: true,
     img: Heart,
-    alt: 'myPage_icon',
+    alt: 'heart_icon',
   },
   {
     link: '/basket',
