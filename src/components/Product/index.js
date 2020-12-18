@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { dummyData } from '../dummyData';
 import { productsData } from '../Header/interface';
 import ItemLayout from '../ItemLayout';
+import useList from '../../hooks/useList';
 
-const Product = () => {
+const Product = ({ match }) => {
+  //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
+  const [firebaseData, error, loading, empty] = useList(match);
+
   const assignName = (name) => {
     if (name === 'New-kit') return '뉴킷 (멸종 위기 동물)';
     if (name === 'Meridiani') return '메리디아니';
@@ -16,7 +18,7 @@ const Product = () => {
   };
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Banner>
         <Desc>
           <SubDesc>기부 스토어 브랜드와 기부처에 따른 아이템을 확인해 보세요</SubDesc>
@@ -26,19 +28,23 @@ const Product = () => {
       </Banner>
       <ItemLayout data={productsData}>
         <Top>Best</Top>
-        {dummyData.map(({ alt, title, link, img, price, brand, banner }) => (
-          <ProductDiv key={alt} href={link}>
-            <ProductImgDiv>
-              <ProductImg src={img} alt={alt} />
-            </ProductImgDiv>
-            <Text>{assignName(brand)}</Text>
-            <Text>
-              <BannerText>{banner}</BannerText>
-              {title}
-            </Text>
-            <Price>{price}</Price>
-          </ProductDiv>
-        ))}
+        {error && <div>Error : {error}</div>}
+        {loading && <div>Loading...</div>}
+        {empty && <div>상품이 존재하지 않습니다.</div>}
+        {firebaseData &&
+          firebaseData.map(({ alt, title, link, img, price, brand, banner }) => (
+            <ProductDiv key={alt} href={link}>
+              <ProductImgDiv>
+                <ProductImg src={img} alt={alt} />
+              </ProductImgDiv>
+              <Text>{assignName(brand)}</Text>
+              <Text>
+                <BannerText>{banner}</BannerText>
+                {title}
+              </Text>
+              <Price>{price}</Price>
+            </ProductDiv>
+          ))}
       </ItemLayout>
     </div>
   );

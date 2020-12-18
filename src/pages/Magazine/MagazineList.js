@@ -6,7 +6,7 @@ import useList from '../../hooks/useList';
 
 const MagazineList = ({ history, match }) => {
   //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
-  const [magazineData, error, loading] = useList(match);
+  const [magazineData, error, loading, empty] = useList(match);
 
   const onOpen = (_data) => {
     console.log(_data, 'title');
@@ -18,6 +18,7 @@ const MagazineList = ({ history, match }) => {
         <Top>All</Top>
         {error && <div>Error : {error}</div>}
         {loading && <div>Loading...</div>}
+        {empty && <div>매거진이 존재하지 않습니다.</div>}
         {magazineData &&
           magazineData.map((data) => (
             <ProductDiv key={data.title}>
