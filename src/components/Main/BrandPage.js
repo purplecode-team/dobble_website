@@ -25,7 +25,7 @@ const BrandPage = () => {
 };
 
 const MainLayout = styled.div`
-  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/feature/magazine/src/components/img/brandLogo.png?raw=true');
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/brandLogo.png?raw=true');
   background-repeat: no-repeat;
   background-position: 90% 35%;
   background-size: 700px auto;

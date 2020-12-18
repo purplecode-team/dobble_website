@@ -24,7 +24,7 @@ const ProductPage = () => {
 };
 
 const MainLayout = styled.div`
-  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/feature/magazine/src/components/img/productLogo.png?raw=true');
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/productLogo.png?raw=true');
   background-repeat: no-repeat;
   background-position: 90% center;
   background-size: 700px 700px;

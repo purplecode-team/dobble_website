@@ -35,7 +35,7 @@ const MainPage = () => {
 };
 
 const MainLayout = styled.div`
-  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/feature/magazine/src/components/img/illust%20unit_ae_3.png?raw=true');
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/illust%20unit_ae_3.png?raw=true');
   background-repeat: no-repeat;
   background-position: 80% center;
   background-size: 500px 500px;
