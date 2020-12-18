@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useForm, FormProvider } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+
 import firebase from '../../firebase/firebase';
 import InputContainer from './InputContainer';
+import { signupRequest } from '../../reducer/user';
 
 const SignUp = ({ history }) => {
   const methods = useForm({ mode: 'onChange' });
   const [errorFromSubmit, setErrorFromSubmit] = useState('');
-  const [loading, setLoading] = useState(false);
+  const { signUpLoading } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      setLoading(true);
       // 이메일과 비밀번호로 유저 생성
       const createUser = await firebase
         .auth()
@@ -35,11 +37,10 @@ const SignUp = ({ history }) => {
         advertising: data.check2,
       });
 
-      setLoading(false);
+      dispatch(signupRequest(data));
       history.push('/login');
     } catch (error) {
       setErrorFromSubmit(error.message);
-      setLoading(false);
       setTimeout(() => {
         setErrorFromSubmit('');
       }, 5000);
@@ -59,7 +60,7 @@ const SignUp = ({ history }) => {
       </FormProvider>
 
       {errorFromSubmit && <ErrorMessage>{errorFromSubmit}</ErrorMessage>}
-      <SubmitButton form="signupForm" type="submit" value="가입하기" disabled={loading} />
+      <SubmitButton form="signupForm" type="submit" value="가입하기" disabled={signUpLoading} />
     </div>
   );
 };
