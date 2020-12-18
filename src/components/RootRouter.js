@@ -4,7 +4,7 @@ import Login from '../pages/login';
 import Main from '../pages/main';
 import Basket from '../pages/basket';
 import Brand from '../pages/brand';
-import Product from '../pages/product';
+import Product from './Product';
 import Magazine from '../pages/Magazine';
 import AppLayout from './AppLayout';
 import SignUp from './SignUp';
