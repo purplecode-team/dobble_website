@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { dummyData } from '../dummyData';
 import { brandsData } from '../Header/interface';
 import ItemLayout from '../ItemLayout';
+import Modal from '../Modal';
 
 const Brand = () => {
+  const [open, setOpen] = useState(false);
+  const toggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <div>
       <Banner>
@@ -18,7 +24,7 @@ const Brand = () => {
       <ItemLayout data={brandsData}>
         {dummyData.map(({ alt, title, link, img, price, brand, banner }) => (
           <ProductDiv key={alt} href={link}>
-            <ProductImgDiv>
+            <ProductImgDiv onClick={toggle}>
               <ProductImg src={img} alt={alt} />
             </ProductImgDiv>
             <Text>{brand}</Text>
@@ -30,6 +36,7 @@ const Brand = () => {
           </ProductDiv>
         ))}
       </ItemLayout>
+      <Modal open={open} />
     </div>
   );
 };
