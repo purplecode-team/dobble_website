@@ -11,6 +11,7 @@ const Brand = () => {
   const toggle = () => {
     setOpen(!open);
   };
+  const closeModal = () => setOpen(false);
 
   return (
     <div>
@@ -36,7 +37,7 @@ const Brand = () => {
           </ProductDiv>
         ))}
       </ItemLayout>
-      <Modal open={open} />
+      <Modal open={open} closeModal={closeModal} />
     </div>
   );
 };

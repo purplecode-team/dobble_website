@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Login from '../pages/login';
 import Main from '../pages/main';
-import Basket from '../pages/basket';
 import Brand from '../pages/brand';
 import Product from '../pages/product';
 import Magazine from '../pages/Magazine';
@@ -20,7 +19,6 @@ const LoginRoutes = () => (
     <Route path="/brand/:category" component={Detail} />
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
-    <Route path="/basket" component={Basket} />
     <Route path="/mypage" component={MyPage} />
     <Redirect from="*" to="/" />
   </Switch>
