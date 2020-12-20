@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import Detail from './Detail';
 import MagazineList from './MagazineList';
+import { useScrollTop } from '../../utils/scrollTop';
 
 const Magazine = () => {
+  useScrollTop(true);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Banner>

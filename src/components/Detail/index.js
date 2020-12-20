@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import ItemLayout from '../ItemLayout';
 import { productsData } from '../Header/interface';
 import { dummyData } from '../dummyData';
+import { useScrollTop } from '../../utils/scrollTop';
 
 const Detail = ({ match }) => {
+  useScrollTop(true);
+
   return (
     <div>
       <Banner>

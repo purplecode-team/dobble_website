@@ -4,16 +4,6 @@ import styled from 'styled-components';
 import MainImg from '../img/illust unit_ae_3.png';
 
 const MainPage = () => {
-  // const [windowHeight, setWindowHeight] = useState(0);
-  // const resizeWindow = () => {
-  //   setWindowHeight(window.innerHeight);
-  // };
-  //
-  // useEffect(() => {
-  //   resizeWindow();
-  //   window.addEventListener('resize', resizeWindow);
-  //   return () => window.removeEventListener('resize', resizeWindow);
-  // }, []);
   return (
     <MainLayout>
       <TitleBox>
