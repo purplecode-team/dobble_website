@@ -14,7 +14,7 @@ export const headerIconData = [
     link: '/myPage',
     mobile: true,
     img: Heart,
-    alt: 'myPage_icon',
+    alt: 'heart_icon',
   },
   {
     link: '/basket',
