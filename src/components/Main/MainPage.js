@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import MainImg from '../img/illust unit_ae_3.png';
 
 const MainPage = () => {
+  const [windowHeight, setWindowHeight] = useState(0);
+  const resizeWindow = () => {
+    setWindowHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    resizeWindow();
+    window.addEventListener('resize', resizeWindow);
+    return () => window.removeEventListener('resize', resizeWindow);
+  }, []);
+
+  const movePage = (y) => {
+    window.scrollTo(0, windowHeight * y);
+  };
+
   return (
     <MainLayout>
       <TitleBox>
@@ -15,10 +30,10 @@ const MainPage = () => {
         <MainImgStyle src={MainImg} alt="main" />
       </ImgBox>
       <MenuBox>
-        <Text>Products</Text>
-        <Text>Brands</Text>
-        <Text>Magazine</Text>
-        <Text>Our Story</Text>
+        <Text onClick={() => movePage(1)}>Products</Text>
+        <Text onClick={() => movePage(2)}>Brands</Text>
+        <Text onClick={() => movePage(3)}>Magazine</Text>
+        <Text onClick={() => movePage(4)}>Our Story</Text>
       </MenuBox>
     </MainLayout>
   );
@@ -77,6 +92,8 @@ const MenuBox = styled.div`
 `;
 
 const Text = styled.div`
+  width: 150px;
+  cursor: pointer;
   color: black;
   font-size: 1.8rem;
   padding: 10px 0;
