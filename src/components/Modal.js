@@ -10,10 +10,10 @@ const Modal = ({ open, closeModal }) => {
           <XButton onClick={closeModal}>
             <CloseBtn src={CloseIcon} alt="closeBtn" />
           </XButton>
-          <h1>s</h1>
-          <h1>s</h1>
-          <h1>s</h1>
-          <h1>s</h1>
+          <ContentDiv>
+            <LeftBox>s</LeftBox>
+            <RightBox>s</RightBox>
+          </ContentDiv>
         </ModalDiv>
       </Dimmer>
     </div>
@@ -29,6 +29,23 @@ const Dimmer = styled.div`
   background: #00000080;
   z-index: 10000;
   display: ${({ open }) => (open ? 'block' : 'none')};
+`;
+
+const ContentDiv = styled.div`
+  background: yellow;
+  padding: 30px;
+`;
+
+const LeftBox = styled.div`
+  background: blue;
+  display: inline-block;
+  width: 30%;
+`;
+
+const RightBox = styled.div`
+  background: red;
+  display: inline-block;
+  width: 70%;
 `;
 
 const ModalDiv = styled.div`

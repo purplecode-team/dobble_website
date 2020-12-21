@@ -23,8 +23,9 @@ const Brand = () => {
         </Desc>
       </Banner>
       <ItemLayout data={brandsData}>
-        {dummyData.map(({ alt, title, link, img, price, brand, banner }) => (
-          <ProductDiv key={alt} href={link}>
+        <Top>Best</Top>
+        {dummyData.map(({ alt, title, img, price, brand, banner }) => (
+          <ProductDiv key={alt}>
             <ProductImgDiv onClick={toggle}>
               <ProductImg src={img} alt={alt} />
             </ProductImgDiv>
@@ -41,6 +42,12 @@ const Brand = () => {
     </div>
   );
 };
+
+const Top = styled.div`
+  font-size: 1.4rem;
+  width: 100%;
+  padding-bottom: 20px;
+`;
 
 const ProductDiv = styled.div`
   display: inline-block;
