@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import MainImg from '../img/illust unit_ae_3.png';
+import Dot from './Dot';
 
 const MainPage = () => {
   const [windowHeight, setWindowHeight] = useState(0);
@@ -35,6 +36,7 @@ const MainPage = () => {
         <Text onClick={() => movePage(3)}>Magazine</Text>
         <Text onClick={() => movePage(4)}>Our Story</Text>
       </MenuBox>
+      <Dot page="1" />
     </MainLayout>
   );
 };
