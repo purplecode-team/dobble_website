@@ -23,7 +23,7 @@ const CategorySection = styled.div`
 
 const CategoryDiv = styled.div`
   display: flex;
-  width: 65vw;
+  width: 64vw;
   justify-content: space-between;
   margin: 7vh auto;
   @media (max-width: 768px) {

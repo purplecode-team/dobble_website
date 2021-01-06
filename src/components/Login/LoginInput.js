@@ -8,8 +8,8 @@ import { loginRequest } from '../../reducer/user';
 import firebase from '../../firebase/firebase';
 
 const LoginInput = () => {
-  const [email, onChangeEmail] = useInput('');
-  const [password, onChangePassword] = useInput('');
+  const [email, onChangeEmail, setEmail] = useInput('');
+  const [password, onChangePassword, setPassword] = useInput('');
   const [showError, setShowError] = useState(false);
 
   const dispatch = useDispatch();
@@ -34,6 +34,8 @@ const LoginInput = () => {
         .catch((error) => {
           setShowError(true);
           console.log(error);
+          setEmail('');
+          setPassword('');
         });
     },
     [email, password],
@@ -65,12 +67,12 @@ const LoginInput = () => {
           />
         </InputBox>
         <TextBox>
-          <Text>아이디/비밀번호 찾기</Text>
+          <Text>이메일/비밀번호 찾기</Text>
           <LinkStyle to="/signup">
             <Text>회원가입</Text>
           </LinkStyle>
         </TextBox>
-        <div>{showError && 'error'}</div>
+        <ErrorMessage>{showError && '이메일/비밀번호가 일치하지 않습니다.'}</ErrorMessage>
         <InputBox>
           <LoginButton type="submit" disabled={!email || !password}>
             로그인
@@ -145,6 +147,13 @@ const Form = styled.form`
 
 const LinkStyle = styled(Link)`
   text-decoration: none;
+`;
+
+const ErrorMessage = styled.div`
+  padding: 0 20px;
+  color: red;
+  font-size: 0.8rem;
+  padding-top: 10px;
 `;
 
 export default LoginInput;

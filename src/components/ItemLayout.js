@@ -41,6 +41,7 @@ const SideMenu = styled.div`
   float: left;
   @media (max-width: 768px) {
     width: 100%;
+    margin-bottom: 40px;
   }
 `;
 

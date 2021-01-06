@@ -34,7 +34,7 @@ export const headerIconData = [
 export const productsData = [
   {
     key: 0,
-    content: 'MAIN',
+    content: '전체',
     link: '/product',
   },
   {
@@ -62,7 +62,7 @@ export const productsData = [
 export const brandsData = [
   {
     key: 0,
-    content: 'MAIN',
+    content: '전체',
     link: '/brand',
   },
   {
