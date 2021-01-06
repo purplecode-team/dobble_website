@@ -52,7 +52,7 @@ const MagazinePage = () => {
               id="list"
               transform="translate(0 30)"
               fill="#303030"
-              fontSize="18"
+              fontSize="20"
               fontFamily="SegoeUI-Bold, Segoe UI"
               fontWeight="700"
               style={{ cursor: 'pointer' }}

@@ -15,7 +15,7 @@ const MagazinePage = () => {
             <ArrowImg src={Arrow} alt="arrow" />
           </Link>
         </span>
-        <SubTitle>기부 스토어 브랜드와 기부처에 따른 아이템을 확인해 보세요.</SubTitle>
+        <SubTitle>도블의 기부 관련 소식과 브랜드들을 만나보세요.</SubTitle>
       </TitleBox>
       <ImgBox>
         <ImgStyle src={MagazineLogo} alt="magazine" />

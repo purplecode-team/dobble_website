@@ -9,7 +9,7 @@ const Magazine = () => {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Banner>
         <Desc>
-          <SubDesc>기부 스토어 브랜드와 기부처에 따른 메거진을 확인해 보세요</SubDesc>
+          <SubDesc>도블의 기부 관련 소식과 브랜드들을 만나보세요.</SubDesc>
           <Title>Magazine</Title>
           <Title>2020 -NOV</Title>
         </Desc>

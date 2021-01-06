@@ -12,6 +12,7 @@ const MagazineList = ({ history, match }) => {
     console.log(_data, 'title');
     history.push('/magazinepage');
   };
+
   return (
     <div>
       <ItemLayout MagazineCategory={MagazineCategory} Season={Season}>
