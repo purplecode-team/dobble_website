@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ItemLayout from '../ItemLayout';
 import { productsData } from '../Header/interface';
 import useList from '../../hooks/useList';
-import { dummyData } from '../dummyData';
 import { useScrollTop } from '../../utils/scrollTop';
 
 const Detail = ({ match }) => {

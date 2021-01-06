@@ -33,6 +33,11 @@ export const headerIconData = [
 
 export const productsData = [
   {
+    key: 0,
+    content: 'MAIN',
+    link: '/product',
+  },
+  {
     key: 1,
     content: '의류',
     link: '/product/Cloth',
@@ -55,6 +60,11 @@ export const productsData = [
 ];
 
 export const brandsData = [
+  {
+    key: 0,
+    content: 'MAIN',
+    link: '/brand',
+  },
   {
     key: 1,
     content: '마리몬드',
