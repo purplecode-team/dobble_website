@@ -35,7 +35,7 @@ const HomeRoutes = () => (
     <Route path="/magazinepage" component={MagazinePage} />
     <Route path="/login" component={Login} />
     <Route path="/signup" component={SignUp} />
-    <Route path="/mypage" component={MyPage} />
+    {/*<Route path="/mypage" component={MyPage} />*/}
     <Redirect from="*" to="/login" />
   </Switch>
 );

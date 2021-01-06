@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -10,29 +10,34 @@ import firebase from '../../firebase/firebase';
 const LoginInput = () => {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
+  const [showError, setShowError] = useState(false);
 
   const dispatch = useDispatch();
-  // const login = useCallback(() => {
-  //   console.log(email, password);
-  //   dispatch(loginRequest({ email, password }));
-  // }, [email, password]);
+
+  const Login = async () => {
+    try {
+      console.log(email, password);
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 
   const onSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(loginRequest({ email, password }));
+      Login()
+        .then(() => {
+          setShowError(false);
+          dispatch(loginRequest({ email }));
+        })
+        .catch((error) => {
+          setShowError(true);
+          console.log(error);
+        });
     },
     [email, password],
   );
-
-  // const Login = async () => {
-  //   try {
-  //     console.log(email, password);
-  //     await firebase.auth().signInWithEmailAndPassword(email, password);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <InputSection>
@@ -65,6 +70,7 @@ const LoginInput = () => {
             <Text>회원가입</Text>
           </LinkStyle>
         </TextBox>
+        <div>{showError && 'error'}</div>
         <InputBox>
           <LoginButton type="submit" disabled={!email || !password}>
             로그인
