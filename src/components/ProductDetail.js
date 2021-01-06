@@ -15,12 +15,12 @@ const ProductDetail = ({ data }) => {
       <ProductImgDiv onClick={openModal}>
         <ProductImg src={img} alt={alt} />
       </ProductImgDiv>
-      <Text>{brand}</Text>
-      <Text>
-        <BannerText>{banner}</BannerText>
-        {title}
-      </Text>
-      <Price>{price}</Price>
+      <Text style={{ fontSize: '0.8rem' }}>{brand}</Text>
+      <Text>{title}</Text>
+      <Price>
+        {banner && <BannerText>{banner}</BannerText>}
+        {price}
+      </Price>
       <Modal open={isOpen} data={data} closeModal={closeModal} />
     </ProductDiv>
   );
@@ -29,7 +29,7 @@ const ProductDetail = ({ data }) => {
 const ProductDiv = styled.div`
   display: inline-block;
   margin-right: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   padding: 10px;
   padding-top: 0;
   @media (max-width: 768px) {
@@ -39,7 +39,7 @@ const ProductDiv = styled.div`
 
 const ProductImgDiv = styled.div`
   width: 220px;
-  height: 300px;
+  height: 269px;
   overflow: hidden;
   border-radius: 18px 18px;
   background: rgb(220, 220, 220);
@@ -54,21 +54,20 @@ const ProductImg = styled.img`
 `;
 
 const Text = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   margin: 10px 0;
 `;
 
 const BannerText = styled.div`
-  background: yellow;
-  font-size: 0.8rem;
-  color: rgb(100, 100, 100);
+  font-size: 1.4rem;
+  color: red;
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 10px;
 `;
 
 const Price = styled.div`
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.4rem;
 `;
 
 export default ProductDetail;

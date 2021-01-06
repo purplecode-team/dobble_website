@@ -5,8 +5,11 @@ import { dummyData } from '../dummyData';
 import { brandsData } from '../Header/interface';
 import ItemLayout from '../ItemLayout';
 import ProductDetail from '../ProductDetail';
+import { useScrollTop } from '../../utils/scrollTop';
 
 const Brand = () => {
+  useScrollTop(true);
+
   return (
     <div>
       <Banner>

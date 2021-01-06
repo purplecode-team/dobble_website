@@ -4,12 +4,12 @@ import ItemLayout from '../ItemLayout';
 import { productsData } from '../Header/interface';
 import useList from '../../hooks/useList';
 import { useScrollTop } from '../../utils/scrollTop';
+import ProductDetail from '../ProductDetail';
 
 const Detail = ({ match }) => {
+  useScrollTop(true);
   //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
   const [firebaseData, error, loading, empty] = useList(match);
-
-  useScrollTop(true);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -23,69 +23,11 @@ const Detail = ({ match }) => {
         {error && <div>Error : {error}</div>}
         {loading && <div>Loading...</div>}
         {empty && <div>상품이 존재하지 않습니다.</div>}
-        {firebaseData &&
-          firebaseData.map(({ alt, title, link, img, price, brand, banner }) => (
-            <ProductDiv key={alt} href={link}>
-              <ProductImgDiv>
-                <ProductImg src={img} alt={alt} />
-              </ProductImgDiv>
-              <Text>{brand}</Text>
-              <Text>
-                <BannerText>{banner}</BannerText>
-                {title}
-              </Text>
-              <Price>{price}</Price>
-            </ProductDiv>
-          ))}
+        {firebaseData && firebaseData.map((data) => <ProductDetail key={data.alt} data={data} />)}
       </ItemLayout>
     </div>
   );
 };
-
-const ProductDiv = styled.div`
-  display: inline-block;
-  margin-right: 30px;
-  margin-bottom: 30px;
-  padding: 10px;
-  padding-top: 0;
-  @media (max-width: 768px) {
-    margin-right: 0;
-  }
-`;
-
-const ProductImgDiv = styled.div`
-  width: 220px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 18px 18px;
-  background: rgb(220, 220, 220);
-`;
-
-const ProductImg = styled.img`
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-`;
-
-const Text = styled.div`
-  font-size: 0.8rem;
-  margin: 10px 0;
-`;
-
-const BannerText = styled.div`
-  background: yellow;
-  font-size: 0.8rem;
-  color: rgb(100, 100, 100);
-  display: inline-block;
-  margin-right: 5px;
-`;
-
-const Price = styled.div`
-  font-weight: bold;
-  font-size: 2rem;
-`;
 
 const Banner = styled.div`
   height: 70vh;
