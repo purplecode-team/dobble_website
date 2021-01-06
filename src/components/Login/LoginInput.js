@@ -5,25 +5,34 @@ import { Link } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 
 import { loginRequest } from '../../reducer/user';
+import firebase from '../../firebase/firebase';
 
 const LoginInput = () => {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
 
   const dispatch = useDispatch();
-  // const loginRequest = () => {
+  // const login = useCallback(() => {
   //   console.log(email, password);
   //   dispatch(loginRequest({ email, password }));
-  // };
+  // }, [email, password]);
 
   const onSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
-      console.log(email, password);
       dispatch(loginRequest({ email, password }));
     },
     [email, password],
   );
+
+  // const Login = async () => {
+  //   try {
+  //     console.log(email, password);
+  //     await firebase.auth().signInWithEmailAndPassword(email, password);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <InputSection>

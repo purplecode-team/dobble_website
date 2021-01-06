@@ -25,7 +25,7 @@ const MagazinePage = () => {
 };
 
 const MainLayout = styled.div`
-  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/feature/magazine/src/components/img/magzineLogo.png?raw=true');
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/magzineLogo.png?raw=true');
   background-repeat: no-repeat;
   background-position: 80% 40%;
   background-size: 500px auto;

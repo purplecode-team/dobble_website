@@ -3,10 +3,14 @@ import styled from 'styled-components';
 import ItemLayout from '../ItemLayout';
 import { productsData } from '../Header/interface';
 import useList from '../../hooks/useList';
+import { dummyData } from '../dummyData';
+import { useScrollTop } from '../../utils/scrollTop';
 
 const Detail = ({ match }) => {
   //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
   const [firebaseData, error, loading, empty] = useList(match);
+
+  useScrollTop(true);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>

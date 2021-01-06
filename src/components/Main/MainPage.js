@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import MainImg from '../img/illust unit_ae_3.png';
+import Dot from './Dot';
 
 const MainPage = () => {
-  // const [windowHeight, setWindowHeight] = useState(0);
-  // const resizeWindow = () => {
-  //   setWindowHeight(window.innerHeight);
-  // };
-  //
-  // useEffect(() => {
-  //   resizeWindow();
-  //   window.addEventListener('resize', resizeWindow);
-  //   return () => window.removeEventListener('resize', resizeWindow);
-  // }, []);
+  const [windowHeight, setWindowHeight] = useState(0);
+  const resizeWindow = () => {
+    setWindowHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    resizeWindow();
+    window.addEventListener('resize', resizeWindow);
+    return () => window.removeEventListener('resize', resizeWindow);
+  }, []);
+
+  const movePage = (y) => {
+    window.scrollTo(0, windowHeight * y);
+  };
+
   return (
     <MainLayout>
       <TitleBox>
@@ -25,17 +31,18 @@ const MainPage = () => {
         <MainImgStyle src={MainImg} alt="main" />
       </ImgBox>
       <MenuBox>
-        <Text>Products</Text>
-        <Text>Brands</Text>
-        <Text>Magazine</Text>
-        <Text>Our Story</Text>
+        <Text onClick={() => movePage(1)}>Products</Text>
+        <Text onClick={() => movePage(2)}>Brands</Text>
+        <Text onClick={() => movePage(3)}>Magazine</Text>
+        <Text onClick={() => movePage(4)}>Our Story</Text>
       </MenuBox>
+      <Dot page="1" />
     </MainLayout>
   );
 };
 
 const MainLayout = styled.div`
-  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/feature/magazine/src/components/img/illust%20unit_ae_3.png?raw=true');
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/illust%20unit_ae_3.png?raw=true');
   background-repeat: no-repeat;
   background-position: 80% center;
   background-size: 500px 500px;
@@ -87,6 +94,8 @@ const MenuBox = styled.div`
 `;
 
 const Text = styled.div`
+  width: 150px;
+  cursor: pointer;
   color: black;
   font-size: 1.8rem;
   padding: 10px 0;
