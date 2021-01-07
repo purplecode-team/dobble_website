@@ -5,7 +5,6 @@ import {
   InfoItem,
   InfoContent,
   Button,
-  Img,
   ItemList,
   LogoutBtn,
   MailTitle,
@@ -14,6 +13,7 @@ import {
   TelTitle,
   UserName,
   Line,
+  ProfileImg,
 } from './MyPageStyle';
 import firebase from '../../firebase/firebase';
 import { logoutRequest } from '../../reducer/user';
@@ -51,7 +51,7 @@ const UserInfo = ({ history }) => {
   };
   return (
     <Container>
-      <Img src={HeaderLogo} style={{ borderRadius: '50%' }} alt="profile" />
+      <ProfileImg src={HeaderLogo} alt="profile" />
       <UserName>{name}</UserName>
       <ItemList>
         <Line />

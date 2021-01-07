@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
+export const ProfileImg = styled.img`
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 6vh;
 `;
-export const Img = styled.img``;
+
 export const UserName = styled.div`
   margin-top: 3vh;
   font-weight: bold;
