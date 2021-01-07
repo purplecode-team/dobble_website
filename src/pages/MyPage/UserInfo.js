@@ -31,19 +31,22 @@ const UserInfo = ({ history }) => {
 
   // 로그인한 사용자 전화번호, 이름 데이터 가져오기
   useEffect(() => {
-    const userId = firebase.auth().currentUser.uid;
-    const query = firebase.database().ref(`/users/${userId}`);
-    const loadData = async () => {
-      try {
-        await query.once('value').then(function (snapshot) {
-          setTel(snapshot.val().tel);
-          setName(snapshot.val().name);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    loadData();
+    // 새로고침 되었을때도 값 유지
+    firebase.auth().onAuthStateChanged(function () {
+      const userId = firebase.auth().currentUser.uid;
+      const query = firebase.database().ref(`/users/${userId}`);
+      const loadData = async () => {
+        try {
+          await query.once('value').then(function (snapshot) {
+            setTel(snapshot.val().tel);
+            setName(snapshot.val().name);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      loadData();
+    });
   }, []);
 
   const onClick = () => {

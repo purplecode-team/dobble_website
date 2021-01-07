@@ -19,6 +19,7 @@ const LoginRoutes = () => (
     <Route path="/brand/:category" component={Detail} />
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
+    <Route path="/magazinepage" component={MagazinePage} />
     <Route path="/mypage" component={MyPage} />
     <Redirect from="*" to="/" />
   </Switch>
@@ -35,7 +36,6 @@ const HomeRoutes = () => (
     <Route path="/magazinepage" component={MagazinePage} />
     <Route path="/login" component={Login} />
     <Route path="/signup" component={SignUp} />
-    {/*<Route path="/mypage" component={MyPage} />*/}
     <Redirect from="*" to="/login" />
   </Switch>
 );
