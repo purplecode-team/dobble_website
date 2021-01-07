@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ItemLayout from '../ItemLayout';
-import { productsData } from '../Header/interface';
+import { brandsData, productsData } from '../Header/interface';
 import useList from '../../hooks/useList';
-import { dummyData } from '../dummyData';
 import { useScrollTop } from '../../utils/scrollTop';
 
 const Detail = ({ match }) => {
   //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
   const [firebaseData, error, loading, empty] = useList(match);
+
+  /* product라면 왼쪽 category에 productsData를 보여주고 brand라면 brandsData를 보여준다 */
+  const [category, setCategory] = useState([]);
+  const pathArray = match.path.split('/');
+
+  useEffect(() => {
+    pathArray[1] === 'product' ? setCategory(productsData) : setCategory(brandsData);
+  }, [match]);
 
   useScrollTop(true);
 
@@ -20,7 +27,7 @@ const Detail = ({ match }) => {
           <SubDesc>기부 스토어 브랜드와 기부처에 따른 아이템을 확인해 보세요</SubDesc>
         </Desc>
       </Banner>
-      <ItemLayout data={productsData}>
+      <ItemLayout data={category}>
         {error && <div>Error : {error}</div>}
         {loading && <div>Loading...</div>}
         {empty && <div>상품이 존재하지 않습니다.</div>}
