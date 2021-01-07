@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
@@ -17,47 +17,27 @@ import {
 } from './MyPageStyle';
 import firebase from '../../firebase/firebase';
 import { logoutRequest } from '../../reducer/user';
+import HeaderLogo from '../../components/img/doble_icon.png';
 
 const UserInfo = ({ history }) => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
+  const [tel, setTel] = useState('');
+  const [name, setName] = useState('');
 
   const onLogout = useCallback(() => {
     dispatch(logoutRequest());
   }, []);
 
-  const user = [];
-  // useEffect(() => {
-  //   const users = firebase.auth().currentUser;
-  //   users &&
-  //     users.providerData.forEach(function (profile) {
-  //       console.log(`Sign-in provider: ${profile.providerId}`);
-  //       console.log(`  Provider-specific UID: ${profile.uid}`);
-  //       console.log(`  Name: ${profile.name}`);
-  //       console.log(`  Email: ${profile.email}`);
-  //       console.log(`  Photo URL: ${profile.photoURL}`);
-  //     });
-  // }, []);
-
-  // const userId = firebase.auth().currentUser.uid;
-  // firebase
-  //   .database()
-  //   .ref(`/users/${userId}`)
-  //   .once('value')
-  //   .then(function (snapshot) {
-  //     user.push(snapshot.val().tel);
-  //     user.push(snapshot.val().name);
-  //     // console.log(snapshot.val().name);
-  //     // console.log(snapshot.val().tel);
-  //   });
+  // 로그인한 사용자 전화번호, 이름 데이터 가져오기
   useEffect(() => {
     const userId = firebase.auth().currentUser.uid;
     const query = firebase.database().ref(`/users/${userId}`);
     const loadData = async () => {
       try {
         await query.once('value').then(function (snapshot) {
-          user.push(snapshot.val().tel);
-          user.push(snapshot.val().name);
+          setTel(snapshot.val().tel);
+          setName(snapshot.val().name);
         });
       } catch (error) {
         console.log(error);
@@ -71,9 +51,8 @@ const UserInfo = ({ history }) => {
   };
   return (
     <Container>
-      {console.log(user)}
-      <Img src="https://via.placeholder.com/90" style={{ borderRadius: '50%' }} alt="profile" />
-      <UserName>user</UserName>
+      <Img src={HeaderLogo} style={{ borderRadius: '50%' }} alt="profile" />
+      <UserName>{name}</UserName>
       <ItemList>
         <Line />
         <InfoItem>
@@ -83,7 +62,7 @@ const UserInfo = ({ history }) => {
         <Line />
         <InfoItem>
           <TelTitle>전화번호</TelTitle>
-          <InfoContent>{user[0]}</InfoContent>
+          <InfoContent>{tel}</InfoContent>
         </InfoItem>
         <Line />
       </ItemList>
