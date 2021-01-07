@@ -1,13 +1,8 @@
 export const MagazineCategory = [
   {
     key: 1,
-    content: 'All',
-    link: '/magazine',
-  },
-  {
-    key: 2,
     content: 'Brand',
-    link: '/magazine/Brand',
+    link: '/magazine',
   },
   {
     key: 3,
