@@ -6,7 +6,7 @@ import Heart from './img/heart.png';
 const Modal = ({ open, closeModal, data }) => {
   return (
     <div>
-      <Dimmer open={open}>
+      <Dimmer open={open} onClick={closeModal}>
         <ModalDiv>
           <XButton onClick={closeModal}>
             <CloseBtn src={CloseIcon} alt="closeBtn" />

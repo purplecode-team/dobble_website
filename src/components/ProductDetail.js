@@ -28,17 +28,18 @@ const ProductDetail = ({ data }) => {
 
 const ProductDiv = styled.div`
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 20px;
   margin-bottom: 60px;
   padding: 10px;
   padding-top: 0;
+  padding-left: 0;
   @media (max-width: 768px) {
     margin-right: 0;
   }
 `;
 
 const ProductImgDiv = styled.div`
-  width: 220px;
+  width: 230px;
   height: 269px;
   overflow: hidden;
   border-radius: 18px 18px;
@@ -54,12 +55,12 @@ const ProductImg = styled.img`
 `;
 
 const Text = styled.div`
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   margin: 10px 0;
 `;
 
 const BannerText = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: red;
   display: inline-block;
   margin-right: 10px;
@@ -67,7 +68,7 @@ const BannerText = styled.div`
 
 const Price = styled.div`
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;
 
 export default ProductDetail;
