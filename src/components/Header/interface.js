@@ -101,7 +101,7 @@ export const magazineData = [
   {
     key: 1,
     content: '브랜드 소개',
-    link: '/magazine/Brand',
+    link: '/magazine',
   },
   {
     key: 2,
