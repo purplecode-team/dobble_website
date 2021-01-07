@@ -18,13 +18,13 @@ const HamburgerMenu = ({ menuOpen, closeMenu }) => {
           <StyledLink to="/myPage">
             <IconDiv>
               <Icon src={MyPage} alt="mypage" />
-              <div>{me ? '마이페이지' : '로그인'}</div>
+              <Top>{me ? '마이페이지' : '로그인'}</Top>
             </IconDiv>
           </StyledLink>
           <StyledLink to="/basket">
             <IconDiv>
               <Icon src={Heart} alt="heart" />
-              <div>찜</div>
+              <Top>찜</Top>
             </IconDiv>
           </StyledLink>
         </LeftDiv>
@@ -106,6 +106,10 @@ const StyledLink = styled(Link)`
 const XButton = styled.div`
   float: right;
   cursor: pointer;
+`;
+
+const Top = styled.div`
+  font-size: 0.8rem;
 `;
 
 export default HamburgerMenu;

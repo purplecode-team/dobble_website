@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -8,31 +8,38 @@ import { loginRequest } from '../../reducer/user';
 import firebase from '../../firebase/firebase';
 
 const LoginInput = () => {
-  const [email, onChangeEmail] = useInput('');
-  const [password, onChangePassword] = useInput('');
+  const [email, onChangeEmail, setEmail] = useInput('');
+  const [password, onChangePassword, setPassword] = useInput('');
+  const [showError, setShowError] = useState(false);
 
   const dispatch = useDispatch();
-  // const login = useCallback(() => {
-  //   console.log(email, password);
-  //   dispatch(loginRequest({ email, password }));
-  // }, [email, password]);
+
+  const Login = async () => {
+    try {
+      console.log(email, password);
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 
   const onSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(loginRequest({ email, password }));
+      Login()
+        .then(() => {
+          setShowError(false);
+          dispatch(loginRequest({ email }));
+        })
+        .catch((error) => {
+          setShowError(true);
+          console.log(error);
+          setEmail('');
+          setPassword('');
+        });
     },
     [email, password],
   );
-
-  // const Login = async () => {
-  //   try {
-  //     console.log(email, password);
-  //     await firebase.auth().signInWithEmailAndPassword(email, password);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <InputSection>
@@ -60,11 +67,12 @@ const LoginInput = () => {
           />
         </InputBox>
         <TextBox>
-          <Text>아이디/비밀번호 찾기</Text>
+          <Text>이메일/비밀번호 찾기</Text>
           <LinkStyle to="/signup">
             <Text>회원가입</Text>
           </LinkStyle>
         </TextBox>
+        <ErrorMessage>{showError && '이메일/비밀번호가 일치하지 않습니다.'}</ErrorMessage>
         <InputBox>
           <LoginButton type="submit" disabled={!email || !password}>
             로그인
@@ -139,6 +147,13 @@ const Form = styled.form`
 
 const LinkStyle = styled(Link)`
   text-decoration: none;
+`;
+
+const ErrorMessage = styled.div`
+  padding: 0 20px;
+  color: red;
+  font-size: 0.8rem;
+  padding-top: 10px;
 `;
 
 export default LoginInput;

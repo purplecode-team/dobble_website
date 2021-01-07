@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { dummyData } from '../dummyData';
 import { brandsData } from '../Header/interface';
 import ItemLayout from '../ItemLayout';
-import Modal from '../Modal';
+import ProductDetail from '../ProductDetail';
+import { useScrollTop } from '../../utils/scrollTop';
 
 const Brand = () => {
-  const [open, setOpen] = useState(false);
-  const toggle = () => {
-    setOpen(!open);
-  };
-  const closeModal = () => setOpen(false);
+  useScrollTop(true);
 
   return (
     <div>
@@ -24,21 +21,10 @@ const Brand = () => {
       </Banner>
       <ItemLayout data={brandsData}>
         <Top>Best</Top>
-        {dummyData.map(({ alt, title, img, price, brand, banner }) => (
-          <ProductDiv key={alt}>
-            <ProductImgDiv onClick={toggle}>
-              <ProductImg src={img} alt={alt} />
-            </ProductImgDiv>
-            <Text>{brand}</Text>
-            <Text>
-              <BannerText>{banner}</BannerText>
-              {title}
-            </Text>
-            <Price>{price}</Price>
-          </ProductDiv>
+        {dummyData.map((data) => (
+          <ProductDetail key={data.alt} data={data} />
         ))}
       </ItemLayout>
-      <Modal open={open} closeModal={closeModal} />
     </div>
   );
 };
@@ -47,51 +33,6 @@ const Top = styled.div`
   font-size: 1.4rem;
   width: 100%;
   padding-bottom: 20px;
-`;
-
-const ProductDiv = styled.div`
-  display: inline-block;
-  margin-right: 30px;
-  margin-bottom: 30px;
-  padding: 10px;
-  padding-top: 0;
-  @media (max-width: 768px) {
-    margin-right: 0;
-  }
-`;
-
-const ProductImgDiv = styled.div`
-  width: 220px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 18px 18px;
-  background: rgb(220, 220, 220);
-`;
-
-const ProductImg = styled.img`
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-`;
-
-const Text = styled.div`
-  font-size: 0.8rem;
-  margin: 10px 0;
-`;
-
-const BannerText = styled.div`
-  background: yellow;
-  font-size: 0.8rem;
-  color: rgb(100, 100, 100);
-  display: inline-block;
-  margin-right: 5px;
-`;
-
-const Price = styled.div`
-  font-weight: bold;
-  font-size: 2rem;
 `;
 
 const Banner = styled.div`
