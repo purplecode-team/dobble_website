@@ -14,7 +14,6 @@ const Detail = ({ match, history }) => {
   return (
     <div>
       <ItemLayout MagazineCategory={MagazineCategory} Season={Season}>
-        <Top>{match.params.category}</Top>
         {error && <div>Error : {error}</div>}
         {loading && <div>Loading...</div>}
         {empty && <div>매거진이 존재하지 않습니다.</div>}
@@ -22,10 +21,15 @@ const Detail = ({ match, history }) => {
           magazineData.map((data) => (
             <ProductDiv key={data.title}>
               <ProductImgDiv>
-                <ProductImg src={data.contents.img} alt={data.contents.alt} />
+                <ProductImg src={data.mainImg.img} alt={data.mainImg.alt} />
               </ProductImgDiv>
               <div
-                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginTop: '12px',
+                }}
               >
                 <Title onClick={() => onOpen(data)} style={{ cursor: 'pointer' }}>
                   {data.title}
@@ -39,14 +43,9 @@ const Detail = ({ match, history }) => {
     </div>
   );
 };
-const Top = styled.div`
-  font-size: 1.4rem;
-  width: 100%;
-  padding-bottom: 20px;
-`;
-
 const ProductDiv = styled.div`
   display: inline-block;
+  margin-top: 40px;
   margin-right: 90px;
   margin-bottom: 50px;
   padding-top: 0;
@@ -72,7 +71,6 @@ const ProductImg = styled.img`
 `;
 const Title = styled.div`
   font-size: 1rem;
-  margin: 6px 0;
   font-weight: bold;
   font-family: 'Stilu';
 `;
@@ -83,12 +81,13 @@ const HashTag = styled.div`
   color: white;
   overflow: hidden;
   border-radius: 18px 18px;
-  background: gray;
+  background: #ea404a;
   font-family: 'Stilu';
 `;
 const Text = styled.div`
   font-size: 0.8rem;
-  margin: 10px 0;
   font-family: 'Arial';
+  color: #888888;
+  margin-top: 5px;
 `;
 export default Detail;

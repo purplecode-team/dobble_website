@@ -6,8 +6,8 @@ export const MagazineCategory = [
   },
   {
     key: 3,
-    content: 'Donation',
-    link: '/magazine/Donation',
+    content: 'Article',
+    link: '/magazine/Article',
   },
 ];
 

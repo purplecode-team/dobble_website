@@ -95,7 +95,7 @@ export const magazineData = [
   },
   {
     key: 2,
-    content: '기부 소식',
-    link: '/magazine/Donation',
+    content: '아티클',
+    link: '/magazine/Article',
   },
 ];
