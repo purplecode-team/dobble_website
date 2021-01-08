@@ -21,7 +21,7 @@ const HamburgerMenu = ({ menuOpen, closeMenu }) => {
               <Top>{me ? '마이페이지' : '로그인'}</Top>
             </IconDiv>
           </StyledLink>
-          <StyledLink to="/basket">
+          <StyledLink to="/myPage/wishlist">
             <IconDiv>
               <Icon src={Heart} alt="heart" />
               <Top>찜</Top>
