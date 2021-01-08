@@ -1,15 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ItemLayout from './ItemLayout';
 import { MagazineCategory, Season } from './categoryData';
 import useList from '../../hooks/useList';
+import { setMagazine } from '../../reducer/magazine';
 
 const Detail = ({ match, history }) => {
+  const dispatch = useDispatch();
+
   //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
   const [magazineData, error, loading, empty] = useList(match);
 
-  const onOpen = () => {
-    history.push('/magazinepage');
+  const onOpen = (_data) => {
+    dispatch(setMagazine(_data));
+    history.push('/currentmagazine');
   };
   return (
     <div>
@@ -47,7 +52,7 @@ const ProductDiv = styled.div`
   display: inline-block;
   margin-top: 40px;
   margin-right: 90px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   padding-top: 0;
   @media (max-width: 768px) {
     margin-right: 0;
@@ -76,7 +81,7 @@ const Title = styled.div`
 `;
 const HashTag = styled.div`
   font-size: 0.8rem;
-  width: 60px;
+  width: 73px;
   text-align: center;
   color: white;
   overflow: hidden;

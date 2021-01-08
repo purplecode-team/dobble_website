@@ -1,16 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { MagazineCategory, Season } from './categoryData';
 import ItemLayout from './ItemLayout';
 import useList from '../../hooks/useList';
+import { setMagazine } from '../../reducer/magazine';
 
 const BrandMagazine = ({ history, match }) => {
+  const dispatch = useDispatch();
+
   //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
   const [magazineData, error, loading, empty] = useList(match);
 
   const onOpen = (_data) => {
     console.log(_data, 'title');
-    history.push('/magazinepage');
+    dispatch(setMagazine(_data));
+    history.push('/currentmagazine');
   };
 
   return (
@@ -24,7 +29,7 @@ const BrandMagazine = ({ history, match }) => {
             <ProductDiv key={data.title}>
               <FlexBox>
                 <ProductImgDiv>
-                  <ProductImg src={data.mainImg} alt={data.alt} />
+                  <ProductImg src={data.mainImg.img} alt={data.mainImg.alt} />
                 </ProductImgDiv>
                 <Title onClick={() => onOpen(data)} style={{ cursor: 'pointer' }}>
                   {data.title}
