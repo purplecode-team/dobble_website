@@ -1,8 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useScrollTop } from '../../utils/scrollTop';
 
 const CurrentMagazine = () => {
+  useScrollTop(true);
+
   const data = useSelector((state) => state.magazine.currentMagazine);
 
   return (

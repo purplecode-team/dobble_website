@@ -1,22 +1,15 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { MagazineCategory, Season } from './categoryData';
 import ItemLayout from './ItemLayout';
 import useList from '../../hooks/useList';
-import { setMagazine } from '../../reducer/magazine';
+import { useScrollTop } from '../../utils/scrollTop';
 
-const BrandMagazine = ({ history, match }) => {
-  const dispatch = useDispatch();
+const BrandMagazine = ({ match }) => {
+  useScrollTop(true);
 
   //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
   const [magazineData, error, loading, empty] = useList(match);
-
-  const onOpen = (_data) => {
-    console.log(_data, 'title');
-    dispatch(setMagazine(_data));
-    history.push('/currentmagazine');
-  };
 
   return (
     <div>
@@ -31,9 +24,7 @@ const BrandMagazine = ({ history, match }) => {
                 <ProductImgDiv>
                   <ProductImg src={data.mainImg.img} alt={data.mainImg.alt} />
                 </ProductImgDiv>
-                <Title onClick={() => onOpen(data)} style={{ cursor: 'pointer' }}>
-                  {data.title}
-                </Title>
+                <Title>{data.title}</Title>
                 <Text>{data.description}</Text>
               </FlexBox>
             </ProductDiv>
@@ -45,7 +36,7 @@ const BrandMagazine = ({ history, match }) => {
 
 const ProductDiv = styled.div`
   display: inline-block;
-  margin: 40px 80px 70px 0px;
+  margin: 40px 60px 80px 0px;
   padding-top: 0;
   @media (max-width: 768px) {
     margin-right: 0;
