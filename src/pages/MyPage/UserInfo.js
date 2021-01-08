@@ -17,7 +17,7 @@ import {
 } from './MyPageStyle';
 import firebase from '../../firebase/firebase';
 import { logoutRequest } from '../../reducer/user';
-import HeaderLogo from '../../components/img/doble_icon.png';
+import ProfileImage from '../../components/img/profile.png';
 
 const UserInfo = ({ history }) => {
   const dispatch = useDispatch();
@@ -54,8 +54,8 @@ const UserInfo = ({ history }) => {
   };
   return (
     <Container>
-      <ProfileImg src={HeaderLogo} alt="profile" />
-      <UserName>{name || '소셜로그인'}</UserName>
+      <ProfileImg src={ProfileImage} alt="profile" />
+      <UserName>{name || me}</UserName>
       <ItemList>
         <Line />
         <InfoItem>
@@ -65,7 +65,7 @@ const UserInfo = ({ history }) => {
         <Line />
         <InfoItem>
           <TelTitle>전화번호</TelTitle>
-          <InfoContent>{tel || '전화번호 없음'}</InfoContent>
+          <InfoContent>{tel || ''}</InfoContent>
         </InfoItem>
         <Line />
       </ItemList>

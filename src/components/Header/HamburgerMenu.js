@@ -93,6 +93,7 @@ const CloseBtn = styled.img`
   width: 20px;
   height: 20px;
   margin: 20px;
+  margin-right: 40px;
   @media (max-width: 768px) {
     margin: 0;
   }

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { Container, Line, ProfileImg } from './MyPageStyle';
-import HeaderLogo from '../../components/img/doble_icon.png';
+import ProfileImage from '../../components/img/profile.png';
 
 const ChangeUserInfo = () => {
   const { register, watch, errors, handleSubmit } = useForm({
@@ -40,7 +40,7 @@ const ChangeUserInfo = () => {
     <Container>
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <UserInfoContainer onSubmit={handleSubmit(onSave)} id="modify_form">
-        <ProfileImg src={HeaderLogo} alt="profile" />
+        <ProfileImg src={ProfileImage} alt="profile" />
         <UserName
           name="name"
           type="text"
