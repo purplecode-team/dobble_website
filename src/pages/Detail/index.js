@@ -13,17 +13,23 @@ const Detail = ({ match }) => {
 
   /* product라면 왼쪽 category에 productsData를 보여주고 brand라면 brandsData를 보여준다 */
   const [category, setCategory] = useState([]);
+  const [distinct, setDistinct] = useState(false);
   const pathArray = match.path.split('/');
 
   useEffect(() => {
     pathArray[1] === 'product' ? setCategory(productsData) : setCategory(brandsData);
   }, [match]);
 
+  // true일때는 brandBanner 적용
+  useEffect(() => {
+    pathArray[1] === 'product' ? setDistinct(false) : setDistinct(true);
+  }, [match]);
+
   useScrollTop(true);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Banner>
+      <Banner distinct={distinct}>
         <Desc>
           <Title>{match.params.category}</Title>
           <SubDesc>기부 스토어 브랜드와 기부처에 따른 아이템을 확인해 보세요</SubDesc>
@@ -42,7 +48,14 @@ const Detail = ({ match }) => {
 const Banner = styled.div`
   height: 70vh;
   width: 100%;
-  background: rgb(212, 212, 212);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/productBanner.png?raw=true');
+  ${(props) =>
+    props.distinct &&
+    `background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/brandBanner.png?raw=true');
+    `}
 `;
 
 const Desc = styled.div`

@@ -40,7 +40,10 @@ const Top = styled.div`
 const Banner = styled.div`
   height: 80vh;
   width: 100%;
-  background: rgb(212, 212, 212);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/productBanner.png?raw=true');
 `;
 
 const Desc = styled.div`

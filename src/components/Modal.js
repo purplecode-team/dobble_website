@@ -6,7 +6,7 @@ import Heart from './img/heart.png';
 const Modal = ({ open, closeModal, data }) => {
   return (
     <div>
-      <Dimmer open={open} onClick={closeModal}>
+      <Dimmer open={open}>
         <ModalDiv>
           <XButton onClick={closeModal}>
             <CloseBtn src={CloseIcon} alt="closeBtn" />
@@ -46,7 +46,7 @@ const Dimmer = styled.div`
   right: 0;
   bottom: 0;
   background: #00000080;
-  z-index: 10000;
+  z-index: 100;
   display: ${({ open }) => (open ? 'block' : 'none')};
 `;
 
@@ -93,6 +93,7 @@ const ModalDiv = styled.div`
   background: white;
   border-radius: 26px;
   padding: 30px;
+  z-index: 1000;
   @media (max-width: 768px) {
     overflow-y: scroll;
     width: 75%;
