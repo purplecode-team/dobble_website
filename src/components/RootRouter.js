@@ -7,7 +7,7 @@ import Product from './Product';
 import Magazine from '../pages/Magazine';
 import AppLayout from './AppLayout';
 import SignUp from './SignUp';
-import MagazinePage from '../pages/Magazine/MagazinePage';
+import CurrentMagazine from '../pages/Magazine/CurrentMagazine';
 import MyPage from '../pages/MyPage';
 import Detail from './Detail';
 
@@ -33,7 +33,7 @@ const HomeRoutes = () => (
     <Route path="/brand/:category" component={Detail} />
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
-    <Route path="/magazinepage" component={MagazinePage} />
+    <Route path="/currentmagazine" component={CurrentMagazine} />
     <Route path="/login" component={Login} />
     <Route path="/signup" component={SignUp} />
     <Redirect from="*" to="/login" />

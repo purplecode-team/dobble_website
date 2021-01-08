@@ -101,7 +101,7 @@ const SubmitButton = styled.input`
   font-size: 1.14vw;
   color: #303030;
   :hover {
-    background-color: gray;
+    background-color: #d5d2d2;
   }
   @media (max-width: 768px) {
     height: 5vh;

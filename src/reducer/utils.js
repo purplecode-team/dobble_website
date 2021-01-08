@@ -5,3 +5,5 @@ export const stateAction = (state) => {
 
   return [ACTION_REQUEST, ACTION_SUCCESS, ACTION_FAILURE];
 };
+
+export const SET_CURRENT_MAGAZINE = 'set_current_magazine';

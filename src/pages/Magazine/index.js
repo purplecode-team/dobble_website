@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import Detail from './Detail';
-import MagazineList from './MagazineList';
+import BrandMagazine from './BrandMagazine';
 import { useScrollTop } from '../../utils/scrollTop';
 
 const Magazine = () => {
@@ -17,7 +17,7 @@ const Magazine = () => {
           <Title>2020 -NOV</Title>
         </Desc>
       </Banner>
-      <Route path="/magazine" exact component={MagazineList} />
+      <Route path="/magazine" exact component={BrandMagazine} />
       <Route path="/magazine/:category" component={Detail} />
     </div>
   );

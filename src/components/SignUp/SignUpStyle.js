@@ -79,6 +79,10 @@ export const Line = styled.div`
     width: 71vw;
   }
 `;
+export const EmailCheck = styled.img`
+  width: 20px;
+  height: 20px;
+`;
 export const ButtonInput = styled.input`
   :focus {
     outline: none;
@@ -87,11 +91,13 @@ export const ButtonInput = styled.input`
   height: 4.07vh;
   border-radius: 12px;
   border: none;
-  background-color: #efefef;
   font-size: 1.14vw;
-  color: #d2d2d2;
-  :hover {
-    background-color: gray;
+  color: black;
+  background-color: #d5d2d2;
+  &: disabled {
+    background-color: #efefef;
+    color: #d2d2d2;
+    cursor: default;
   }
   cursor: pointer;
   @media (max-width: 768px) {

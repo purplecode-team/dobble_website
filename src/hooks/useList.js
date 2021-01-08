@@ -27,10 +27,17 @@ export default (initialUrl) => {
         await query.once('value').then(function (snapshot) {
           snapshot.forEach(function (childSnapshot) {
             const childData = childSnapshot.val();
-
-            if (currentCategory === undefined || childData.category === currentCategory) {
+            if (
+              pathArray[1] === 'magazine' &&
+              currentCategory === undefined &&
+              childData.category === 'Brand'
+            ) {
               dataArray.push(childData);
-            } else if (childData.brand === currentCategory) {
+            } else if (pathArray[1] === 'product' && currentCategory === undefined) {
+              dataArray.push(childData);
+            } else if (childData.category === currentCategory) {
+              dataArray.push(childData);
+            } else if (pathArray[1] === 'product' && childData.brand === currentCategory) {
               dataArray.push(childData);
             }
           });

@@ -1,11 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import styled from 'styled-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import firebase from '../../firebase/firebase';
 import circleRedEmpty from '../img/circle_red_empty.png';
 import verticalLine from '../img/verticalLine.png';
 import circleRed from '../img/circle_red.png';
+import emailCheck from '../img/emailCheck.png';
 
 import {
   Container,
@@ -22,9 +20,13 @@ import {
   ChkDiv,
   SubDesc,
   VerticalLine,
+  EmailCheck,
 } from './SignUpStyle';
 
 const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) => {
+  const [emailLoading, setEmailLoading] = useState(true);
+  const [uniqueEmail, setUniqueEmail] = useState(false);
+
   const email = useRef();
   const nameValue = useRef();
   const tel = useRef();
@@ -33,12 +35,16 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
   nameValue.current = watch('name');
   tel.current = watch('tel');
 
+  /* input들이 빈칸이 아니고 error가 없다면 다음 step으로 넘어간다 */
   useEffect(() => {
     if (email.current !== undefined && email.current !== '' && !errors.email) {
       setStep({ ...steps, step1: true });
+      /* 이메일 형식이 알맞을 경우 이메일 중복 확인 버튼을 누를수 있음*/
+      setEmailLoading(false);
+    } else {
+      setEmailLoading(true);
+      setUniqueEmail(false);
     }
-    console.log(steps);
-    console.log(email.current);
   }, [email.current]);
 
   useEffect(() => {
@@ -53,9 +59,30 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
     }
   }, [tel.current]);
 
-  const isEmailExist = (_email) => {
-    console.log(_email);
+  /* 이메일 중복 확인 */
+  const isExistEmail = async (_email) => {
+    if (!emailLoading) {
+      let count = 0;
+      const query = firebase.database().ref('users').orderByKey();
+
+      await query.once('value').then(function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          const childData = childSnapshot.val();
+          if (_email === childData.email) {
+            count += 1;
+          }
+        });
+      });
+      if (count > 0) {
+        alert('이미 존재하는 이메일 입니다');
+        setUniqueEmail(false);
+      } else {
+        alert(`${_email}은 사용가능한 이메일 입니다!`);
+        setUniqueEmail(true);
+      }
+    }
   };
+
   return (
     <Container>
       <Icon>
@@ -82,11 +109,16 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
                     pattern: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
                   })}
                 />
-                <ButtonInput
-                  type="button"
-                  value="중복확인"
-                  onClick={() => isEmailExist(email.current)}
-                />
+                {uniqueEmail ? (
+                  <EmailCheck src={emailCheck} alt="emailChekc" />
+                ) : (
+                  <ButtonInput
+                    type="button"
+                    value="중복확인"
+                    onClick={() => isExistEmail(email.current)}
+                    disabled={emailLoading}
+                  />
+                )}
               </InputDiv>
               <Line />
               {errors.email && errors.email.type === 'required' && (

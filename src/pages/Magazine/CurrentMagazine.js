@@ -1,33 +1,39 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { dummyData } from './MagazineData';
 
-const MagazinePage = () => {
-  const data = dummyData[0];
+const CurrentMagazine = () => {
+  const data = useSelector((state) => state.magazine.currentMagazine);
 
   return (
     <div>
-      <Banner>
+      <Banner
+        style={{
+          backgroundImage: `url(${data.mainImg.img})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         <Wrapper>
           <Desc>
-            <HashTag>{data.hashtage}</HashTag>
-            <Title>{data.title}</Title>
-            <SubDesc>{data.description}</SubDesc>
+            {data.hashtag && <HashTag>{data.hashtag}</HashTag>}
+            <Title style={{ color: `${data.contents.color}` }}>{data.title}</Title>
+            <SubDesc style={{ color: `${data.contents.color}` }}>{data.description}</SubDesc>
           </Desc>
-          <WriterInfo>
-            <WriterImg src={data.writer.img} alt={data.content.alt} />
+          <WriterInfo style={{ color: `${data.contents.color}` }}>
+            <WriterImg src={data.writer.img} alt={data.writer.alt} />
             <Text>{data.writer.name}</Text>
-            <Text>{data.writer.email}</Text>
+            <Text style={{ color: `${data.contents.color}` }}>{data.writer.email}</Text>
           </WriterInfo>
         </Wrapper>
         <Line />
       </Banner>
       <Content>
-        <Text1>{data.content.text}</Text1>
+        <Text1>text</Text1>
         <ContentImgDiv>
-          <ContentImg src={data.content.img} alt={data.content.alt} />
+          {data.contents && <ContentImg src={data.contents.img} alt={data.contents.alt} />}
         </ContentImgDiv>
-        <Text2>{data.content.text}</Text2>
+        <Text2>text</Text2>
         <Icons>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <svg
@@ -100,9 +106,9 @@ const Wrapper = styled.div`
 `;
 const Desc = styled.div`
   align-items: flex-start;
-  padding: 0 50px;
+  padding: 0 40px;
   @media (max-width: 768px) {
-    padding: 0 40px;
+    padding: 0 30px;
   }
 `;
 const WriterInfo = styled.div`
@@ -151,7 +157,7 @@ const Text = styled.div`
 `;
 const Line = styled.div`
   border-bottom: 1px solid #707070;
-  margin: 60px 50px 50px 50px;
+  margin: 30px 50px 50px 50px;
 `;
 const Content = styled.div`
   margin: 50px 80px 0px 80px;
@@ -175,4 +181,4 @@ const Icons = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export default MagazinePage;
+export default CurrentMagazine;
