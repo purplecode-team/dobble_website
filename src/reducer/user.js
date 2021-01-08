@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { stateAction } from './utils';
+import { stateAction, UPDATE_USER } from './utils';
 
 export const [LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE] = stateAction('LOG_IN');
 export const [LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOG_OUT_FAILURE] = stateAction('LOG_OUT');
@@ -16,6 +16,11 @@ export const logoutRequest = () => ({
 
 export const signupRequest = () => ({
   type: SIGN_UP_REQUEST,
+});
+
+export const updateUser = (data) => ({
+  type: UPDATE_USER,
+  payload: data,
 });
 
 const initialState = {
@@ -75,6 +80,11 @@ function user(state = initialState, action) {
         draft.signUpLoading = false;
         draft.signUpError = action.error;
         break;
+      case UPDATE_USER:
+        return {
+          ...state,
+          me: action.payload,
+        };
       default:
         break;
     }

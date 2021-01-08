@@ -17,7 +17,7 @@ import {
 } from './MyPageStyle';
 import firebase from '../../firebase/firebase';
 import { logoutRequest } from '../../reducer/user';
-import HeaderLogo from '../../components/img/doble_icon.png';
+import ProfileImage from '../../components/img/brandLogo.png';
 
 const UserInfo = ({ history }) => {
   const dispatch = useDispatch();
@@ -34,6 +34,7 @@ const UserInfo = ({ history }) => {
     // 새로고침 되었을때도 값 유지
     firebase.auth().onAuthStateChanged(function () {
       const userId = firebase.auth().currentUser.uid;
+      console.log(userId);
       const query = firebase.database().ref(`/users/${userId}`);
       const loadData = async () => {
         try {
@@ -54,18 +55,18 @@ const UserInfo = ({ history }) => {
   };
   return (
     <Container>
-      <ProfileImg src={HeaderLogo} alt="profile" />
-      <UserName>{name}</UserName>
+      <ProfileImg src={ProfileImage} alt="profile" />
+      <UserName>{name || ''}</UserName>
       <ItemList>
         <Line />
         <InfoItem>
           <MailTitle>메일</MailTitle>
-          <InfoContent>{me.email}</InfoContent>
+          <InfoContent>{me.email || me}</InfoContent>
         </InfoItem>
         <Line />
         <InfoItem>
           <TelTitle>전화번호</TelTitle>
-          <InfoContent>{tel}</InfoContent>
+          <InfoContent>{tel || ''}</InfoContent>
         </InfoItem>
         <Line />
       </ItemList>

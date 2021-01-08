@@ -7,3 +7,5 @@ export const stateAction = (state) => {
 };
 
 export const SET_CURRENT_MAGAZINE = 'set_current_magazine';
+
+export const UPDATE_USER = 'update_user';
