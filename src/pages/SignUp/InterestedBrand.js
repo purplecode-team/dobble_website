@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Circle, Container, ErrorMessage } from './SignUpStyle';
-import circleRedEmpty from '../img/circle_red_empty.png';
-import circleRed from '../img/circle_red.png';
+import circleRedEmpty from '../../components/img/circle_red_empty.png';
+import circleRed from '../../components/img/circle_red.png';
 
 const InterestedBrand = ({ step, register, watch, errors, getValues, setValue }) => {
   const [error, setError] = useState(false);

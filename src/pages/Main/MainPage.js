@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import MainImg from '../img/illust unit_ae_3.png';
+import MainImg from '../../components/img/illust unit_ae_3.png';
 
 const MainPage = () => {
   const [windowHeight, setWindowHeight] = useState(0);

@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import firebase from '../../firebase/firebase';
-import circleRedEmpty from '../img/circle_red_empty.png';
-import verticalLine from '../img/verticalLine.png';
-import circleRed from '../img/circle_red.png';
-import emailCheck from '../img/emailCheck.png';
+import circleRedEmpty from '../../components/img/circle_red_empty.png';
+import verticalLine from '../../components/img/verticalLine.png';
+import circleRed from '../../components/img/circle_red.png';
+import emailCheck from '../../components/img/emailCheck.png';
 
 import {
   Container,

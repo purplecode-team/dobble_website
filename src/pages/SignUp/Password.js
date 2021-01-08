@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Circle, Icon, ErrorMessage, VerticalLine } from './SignUpStyle';
-import circleRedEmpty from '../img/circle_red_empty.png';
-import verticalLine from '../img/verticalLine.png';
-import circleRed from '../img/circle_red.png';
+import circleRedEmpty from '../../components/img/circle_red_empty.png';
+import verticalLine from '../../components/img/verticalLine.png';
+import circleRed from '../../components/img/circle_red.png';
 
 const Password = ({ steps, title, step, id, register, errors, watch, setStep }) => {
   const password = useRef();

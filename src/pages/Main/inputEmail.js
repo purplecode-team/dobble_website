@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import emailIcon from '../img/email.png';
+import emailIcon from '../../components/img/email.png';
 import firebase from '../../firebase/firebase';
 
 const InputEmail = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Arrow from '../img/arrow.png';
-import ProductLogo from '../img/productLogo.png';
+import Arrow from '../../components/img/arrow.png';
+import ProductLogo from '../../components/img/productLogo.png';
 
 const ProductPage = () => {
   return (

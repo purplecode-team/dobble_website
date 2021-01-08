@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LoginInput from './LoginInput';
 import SocialLogin from './SocialLogin';
-import DobleLogo from '../img/doble_icon.png';
+import DobleLogo from '../../components/img/doble_icon.png';
 
 const Login = () => {
   return (

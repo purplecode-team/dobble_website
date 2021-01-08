@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import OurStoryLogo from '../img/outStory_logo.png';
-import YCircle from '../img/circle_yellow.png';
+import OurStoryLogo from '../../components/img/outStory_logo.png';
+import YCircle from '../../components/img/circle_yellow.png';
 
 const OurStory = () => {
   return (

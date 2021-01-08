@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import circleGray from '../img/circle_gray.png';
+import circleGray from '../../components/img/circle_gray.png';
 
 const CloseLayout = ({ title }) => {
   return (

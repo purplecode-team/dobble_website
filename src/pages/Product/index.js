@@ -1,35 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import ItemLayout from '../ItemLayout';
-import { brandsData, productsData } from '../Header/interface';
+import { productsData } from '../../components/Header/interface';
+import ItemLayout from '../../components/ItemLayout';
 import useList from '../../hooks/useList';
 import { useScrollTop } from '../../utils/scrollTop';
-import ProductDetail from '../ProductDetail';
+import ProductDetail from '../../components/ProductDetail';
 
-const Detail = ({ match }) => {
+const Product = ({ match }) => {
   useScrollTop(true);
   //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
   const [firebaseData, error, loading, empty] = useList(match);
-
-  /* product라면 왼쪽 category에 productsData를 보여주고 brand라면 brandsData를 보여준다 */
-  const [category, setCategory] = useState([]);
-  const pathArray = match.path.split('/');
-
-  useEffect(() => {
-    pathArray[1] === 'product' ? setCategory(productsData) : setCategory(brandsData);
-  }, [match]);
-
-  useScrollTop(true);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Banner>
         <Desc>
-          <Title>{match.params.category}</Title>
           <SubDesc>기부 스토어 브랜드와 기부처에 따른 아이템을 확인해 보세요</SubDesc>
+          <Title>Product</Title>
+          <Title>2020 F/W</Title>
         </Desc>
       </Banner>
-      <ItemLayout data={category}>
+      <ItemLayout data={productsData}>
+        <Top>Best</Top>
         {error && <div>Error : {error}</div>}
         {loading && <div>Loading...</div>}
         {empty && <div>상품이 존재하지 않습니다.</div>}
@@ -39,8 +31,14 @@ const Detail = ({ match }) => {
   );
 };
 
+const Top = styled.div`
+  font-size: 1.4rem;
+  width: 100%;
+  padding-bottom: 20px;
+`;
+
 const Banner = styled.div`
-  height: 70vh;
+  height: 80vh;
   width: 100%;
   background: rgb(212, 212, 212);
 `;
@@ -57,15 +55,15 @@ const Desc = styled.div`
 const SubDesc = styled.div`
   color: rgb(70, 70, 70);
   font-size: 0.8rem;
-  margin-top: 40px;
   font-family: Arial;
 `;
 
 const Title = styled.div`
   color: #303030;
+  margin-top: 10px;
   font-size: 3.4rem;
   font-family: Stilu;
   font-weight: bold;
 `;
 
-export default Detail;
+export default Product;

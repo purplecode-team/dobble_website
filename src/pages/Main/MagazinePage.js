@@ -2,33 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Arrow from '../img/arrow.png';
-import BrandLogo from '../img/brandLogo.png';
+import Arrow from '../../components/img/arrow.png';
+import MagazineLogo from '../../components/img/magzineLogo.png';
 
-const BrandPage = () => {
+const MagazinePage = () => {
   return (
     <MainLayout>
       <TitleBox>
-        <Title>Brand</Title>
+        <Title>Magazine</Title>
         <span>
-          <Link to="/brand">
+          <Link to="/magazine">
             <ArrowImg src={Arrow} alt="arrow" />
           </Link>
         </span>
-        <SubTitle>브랜드와 기부처에 따른 아이템을 확인해보세요.</SubTitle>
+        <SubTitle>도블의 기부 관련 소식과 브랜드들을 만나보세요.</SubTitle>
       </TitleBox>
       <ImgBox>
-        <ImgStyle src={BrandLogo} alt="brand" />
+        <ImgStyle src={MagazineLogo} alt="magazine" />
       </ImgBox>
     </MainLayout>
   );
 };
 
 const MainLayout = styled.div`
-  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/brandLogo.png?raw=true');
+  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/magzineLogo.png?raw=true');
   background-repeat: no-repeat;
-  background-position: 90% 35%;
-  background-size: 700px auto;
+  background-position: 80% 40%;
+  background-size: 500px auto;
   @media (max-width: 768px) {
     background: rgb(246, 246, 246);
   }
@@ -80,7 +80,7 @@ const ImgBox = styled.div`
   display: none;
   @media (max-width: 768px) {
     display: block;
-    margin-top: 40px;
+    margin-top: 80px;
     position: static;
     width: 100%;
     text-align: center;
@@ -89,6 +89,9 @@ const ImgBox = styled.div`
 
 const ImgStyle = styled.img`
   width: 100%;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
-export default BrandPage;
+export default MagazinePage;

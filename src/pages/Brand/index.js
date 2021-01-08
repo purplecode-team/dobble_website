@@ -1,17 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { dummyData } from '../dummyData';
-import { brandsData } from '../Header/interface';
-import ItemLayout from '../ItemLayout';
-import ProductDetail from '../ProductDetail';
+import { brandsData } from '../../components/Header/interface';
+import ItemLayout from '../../components/ItemLayout';
+import ProductDetail from '../../components/ProductDetail';
 import { useScrollTop } from '../../utils/scrollTop';
+import useList from '../../hooks/useList';
 
-const Brand = () => {
+const Brand = ({ match }) => {
   useScrollTop(true);
 
+  const [firebaseData, error, loading, empty] = useList(match);
+
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Banner>
         <Desc>
           <SubDesc>기부 스토어 브랜드와 기부처에 따른 아이템을 확인해 보세요</SubDesc>
@@ -21,9 +23,10 @@ const Brand = () => {
       </Banner>
       <ItemLayout data={brandsData}>
         <Top>Best</Top>
-        {dummyData.map((data) => (
-          <ProductDetail key={data.alt} data={data} />
-        ))}
+        {error && <div>Error : {error}</div>}
+        {loading && <div>Loading...</div>}
+        {empty && <div>상품이 존재하지 않습니다.</div>}
+        {firebaseData && firebaseData.map((data) => <ProductDetail key={data.alt} data={data} />)}
       </ItemLayout>
     </div>
   );
