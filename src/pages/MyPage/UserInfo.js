@@ -55,7 +55,7 @@ const UserInfo = ({ history }) => {
   return (
     <Container>
       <ProfileImg src={ProfileImage} alt="profile" />
-      <UserName>{name || me}</UserName>
+      <UserName>{name || ''}</UserName>
       <ItemList>
         <Line />
         <InfoItem>

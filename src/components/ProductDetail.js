@@ -44,6 +44,10 @@ const ProductImgDiv = styled.div`
   overflow: hidden;
   border-radius: 18px 18px;
   background: rgb(220, 220, 220);
+  @media (max-width: 768px) {
+    width: 290px;
+    height: 310px;
+  }
 `;
 
 const ProductImg = styled.img`
@@ -57,6 +61,9 @@ const ProductImg = styled.img`
 const Text = styled.div`
   font-size: 0.8rem;
   margin: 10px 0;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const BannerText = styled.div`
@@ -69,6 +76,9 @@ const BannerText = styled.div`
 const Price = styled.div`
   font-weight: bold;
   font-size: 1.2rem;
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export default ProductDetail;

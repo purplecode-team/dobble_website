@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import CloseIcon from './img/closeIcon.png';
 import Heart from './img/heart.png';
+import MoveIcon from './img/movePageBtn.png';
 
 const Modal = ({ open, closeModal, data }) => {
   return (
@@ -31,6 +32,10 @@ const Modal = ({ open, closeModal, data }) => {
                 <div>기본배송비 : 2,500원 (50,000원 이상 무료)</div>
                 <div>추가배송비 : 2,700원~8,000원 (지역별)</div>
               </Delivery>
+              <MoveDiv href={data.link}>
+                <MoveText>제품 보러 이동하기</MoveText>
+                <MoveImg src={MoveIcon} alt="moveImg" />
+              </MoveDiv>
             </RightBox>
           </ContentDiv>
         </ModalDiv>
@@ -68,6 +73,7 @@ const LeftBox = styled.div`
   margin-right: 30px;
   @media (max-width: 768px) {
     width: 100%;
+    height: auto;
   }
 `;
 
@@ -147,9 +153,33 @@ const DeliveryTop = styled.div`
 `;
 
 const HeartIcon = styled.img`
-  width: 30px;
-  height: 30px;
+  padding-top: 10px;
+  width: 20px;
+  height: 20px;
   float: right;
+`;
+
+const MoveDiv = styled.a`
+  cursor: pointer;
+  margin-top: 40px;
+  height: 40px;
+  display: flex;
+  float: right;
+  text-decoration: none;
+  color: black;
+`;
+
+const MoveText = styled.div`
+  line-height: 40px;
+  display: inline-flex;
+  font-size: 0.8rem;
+  font-weight: bold;
+`;
+
+const MoveImg = styled.img`
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
 `;
 
 export default Modal;
