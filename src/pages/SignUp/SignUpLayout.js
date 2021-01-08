@@ -169,7 +169,7 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
             <InputDiv>
               <InfoInput
                 name="tel"
-                type="tel"
+                type="text"
                 placeholder="숫자만 입력해주세요."
                 ref={register({ required: true, pattern: /(^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/ })}
               />
