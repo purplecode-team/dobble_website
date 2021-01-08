@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import Login from '../pages/login';
+// eslint-disable-next-line import/extensions
+import Login from '../pages/Login/index.js';
 import Main from '../pages/main';
-import Brand from '../pages/brand';
-import Product from './Product';
+import Brand from '../pages/Brand';
+import Product from '../pages/Product';
 import Magazine from '../pages/Magazine';
 import AppLayout from './AppLayout';
-import SignUp from './SignUp';
+import SignUp from '../pages/SignUp';
 import CurrentMagazine from '../pages/Magazine/CurrentMagazine';
 import MyPage from '../pages/MyPage';
-import Detail from './Detail';
+import Detail from '../pages/Detail';
 
 const LoginRoutes = () => (
   <Switch>
@@ -19,7 +20,7 @@ const LoginRoutes = () => (
     <Route path="/brand/:category" component={Detail} />
     <Route path="/brand" component={Brand} />
     <Route path="/magazine" component={Magazine} />
-    <Route path="/magazinepage" component={MagazinePage} />
+    <Route path="/currentmagazine" component={CurrentMagazine} />
     <Route path="/mypage" component={MyPage} />
     <Redirect from="*" to="/" />
   </Switch>
