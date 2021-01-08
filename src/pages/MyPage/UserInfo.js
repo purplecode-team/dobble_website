@@ -55,17 +55,17 @@ const UserInfo = ({ history }) => {
   return (
     <Container>
       <ProfileImg src={HeaderLogo} alt="profile" />
-      <UserName>{name}</UserName>
+      <UserName>{name || '소셜로그인'}</UserName>
       <ItemList>
         <Line />
         <InfoItem>
           <MailTitle>메일</MailTitle>
-          <InfoContent>{me.email}</InfoContent>
+          <InfoContent>{me.email || me}</InfoContent>
         </InfoItem>
         <Line />
         <InfoItem>
           <TelTitle>전화번호</TelTitle>
-          <InfoContent>{tel}</InfoContent>
+          <InfoContent>{tel || '전화번호 없음'}</InfoContent>
         </InfoItem>
         <Line />
       </ItemList>

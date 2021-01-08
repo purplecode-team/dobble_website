@@ -59,7 +59,7 @@ export const TelTitle = styled.div`
 `;
 export const InfoContent = styled.div``;
 export const Button = styled.div`
-  width: 30%;
+  width: 40%;
   margin-top: 11vh;
   display: flex;
   justify-content: space-between;
@@ -86,12 +86,12 @@ export const ModifyBtn = styled.input`
   :focus {
     outline: none;
   }
-  width: 95px;
+  width: 120px;
   height: 7vh;
   border-radius: 30px;
   border: none;
   background-color: #ea404a;
-  font-size: 1.25vw;
+  font-size: 1rem;
   color: white;
   cursor: pointer;
   @media (max-width: 768px) {
@@ -105,12 +105,12 @@ export const LogoutBtn = styled.input`
   :focus {
     outline: none;
   }
-  width: 95px;
+  width: 120px;
   height: 7vh;
   border-radius: 30px;
   border: 1px solid #ea404a;
   background: rgb(246, 246, 246);
-  font-size: 1.25vw;
+  font-size: 1rem;
   color: black;
   cursor: pointer;
   @media (max-width: 768px) {

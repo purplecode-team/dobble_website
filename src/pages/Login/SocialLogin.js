@@ -1,7 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import firebase from 'firebase';
+import { useDispatch } from 'react-redux';
+import { loginRequest } from '../../reducer/user';
 
 const SocialLogin = () => {
+  const dispatch = useDispatch();
+
+  const onSocialClick = async (e) => {
+    const {
+      target: { name },
+    } = e;
+    let provider;
+    if (name === 'google') {
+      provider = new firebase.auth.GoogleAuthProvider();
+    }
+    await firebase.auth().signInWithPopup(provider);
+    const user = firebase.auth().currentUser.email;
+    dispatch(loginRequest(user));
+  };
+
   return (
     <Section>
       <FormLayout>
@@ -9,10 +27,9 @@ const SocialLogin = () => {
           <Line> </Line>
         </InputBox>
         <InputBox>
-          <SocialButton>카카오톡 로그인</SocialButton>
-        </InputBox>
-        <InputBox>
-          <SocialButton naver>네이버 로그인</SocialButton>
+          <SocialButton onClick={onSocialClick} name="google">
+            구글 로그인
+          </SocialButton>
         </InputBox>
       </FormLayout>
     </Section>
@@ -45,7 +62,8 @@ const SocialButton = styled.button`
   width: 100%;
   border-radius: 30px;
   font-weight: bold;
-  ${(props) => props.naver && `background: rgb(31,195,68); color: white;`}
+  background: #4285f4;
+  color: white;
 `;
 
 const Line = styled.div`
