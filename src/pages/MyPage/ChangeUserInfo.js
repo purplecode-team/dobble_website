@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useForm } from 'react-hook-form';
-import { Container, Img, Line } from './MyPageStyle';
+import { Container, Line, ProfileImg } from './MyPageStyle';
+import HeaderLogo from '../../components/img/doble_icon.png';
 
 const ChangeUserInfo = () => {
   const { register, watch, errors, handleSubmit } = useForm({
@@ -40,7 +40,7 @@ const ChangeUserInfo = () => {
     <Container>
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <UserInfoContainer onSubmit={handleSubmit(onSave)} id="modify_form">
-        <Img src="https://via.placeholder.com/90" style={{ borderRadius: '50%' }} alt="profile" />
+        <ProfileImg src={HeaderLogo} alt="profile" />
         <UserName
           name="name"
           type="text"

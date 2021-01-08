@@ -1,12 +1,7 @@
-// import { createStore } from 'redux';
-// import rootReducer from '../reducer';
-//
-// const store = createStore(rootReducer);
-//
-// export default store;
 import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistStore } from 'redux-persist';
 
 import rootReducer from '../reducer';
 import rootSaga from '../sagas';
@@ -19,4 +14,7 @@ const configureStore = () => {
   return store;
 };
 
-export default configureStore();
+export const store = configureStore();
+export const persistor = persistStore(store);
+
+export default { store, persistor };

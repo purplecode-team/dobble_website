@@ -16,7 +16,6 @@ const LoginInput = () => {
 
   const Login = async () => {
     try {
-      console.log(email, password);
       await firebase.auth().signInWithEmailAndPassword(email, password);
     } catch (error) {
       throw new Error(error);
