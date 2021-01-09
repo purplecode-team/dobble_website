@@ -104,6 +104,9 @@ const Banner = styled.div`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 462px) {
+    flex-direction: column;
+  }
 `;
 const Desc = styled.div`
   align-items: flex-start;
@@ -124,11 +127,17 @@ const WriterImg = styled.img`
   height: 60px;
   overflow: hidden;
   border-radius: 50%;
+  @media (max-width: 462px) {
+    display: none;
+  }
 `;
 const SubDesc = styled.div`
   color: rgb(70, 70, 70);
   font-size: 0.8rem;
   font-family: Arial;
+  @media (max-width: 768px) {
+    font-size: 0.5rem;
+  }
 `;
 
 const Title = styled.div`
@@ -138,6 +147,9 @@ const Title = styled.div`
   font-family: Stilu;
   font-weight: bold;
   margin-bottom: 15px;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 const HashTag = styled.div`
   font-size: 0.8rem;
@@ -155,6 +167,9 @@ const Text = styled.div`
   margin-right: 5px;
   font-family: 'Stilu', Arial;
   font-size: 0.8rem;
+  @media (max-width: 768px) {
+    font-size: 0.5rem;
+  }
 `;
 const Line = styled.div`
   border-bottom: 1px solid #707070;
