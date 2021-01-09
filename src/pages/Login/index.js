@@ -6,7 +6,7 @@ import DobleLogo from '../../components/img/doble_icon.png';
 
 const Login = () => {
   return (
-    <div>
+    <div style={{ overflowX: 'hidden', overflowY: 'auto' }}>
       <LogoSection>
         <Logo src={DobleLogo} alt="logo" />
       </LogoSection>

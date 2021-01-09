@@ -32,11 +32,9 @@ const CurrentMagazine = () => {
         <Line />
       </Banner>
       <Content>
-        <Text1>text</Text1>
         <ContentImgDiv>
           {data.contents && <ContentImg src={data.contents.img} alt={data.contents.alt} />}
         </ContentImgDiv>
-        <Text2>text</Text2>
         <Icons>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <svg
@@ -168,11 +166,9 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-const Text1 = styled.div``;
-const Text2 = styled.div``;
 const ContentImgDiv = styled.div`
   width: 100%;
-  height: 400px;
+  height: 100%;
   margin: 40px 0;
 `;
 const ContentImg = styled.img`

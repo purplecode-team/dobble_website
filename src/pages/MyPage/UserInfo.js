@@ -34,6 +34,7 @@ const UserInfo = ({ history }) => {
     // 새로고침 되었을때도 값 유지
     firebase.auth().onAuthStateChanged(function () {
       const userId = firebase.auth().currentUser.uid;
+      console.log(userId);
       const query = firebase.database().ref(`/users/${userId}`);
       const loadData = async () => {
         try {

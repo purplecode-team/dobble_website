@@ -1,20 +1,52 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import { UPDATE_USER } from '../../reducer/utils';
 import { Container, Line, ProfileImg } from './MyPageStyle';
 import ProfileImage from '../../components/img/profile.png';
+import firebase from '../../firebase/firebase';
+import { logoutRequest, updateUser } from '../../reducer/user';
 
-const ChangeUserInfo = () => {
+const ChangeUserInfo = ({ history }) => {
+  const dispatch = useDispatch();
+  const { me } = useSelector((state) => state.user);
+  const [tel, setTel] = useState('');
+  const [name, setName] = useState('');
+  const [pwd, setPwd] = useState('');
+
+  // 로그인한 사용자 전화번호, 이름 데이터 가져오기
+  useEffect(() => {
+    // 새로고침 되었을때도 값 유지
+    firebase.auth().onAuthStateChanged(function () {
+      const userId = firebase.auth().currentUser.uid;
+      const query = firebase.database().ref(`/users/${userId}`);
+      const loadData = async () => {
+        try {
+          await query.once('value').then(function (snapshot) {
+            setTel(snapshot.val().tel);
+            setName(snapshot.val().name);
+            setPwd(snapshot.val().password);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      loadData();
+    });
+  }, []);
+
   const { register, watch, errors, handleSubmit } = useForm({
     mode: 'onChange',
     defaultValues: {
-      name: '서유나',
-      email: 'purplecode@naver.com',
-      tel: '010-2740-1981',
+      name: `${name}`,
+      email: `${me.email}`,
+      tel: { tel },
     },
   });
-  /* 임의의 현재 비밀번호 */
-  const nowPwd = 'asdfasdf';
+
+  /*  현재 비밀번호 */
+  const nowPwd = pwd;
   /* 저장하기 버튼 눌렀을 때 firebase에서 가져오다가 에러나면 알려주는 에러 메세지 */
   const [errorFromSubmit, setErrorFromSubmit] = useState('');
 
@@ -23,18 +55,45 @@ const ChangeUserInfo = () => {
   newPassword.current = watch('newPassword');
 
   /* 저장하기 버튼 눌렀을 때 */
-  const onSave = () => {
+  const onSave = async (data) => {
     alert('save');
+    console.log(data);
+    // firebase에 정보 업데이트하기
+    firebase.auth().onAuthStateChanged(function () {
+      const userId = firebase.auth().currentUser.uid;
 
-    try {
-      // firebase에 저장하기
-    } catch (error) {
-      setErrorFromSubmit(error.message);
+      const updateData = async () => {
+        try {
+          //Auth 이메일 수정
+          const user = firebase.auth().currentUser;
+          user
+            .updateEmail(`${data.email}`)
+            .then(function () {
+              //Auth 이메일이 정상적으로 바뀌었다면
 
-      setTimeout(() => {
-        setErrorFromSubmit('');
-      }, 5000);
-    }
+              // dispatch(updateUser(data.email));
+
+              //데이터베이스에 있는 이메일 수정
+              firebase.database().ref(`/users/${userId}`).child('email').set(data.email);
+              history.push('/mypage');
+            })
+            .catch(function (error) {
+              //updateEmail 오류났을 때 최근 로그인을 하지 않은 사용자가 수정을 시도하면 에러남.
+              alert('이메일을 수정하시려면 로그인을 다시 해주세요.');
+              dispatch(logoutRequest());
+              console.log(error);
+            });
+
+          //데이터베이스 정보 수정
+          await firebase.database().ref(`/users/${userId}`).child('name').set(data.name);
+          await firebase.database().ref(`/users/${userId}`).child('tel').set(data.tel);
+          await firebase.database().ref(`/users/${userId}`).child('password').set(data.newPassword);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      updateData();
+    });
   };
   return (
     <Container>
