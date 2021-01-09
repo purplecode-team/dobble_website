@@ -2,18 +2,18 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import { UPDATE_USER } from '../../reducer/utils';
 import { Container, Line, ProfileImg } from './MyPageStyle';
 import ProfileImage from '../../components/img/profile.png';
 import firebase from '../../firebase/firebase';
-import { logoutRequest, updateUser } from '../../reducer/user';
+import { logoutRequest } from '../../reducer/user';
+import useInput from '../../hooks/useInput';
 
 const ChangeUserInfo = ({ history }) => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
-  const [tel, setTel] = useState('');
-  const [name, setName] = useState('');
-  const [pwd, setPwd] = useState('');
+  const [tel, onChangeTel, setTel] = useInput('');
+  const [name, onChangeName, setName] = useInput('');
+  const [pwd, onChangePwd, setPwd] = useInput('');
 
   // 로그인한 사용자 전화번호, 이름 데이터 가져오기
   useEffect(() => {
@@ -102,6 +102,8 @@ const ChangeUserInfo = ({ history }) => {
         <ProfileImg src={ProfileImage} alt="profile" />
         <UserName
           name="name"
+          value={name}
+          onChange={onChangeName}
           type="text"
           ref={register({
             required: true,
@@ -143,6 +145,8 @@ const ChangeUserInfo = ({ history }) => {
             <InfoContent
               name="tel"
               type="tel"
+              value={tel}
+              onChange={onChangeTel}
               placeholder="숫자만 입력해주세요."
               ref={register({ required: true, pattern: /(^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/ })}
             />
@@ -160,6 +164,8 @@ const ChangeUserInfo = ({ history }) => {
             <InfoContent
               name="password"
               type="password"
+              value={pwd}
+              onChange={onChangePwd}
               ref={register({ required: true, validate: (value) => value === nowPwd })}
             />
           </InfoItem>
