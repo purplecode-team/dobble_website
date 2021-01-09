@@ -30,7 +30,7 @@ const InfoP = styled.p`
   width: 80vw;
   margin: 0 auto;
   text-align: center;
-  font-size: 0.5vw;
+  font-size: 0.8px;
   font-family: Stilu, Arial;
 `;
 export default Info;
