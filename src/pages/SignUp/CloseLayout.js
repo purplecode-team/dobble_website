@@ -1,3 +1,5 @@
+// 열리지 않은 회원가입 입력창 상태
+// 회색 동그라미 + 입력창 이름
 import React from 'react';
 import styled from 'styled-components';
 import circleGray from '../../components/img/circle_gray.png';

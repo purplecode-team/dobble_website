@@ -14,7 +14,6 @@ const Magazine = () => {
         <Desc>
           <SubDesc>도블의 기부 관련 소식과 브랜드들을 만나보세요.</SubDesc>
           <Title>Magazine</Title>
-          <Title>2020 -NOV</Title>
         </Desc>
       </Banner>
       <Route path="/magazine" exact component={BrandMagazine} />

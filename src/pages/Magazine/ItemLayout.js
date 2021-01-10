@@ -1,3 +1,4 @@
+// 카테고리들을 왼쪽에 나타내주고, BrandMagazine과 Detail의 내용을 가져올때 사용하는 layout
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';

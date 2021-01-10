@@ -1,10 +1,12 @@
+// 관심있는 브랜드 체크 컴포넌트
+// 체크박스 체크시 빨간색 동그라미로 변경하는 부분 구현 x
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Circle, Container, ErrorMessage } from './SignUpStyle';
 import circleRedEmpty from '../../components/img/circle_red_empty.png';
 import circleRed from '../../components/img/circle_red.png';
 
-const InterestedBrand = ({ step, register, watch, errors, getValues, setValue }) => {
+const InterestedBrand = ({ step, steps, register, setStep, getValues, setValue }) => {
   const [error, setError] = useState(false);
   const brandList = [
     '마리몬드',
@@ -19,9 +21,10 @@ const InterestedBrand = ({ step, register, watch, errors, getValues, setValue })
   const handleChange = (e) => {
     e.persist();
     setValue(e.target.name, e.target.checked);
+    console.log(e.target.name, e.target.checked);
   };
   const multipleValues = getValues(brandList);
-  console.log(multipleValues);
+  console.log('multipleValues', multipleValues);
   useEffect(() => {
     let count = 0;
     // eslint-disable-next-line guard-for-in,no-restricted-syntax
@@ -32,7 +35,7 @@ const InterestedBrand = ({ step, register, watch, errors, getValues, setValue })
     }
     if (count === 0) {
       setError(true);
-    } else setError(false);
+    } else setStep({ ...steps, step5: true });
   }, [multipleValues]);
 
   return (
@@ -48,7 +51,13 @@ const InterestedBrand = ({ step, register, watch, errors, getValues, setValue })
           {brandList.map((c) => (
             // eslint-disable-next-line jsx-a11y/label-has-associated-control
             <Item key={c}>
-              <input type="checkbox" name={c} className="brandList" ref={register} />
+              <input
+                type="checkbox"
+                name={c}
+                className="brandList"
+                ref={register}
+                onChange={handleChange}
+              />
               <BrandName>{c}</BrandName>
             </Item>
           ))}
