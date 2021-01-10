@@ -1,20 +1,23 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { Container, Line, ProfileImg } from './MyPageStyle';
 import ProfileImage from '../../components/img/profile.png';
 import firebase from '../../firebase/firebase';
-import { logoutRequest } from '../../reducer/user';
+import { updateUser } from '../../reducer/user';
 import useInput from '../../hooks/useInput';
 
 const ChangeUserInfo = ({ history }) => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
+  const [email, onChangeEmail] = useInput(me);
   const [tel, onChangeTel, setTel] = useInput('');
   const [name, onChangeName, setName] = useInput('');
   const [pwd, onChangePwd, setPwd] = useInput('');
 
+  console.log(email);
+  console.log(me);
   // 로그인한 사용자 전화번호, 이름 데이터 가져오기
   useEffect(() => {
     // 새로고침 되었을때도 값 유지
@@ -38,11 +41,6 @@ const ChangeUserInfo = ({ history }) => {
 
   const { register, watch, errors, handleSubmit } = useForm({
     mode: 'onChange',
-    defaultValues: {
-      name: `${name}`,
-      email: `${me.email}`,
-      tel: { tel },
-    },
   });
 
   /*  현재 비밀번호 */
@@ -56,8 +54,6 @@ const ChangeUserInfo = ({ history }) => {
 
   /* 저장하기 버튼 눌렀을 때 */
   const onSave = async (data) => {
-    alert('save');
-    console.log(data);
     // firebase에 정보 업데이트하기
     firebase.auth().onAuthStateChanged(function () {
       const userId = firebase.auth().currentUser.uid;
@@ -71,17 +67,16 @@ const ChangeUserInfo = ({ history }) => {
             .then(function () {
               //Auth 이메일이 정상적으로 바뀌었다면
 
-              // dispatch(updateUser(data.email));
+              dispatch(updateUser(data.email));
 
               //데이터베이스에 있는 이메일 수정
               firebase.database().ref(`/users/${userId}`).child('email').set(data.email);
+              alert('save');
               history.push('/mypage');
             })
             .catch(function (error) {
               //updateEmail 오류났을 때 최근 로그인을 하지 않은 사용자가 수정을 시도하면 에러남.
-              alert('이메일을 수정하시려면 로그인을 다시 해주세요.');
-              dispatch(logoutRequest());
-              console.log(error);
+              alert(error);
             });
 
           //데이터베이스 정보 수정
@@ -89,7 +84,7 @@ const ChangeUserInfo = ({ history }) => {
           await firebase.database().ref(`/users/${userId}`).child('tel').set(data.tel);
           await firebase.database().ref(`/users/${userId}`).child('password').set(data.newPassword);
         } catch (error) {
-          console.log(error);
+          setErrorFromSubmit(error);
         }
       };
       updateData();
@@ -126,6 +121,8 @@ const ChangeUserInfo = ({ history }) => {
             <InfoContent
               name="email"
               type="email"
+              value={email}
+              onChange={onChangeEmail}
               ref={register({
                 required: true,
                 pattern: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
