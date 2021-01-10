@@ -1,3 +1,4 @@
+// 회원가입에 필요한 모든 input들을 step 상태에 따라 리턴
 import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import SignUpLayout from './SignUpLayout';
@@ -6,7 +7,7 @@ import CloseLayout from './CloseLayout';
 import Password from './Password';
 import AgreeForJoin from './AgreeForJoin';
 
-const InputContainer = ({ children }) => {
+const InputContainer = () => {
   const methods = useFormContext();
 
   const [steps, setStep] = useState({

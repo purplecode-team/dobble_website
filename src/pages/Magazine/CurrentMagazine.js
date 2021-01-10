@@ -1,3 +1,4 @@
+// 메거진 기사들을 클릭했을 때 각 기사의 data를 전달받아 보여주는 페이지
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';

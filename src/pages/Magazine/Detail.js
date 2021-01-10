@@ -1,3 +1,4 @@
+//브랜드 페이지가 아닌 각 카테고리에 해당하는 메거진을 보여주는 페이지
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -40,7 +41,7 @@ const Detail = ({ match, history }) => {
                 }}
               >
                 <Title>{data.title}</Title>
-                <HashTag>{data.hashtag}</HashTag>
+                {data.hashtag && <HashTag>{data.hashtag}</HashTag>}
               </div>
               <Text>{data.description}</Text>
             </ProductDiv>

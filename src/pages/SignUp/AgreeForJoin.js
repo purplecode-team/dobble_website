@@ -1,3 +1,5 @@
+// 정보 수집 동의 부분 컴포넌트
+// 모든 항목 한번에 해제 구현 x
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -11,8 +13,6 @@ const AgreeForJoin = ({ register, errors, watch, setValue }) => {
 
   /* 전체 동의하기 눌렀을 때 */
   useEffect(() => {
-    console.log(checkAll.current);
-    console.log(check1.current);
     if (checkAll.current) {
       setValue('check1', true);
       setValue('check2', true);

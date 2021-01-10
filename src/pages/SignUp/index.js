@@ -1,8 +1,11 @@
+// react-hook-form을 사용해서 회원가입 페이지를 만들었다.
+// 회원가입에 필요한 input들이 메일, 이름, 전화번호는 SignUpLayout 컴포넌트에 있고,
+// 비밀번호는 Password, 관심있는 브랜드 체크는 InterestedBrand, 정보동의는 AgreeForJoin 컴포넌트에 나눠져있다.
+// FormProvider를 사용해서 각각의 인풋들을 React Hook Form과 연결했다.
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-
 import firebase from '../../firebase/firebase';
 import InputContainer from './InputContainer';
 import { signupRequest } from '../../reducer/user';

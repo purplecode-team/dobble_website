@@ -1,3 +1,4 @@
+// 메거진 첫 페이지로 브랜드 소개해주는 페이지
 import React from 'react';
 import styled from 'styled-components';
 import { MagazineCategory, Season } from './categoryData';

@@ -1,3 +1,4 @@
+// 메일, 이름, 전화번호 input 컴포넌트
 import React, { useRef, useState, useEffect } from 'react';
 import firebase from '../../firebase/firebase';
 import circleRedEmpty from '../../components/img/circle_red_empty.png';

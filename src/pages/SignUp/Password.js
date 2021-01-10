@@ -1,3 +1,4 @@
+// 비밀번호와 비밀번호 확인 컴포넌트
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Circle, Icon, ErrorMessage, VerticalLine } from './SignUpStyle';
@@ -15,7 +16,6 @@ const Password = ({ steps, title, step, id, register, errors, watch, setStep }) 
     if (password.current !== undefined && password.current !== '' && !errors.password) {
       setStep({ ...steps, step2: true });
     }
-    console.log(steps);
   }, [password.current, confirmPassword.current]);
 
   return (
