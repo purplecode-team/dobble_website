@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { brandsData } from '../../components/Header/interface';
 import ItemLayout from '../../components/ItemLayout';
 import ProductDetail from '../../components/ProductDetail';
 import { useScrollTop } from '../../utils/scrollTop';
-import useList from '../../hooks/useList';
+import useLoadData from '../../hooks/useLoadData';
 
-const Brand = ({ match }) => {
+const Brand = () => {
   useScrollTop(true);
 
-  const [firebaseData, error, loading, empty] = useList(match);
+  //firebase database ref key와 category 이름을 hook에 보내줘서 해당 테이블 해당 카테고리에 맞는 데이터를 받아온다.
+  const [firebaseData, loading, error, empty] = useLoadData('product', 'all', 'brand');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>

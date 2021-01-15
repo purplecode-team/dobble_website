@@ -4,17 +4,21 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ItemLayout from './ItemLayout';
 import { MagazineCategory, Season } from './categoryData';
-import useList from '../../hooks/useList';
 import { setMagazine } from '../../reducer/magazine';
 import { useScrollTop } from '../../utils/scrollTop';
+import useLoadData from '../../hooks/useLoadData';
 
 const Detail = ({ match, history }) => {
   const dispatch = useDispatch();
 
   useScrollTop(true);
 
-  //경로를 hook에 보내줘서 경로에 맞는 firebase 데이터를 받아온다.
-  const [magazineData, error, loading, empty] = useList(match);
+  //firebase database ref key와 category 이름을 hook에 보내줘서 해당 테이블 해당 카테고리에 맞는 데이터를 받아온다.
+  const [magazineData, loading, error, empty] = useLoadData(
+    'magazine',
+    match.params.category,
+    'magazine',
+  );
 
   const onOpen = (_data) => {
     dispatch(setMagazine(_data));
