@@ -1,3 +1,4 @@
+//회원정보 수정 눌렀을 때
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -11,7 +12,7 @@ import useInput from '../../hooks/useInput';
 const ChangeUserInfo = ({ history }) => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
-  const [email, onChangeEmail] = useInput(me);
+  const [email, onChangeEmail] = useInput(me.email);
   const [tel, onChangeTel, setTel] = useInput('');
   const [name, onChangeName, setName] = useInput('');
   const [pwd, onChangePwd, setPwd] = useInput('');
