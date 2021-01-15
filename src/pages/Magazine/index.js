@@ -1,57 +1,30 @@
+// 메거진 첫 페이지로 브랜드 소개해주는 페이지
 import React from 'react';
-import styled from 'styled-components';
-import { Route } from 'react-router-dom';
-import Detail from './Detail';
-import BrandMagazine from './BrandMagazine';
 import { useScrollTop } from '../../utils/scrollTop';
+import Banner from './Banner';
+import useLoadData from '../../hooks/useLoadData';
+import ItemLayout from './ItemLayout';
+import { MagazineCategory, Season } from './categoryData';
+import BrandIntroduction from './BrandIntroduction';
 
 const Magazine = () => {
   useScrollTop(true);
 
+  //firebase database ref key와 category 이름을 hook에 보내줘서 해당 테이블 해당 카테고리에 맞는 데이터를 받아온다.
+  const [magazineData, loading, error, empty] = useLoadData('magazine', 'Brand', 'magazine');
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Banner>
-        <Desc>
-          <SubDesc>도블의 기부 관련 소식과 브랜드들을 만나보세요.</SubDesc>
-          <Title>Magazine</Title>
-        </Desc>
-      </Banner>
-      <Route path="/magazine" exact component={BrandMagazine} />
-      <Route path="/magazine/:category" component={Detail} />
+      <Banner />
+      <ItemLayout MagazineCategory={MagazineCategory} Season={Season}>
+        {error && <div>Error : {error}</div>}
+        {loading && <div>Loading...</div>}
+        {empty && <div>매거진이 존재하지 않습니다.</div>}
+        {magazineData &&
+          magazineData.map((data) => <BrandIntroduction key={data.title} data={data} />)}
+      </ItemLayout>
     </div>
   );
 };
-
-const Banner = styled.div`
-  height: 80vh;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-image: url('https://github.com/PURPLECODE-TEAM/dobble_website/blob/master/src/components/img/magazineBanner.png?raw=true');
-`;
-
-const Desc = styled.div`
-  padding: 0 80px;
-  padding-top: 140px;
-  @media (max-width: 768px) {
-    padding: 0 40px;
-    padding-top: 140px;
-  }
-`;
-
-const SubDesc = styled.div`
-  color: rgb(70, 70, 70);
-  font-size: 0.8rem;
-  font-family: Arial;
-`;
-
-const Title = styled.div`
-  color: #303030;
-  margin-top: 10px;
-  font-size: 3.4rem;
-  font-family: Stilu;
-  font-weight: bold;
-`;
 
 export default Magazine;
