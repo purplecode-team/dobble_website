@@ -91,7 +91,6 @@ export const ButtonInput = styled.button`
   height: 4.07vh;
   border-radius: 12px;
   border: none;
-  font-size: 1.14vw;
   color: black;
   background-color: #d5d2d2;
   &: disabled {
@@ -128,4 +127,7 @@ export const ErrorMessage = styled.div`
   ::before {
     content: '⚠ ';
   }
+`;
+export const InputBox = styled.div`
+  font-size: 1rem;
 `;

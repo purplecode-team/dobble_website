@@ -12,6 +12,7 @@ import {
   Circle,
   Icon,
   InfoBox,
+  InputBox,
   InfoInput,
   Title,
   Line,
@@ -113,12 +114,14 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
                 {uniqueEmail ? (
                   <EmailCheck src={emailCheck} alt="emailChekc" />
                 ) : (
-                  <ButtonInput
-                    type="submit"
-                    value="중복확인"
-                    onClick={() => isExistEmail(email.current)}
-                    disabled={emailLoading}
-                  />
+                  <InputBox>
+                    <ButtonInput
+                      type="submit"
+                      value="중복확인"
+                      onClick={() => isExistEmail(email.current)}
+                      disabled={emailLoading}
+                    />
+                  </InputBox>
                 )}
               </InputDiv>
               <Line />
