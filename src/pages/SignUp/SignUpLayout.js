@@ -112,12 +112,12 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
                   })}
                 />
                 {uniqueEmail ? (
-                  <EmailCheck src={emailCheck} alt="emailChekc" />
+                  <EmailCheck src={emailCheck} alt="emailCheck" />
                 ) : (
                   <InputBox>
                     <ButtonInput
-                      type="submit"
-                      value="중복확인"
+                      type="button"
+                      value="중복 확인"
                       onClick={() => isExistEmail(email.current)}
                       disabled={emailLoading}
                     />

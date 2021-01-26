@@ -83,12 +83,13 @@ export const EmailCheck = styled.img`
   width: 20px;
   height: 20px;
 `;
-export const ButtonInput = styled.button`
+export const ButtonInput = styled.input`
   :focus {
     outline: none;
   }
   width: 7.18vw;
   height: 4.07vh;
+  font-size: 1.14vh;
   border-radius: 12px;
   border: none;
   color: black;
@@ -129,5 +130,5 @@ export const ErrorMessage = styled.div`
   }
 `;
 export const InputBox = styled.div`
-  font-size: 1rem;
+  font-size: 1.14vh;
 `;

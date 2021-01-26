@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import firebase from '../../firebase/firebase';
 import InputContainer from './InputContainer';
 import { signupRequest } from '../../reducer/user';
-import { InputBox } from './SignUpStyle';
 
 const SignUp = ({ history }) => {
   const methods = useForm({ mode: 'onChange' });
@@ -65,7 +64,9 @@ const SignUp = ({ history }) => {
 
       {errorFromSubmit && <ErrorMessage>{errorFromSubmit}</ErrorMessage>}
       <InputBox>
-        <SubmitButton form="signupForm" type="submit" value="가입하기" disabled={signUpLoading} />
+        <SubmitButton form="signupForm" type="submit" disabled={signUpLoading}>
+          가입하기
+        </SubmitButton>
       </InputBox>
     </div>
   );
@@ -122,5 +123,7 @@ const ErrorMessage = styled.div`
   }
   margin-bottom: 3vh;
 `;
-
+const InputBox = styled.div`
+  font-size: 1.14vh;
+`;
 export default SignUp;
