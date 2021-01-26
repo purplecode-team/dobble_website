@@ -17,8 +17,6 @@ const ChangeUserInfo = ({ history }) => {
   const [name, onChangeName, setName] = useInput('');
   const [pwd, onChangePwd, setPwd] = useInput('');
 
-  console.log(email);
-  console.log(me);
   // 로그인한 사용자 전화번호, 이름 데이터 가져오기
   useEffect(() => {
     // 새로고침 되었을때도 값 유지
