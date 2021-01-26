@@ -117,10 +117,11 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
                   <InputBox>
                     <ButtonInput
                       type="button"
-                      value="중복 확인"
                       onClick={() => isExistEmail(email.current)}
                       disabled={emailLoading}
-                    />
+                    >
+                      중복 확인
+                    </ButtonInput>
                   </InputBox>
                 )}
               </InputDiv>
