@@ -83,7 +83,7 @@ export const EmailCheck = styled.img`
   width: 20px;
   height: 20px;
 `;
-export const ButtonInput = styled.input`
+export const ButtonInput = styled.button`
   :focus {
     outline: none;
   }

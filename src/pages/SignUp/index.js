@@ -88,7 +88,7 @@ const SignUpDiv = styled.div`
   margin-top: 14vh;
   margin-bottom: 5.185vh;
 `;
-const SubmitButton = styled.input`
+const SubmitButton = styled.button`
   cursor: pointer;
   padding: 0px;
   display: block;

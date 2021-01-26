@@ -114,7 +114,7 @@ const SignUpLayout = ({ title, step, steps, register, errors, watch, setStep }) 
                   <EmailCheck src={emailCheck} alt="emailChekc" />
                 ) : (
                   <ButtonInput
-                    type="button"
+                    type="submit"
                     value="중복확인"
                     onClick={() => isExistEmail(email.current)}
                     disabled={emailLoading}
