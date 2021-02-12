@@ -7,32 +7,22 @@ import firebase from '../../firebase/firebase';
 const InputEmail = () => {
   const { register, errors, handleSubmit } = useForm({});
   const [errorFromSubmit, setErrorFromSubmit] = useState('');
-  const [loading, setLoading] = useState(false);
 
-  const onSubmit = () => {
-    alert('신청');
-    /*  try {
-       setLoading(true);
-         if (emailValidationChk(_email)) {
-            //Firebase 데이터베이스에 저장해주기
-            await firebase.database().ref('magazineSubsList').child(_email).set({
-              email: _email,
-            });
-
-
-            setEmail('');
-          } else {
-            alert('이메일을 다시 입력해주세요');
-            setEmail('');
-          }
-      setLoading(false);
+  const onSubmit = (data) => {
+    try {
+      //Firebase 데이터베이스에 저장해주기
+      const subsListRef = firebase.database().ref('magazineSubsList');
+      const newSubsRef = subsListRef.push();
+      newSubsRef.set({
+        email: data.email,
+      });
+      alert(`${data.email} 메거진 구독이 신청되었습니다.`);
     } catch (error) {
-       setErrorFromSubmit(error.message);
-         setLoading(false);
-         setTimeout(() => {
-           setErrorFromSubmit('');
-         }, 5000);
-    }*/
+      setErrorFromSubmit(error.message);
+      setTimeout(() => {
+        setErrorFromSubmit('');
+      }, 5000);
+    }
   };
 
   return (
@@ -82,6 +72,7 @@ const InputEmail = () => {
       {errors.email && errors.email.type === 'pattern' && (
         <ErrorMessage>이메일이 형식에 맞지 않습니다.</ErrorMessage>
       )}
+      {errorFromSubmit && <ErrorMessage>{errorFromSubmit} </ErrorMessage>}
     </Container>
   );
 };
