@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import emailIcon from '../../components/img/email.png';
 import firebase from '../../firebase/firebase';
 
 const InputEmail = () => {
-  const { register, errors, handleSubmit } = useForm({});
+  const { register, errors, handleSubmit, reset } = useForm({});
   const [errorFromSubmit, setErrorFromSubmit] = useState('');
 
   const onSubmit = (data) => {
@@ -17,6 +17,7 @@ const InputEmail = () => {
         email: data.email,
       });
       alert(`${data.email} 메거진 구독이 신청되었습니다.`);
+      reset({});
     } catch (error) {
       setErrorFromSubmit(error.message);
       setTimeout(() => {
