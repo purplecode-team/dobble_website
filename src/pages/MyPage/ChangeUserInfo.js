@@ -70,7 +70,7 @@ const ChangeUserInfo = ({ history }) => {
 
               //데이터베이스에 있는 이메일 수정
               firebase.database().ref(`/users/${userId}`).child('email').set(data.email);
-              alert('save');
+              alert('정보가 수정되었습니다.');
               history.push('/mypage');
             })
             .catch(function (error) {
