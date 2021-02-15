@@ -31,7 +31,7 @@ Donation & Sales site
 
 🎈 magazines page
 
-![](<https://images.velog.io/images/annie1004619/post/94a84074-2685-45e0-afca-5af367a120e0/ezgif.com-gif-maker%20(5).gif>)
+![](<https://images.velog.io/images/annie1004619/post/2c24df6e-977f-4c6d-a0c3-29daa5083101/ezgif.com-gif-maker%20(10).gif>)
 
 🎈 sign up page
 
